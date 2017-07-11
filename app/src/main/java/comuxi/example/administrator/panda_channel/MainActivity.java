@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //设置一个初始的Fragment
         Setinitial();
-
+        loginHomeButton.setBackgroundColor(getResources().getColor(R.color.radio_hui));
 
     }
 
