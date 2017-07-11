@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="comuxi.example.administrator.panda_channel.MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/start_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/login_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#0000EB">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/panda_sign" />
+
+            <ImageView
+                android:id="@+id/login_person_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/person_sign" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@id/login_person_sign"
+                android:background="@mipmap/hudong_sign" />
+
+        </RelativeLayout>
+
+
+        <RadioGroup
+            android:id="@+id/login_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <RadioButton
+                android:id="@+id/login_home_button"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/radio_home"
+                android:gravity="center"
+                android:text="    首页    " />
+
+            <RadioButton
+                android:id="@+id/login_live_button"
+
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/radio_live"
+                android:gravity="center"
+                android:text="熊猫直播" />
+
+            <RadioButton
+                android:id="@+id/login_ggtv_button"
+
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/radio_tv"
+                android:gravity="center"
+                android:text="滚滚视频" />
+
+            <RadioButton
+                android:id="@+id/login_Broadcast_button"
+
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/radio_eye"
+                android:gravity="center"
+                android:text="熊猫播报" />
+
+            <RadioButton
+                android:id="@+id/login_china_button"
+
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/radio_china"
+                android:gravity="center"
+                android:text="直播中国" />
+
+
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/login_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/login_radio_group"
+            android:layout_below="@id/login_toolbar">
+
+
+        </FrameLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>
