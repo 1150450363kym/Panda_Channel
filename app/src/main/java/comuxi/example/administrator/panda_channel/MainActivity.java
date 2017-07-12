@@ -15,6 +15,10 @@ import comuxi.example.administrator.panda_channel.moudel.Home.HomeFragment;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.Pandan_Live_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast.Pandan_Broadcast_Fragment;
 
+/**
+ * Activity界面
+ */
+
 public class MainActivity extends BaseActivity {
     @BindView(R.id.login_home_button)
     RadioButton loginHomeButton;
