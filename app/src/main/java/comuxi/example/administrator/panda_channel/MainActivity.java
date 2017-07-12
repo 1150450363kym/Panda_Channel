@@ -12,6 +12,7 @@ import comuxi.example.administrator.panda_channel.Base.BaseActivity;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.China_Live_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.GG_TV_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.Home.HomeFragment;
+import comuxi.example.administrator.panda_channel.moudel.Home.HomePresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.Pandan_Live_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast.Pandan_Broadcast_Fragment;
 
@@ -57,6 +58,8 @@ public class MainActivity extends BaseActivity {
     //设置一个初始的Fragment
     private void Setinitial() {
         homeFragment = new HomeFragment();
+
+        HomePresenter homePresenter = new HomePresenter(homeFragment);
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
