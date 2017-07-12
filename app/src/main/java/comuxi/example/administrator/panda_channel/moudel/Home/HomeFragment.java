@@ -44,7 +44,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             switch (msg.what) {
                 case 300:
 
-
+                    home_adapter.notifyDataSetChanged();
                     break;
             }
 
@@ -78,6 +78,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         myXrecycleHome.setAdapter(home_adapter);
 
 
+
+
     }
 
     @Override
@@ -96,8 +98,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
 //        请求到的 首页所有的 数据
         Home_Data_TextBean.DataBean data = data_textBean.getData();
-        home_data.add(data);
 
+        home_data.add(data);
+//        Log.e("TAG",""+home_data.get(0).getBigImg().size());
 
         handler.sendEmptyMessage(300);
 

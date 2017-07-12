@@ -11,8 +11,8 @@ public class Url {
     //熊猫直播
     public static final String PANDALIVE = BASE_URL + "PAGE14501769230331752/index.json";
 
-    //    熊猫直播
-    public static final String PANDAHOME = BASE_URL + "/PAGE14501749764071042/index.json";
+    //    首页
+    public static final String PANDAHOME = BASE_URL + "PAGE14501749764071042/index.json";
 
 
 }

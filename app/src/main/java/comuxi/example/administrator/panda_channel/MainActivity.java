@@ -1,9 +1,19 @@
 package comuxi.example.administrator.panda_channel;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +41,11 @@ public class MainActivity extends BaseActivity {
     RadioButton loginBroadcastButton;
     @BindView(R.id.login_china_button)
     RadioButton loginChinaButton;
+    @BindView(R.id.login_image)
+
+    ImageView loginImage;
+    @BindView(R.id.start_linear)
+    RelativeLayout startLinear;
 
 
     private HomeFragment homeFragment;//首页
@@ -38,6 +53,32 @@ public class MainActivity extends BaseActivity {
     private GG_TV_Fragment gg_tv_fragment;//滚滚视频
     private Pandan_Live_Fragment pandan_live_fragment;//熊猫直播
     private Pandan_Broadcast_Fragment pandan_broadcast_fragment;//熊猫播报
+
+
+    private Timer timer;
+    private TimerTask task;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what) {
+                case 300:
+                    loginImage.setVisibility(View.GONE);
+
+                    startLinear.setVisibility(View.VISIBLE);
+                    task.cancel();
+
+                    break;
+            }
+
+
+        }
+    };
+
+
+    //记录用户首次点击返回键的时间
+    private long firstTime=0;
 
     @Override
     protected int getLayoutId() {
@@ -50,7 +91,20 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         //设置一个初始的Fragment
         Setinitial();
+
+        startLinear.setVisibility(View.GONE);
         loginHomeButton.setBackgroundColor(getResources().getColor(R.color.radio_hui));
+
+
+        timer = new Timer();
+       task= new TimerTask() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(300);
+
+            }
+        };
+        timer.schedule(task, 3000, 3000);
 
 
     }
@@ -76,6 +130,7 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         //如果有了fragment就让他先隐藏
         hind_show(transaction);
+
         switch (view.getId()) {
             case R.id.login_home_button:
 
@@ -184,4 +239,29 @@ public class MainActivity extends BaseActivity {
     }
 
 
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode){
+            case KeyEvent.KEYCODE_BACK:
+                long secondTime=System.currentTimeMillis();
+                if(secondTime-firstTime>2000){
+                    Toast.makeText(MainActivity.this,"再按一次退出程序",Toast.LENGTH_SHORT).show();
+                    firstTime=secondTime;
+                    return true;
+                }else{
+                    System.exit(0);
+                }
+                break;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }
