@@ -1,22 +1,21 @@
 package comuxi.example.administrator.panda_channel;
 
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import comuxi.example.administrator.panda_channel.Fragment_.login_fragment.Culture_Fragment;
-import comuxi.example.administrator.panda_channel.Fragment_.login_fragment.Eye_Pressed_Fragment;
-import comuxi.example.administrator.panda_channel.Fragment_.login_fragment.Home_Fragment;
-import comuxi.example.administrator.panda_channel.Fragment_.login_fragment.Live_China_Fragment;
-import comuxi.example.administrator.panda_channel.Fragment_.login_fragment.Live_Fragment;
+import comuxi.example.administrator.panda_channel.Base.BaseActivity;
+import comuxi.example.administrator.panda_channel.moudel.China_Live.China_Live_Fragment;
+import comuxi.example.administrator.panda_channel.moudel.GG_TV.GG_TV_Fragment;
+import comuxi.example.administrator.panda_channel.moudel.Home.HomeFragment;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.Pandan_Live_Fragment;
+import comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast.Pandan_Broadcast_Fragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @BindView(R.id.login_home_button)
     RadioButton loginHomeButton;
     @BindView(R.id.login_live_button)
@@ -27,32 +26,37 @@ public class MainActivity extends AppCompatActivity {
     RadioButton loginBroadcastButton;
     @BindView(R.id.login_china_button)
     RadioButton loginChinaButton;
-    private Home_Fragment home_fragment;
-    private Live_Fragment live_fragment;
-    private Culture_Fragment culture_fragment;
-    private Eye_Pressed_Fragment eye_pressed_fragment;
-    private Live_China_Fragment live_china_fragment;
 
+
+    private HomeFragment homeFragment;//首页
+    private China_Live_Fragment china_live_fragment;//直播中国
+    private GG_TV_Fragment gg_tv_fragment;//滚滚视频
+    private Pandan_Live_Fragment pandan_live_fragment;//熊猫直播
+    private Pandan_Broadcast_Fragment pandan_broadcast_fragment;//熊猫播报
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
+
         ButterKnife.bind(this);
         //设置一个初始的Fragment
         Setinitial();
         loginHomeButton.setBackgroundColor(getResources().getColor(R.color.radio_hui));
 
-    }
 
+    }
 
     //设置一个初始的Fragment
     private void Setinitial() {
-        home_fragment = new Home_Fragment();
+        homeFragment = new HomeFragment();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.login_fragment, home_fragment);
+        transaction.add(R.id.login_fragment, homeFragment);
         transaction.commit();
 
     }
@@ -75,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 loginChinaButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
 
 
-                if (home_fragment == null) {
-                    home_fragment = new Home_Fragment();
-                    transaction.add(R.id.login_fragment, home_fragment);
+                if (homeFragment == null) {
+                    homeFragment = new HomeFragment();
+                    transaction.add(R.id.login_fragment, homeFragment);
                 } else {
-                    transaction.show(home_fragment);
+                    transaction.show(homeFragment);
 
                 }
                 break;
@@ -92,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
                 loginChinaButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
 
 
-                if (live_fragment == null) {
-                    live_fragment = new Live_Fragment();
-                    transaction.add(R.id.login_fragment, live_fragment);
+                if (pandan_live_fragment == null) {
+                    pandan_live_fragment = new Pandan_Live_Fragment();
+                    transaction.add(R.id.login_fragment, pandan_live_fragment);
                 } else {
-                    transaction.show(live_fragment);
+                    transaction.show(pandan_live_fragment);
 
                 }
                 break;
@@ -106,11 +110,11 @@ public class MainActivity extends AppCompatActivity {
                 loginGgtvButton.setBackgroundColor(getResources().getColor(R.color.radio_hui));
                 loginBroadcastButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
                 loginChinaButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
-                if (culture_fragment == null) {
-                    culture_fragment = new Culture_Fragment();
-                    transaction.add(R.id.login_fragment, culture_fragment);
+                if (gg_tv_fragment == null) {
+                    gg_tv_fragment = new GG_TV_Fragment();
+                    transaction.add(R.id.login_fragment, gg_tv_fragment);
                 } else {
-                    transaction.show(culture_fragment);
+                    transaction.show(gg_tv_fragment);
 
                 }
                 break;
@@ -120,11 +124,11 @@ public class MainActivity extends AppCompatActivity {
                 loginGgtvButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
                 loginBroadcastButton.setBackgroundColor(getResources().getColor(R.color.radio_hui));
                 loginChinaButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
-                if (eye_pressed_fragment == null) {
-                    eye_pressed_fragment = new Eye_Pressed_Fragment();
-                    transaction.add(R.id.login_fragment, eye_pressed_fragment);
+                if (pandan_broadcast_fragment == null) {
+                    pandan_broadcast_fragment = new Pandan_Broadcast_Fragment();
+                    transaction.add(R.id.login_fragment, pandan_broadcast_fragment);
                 } else {
-                    transaction.show(eye_pressed_fragment);
+                    transaction.show(pandan_broadcast_fragment);
 
                 }
                 break;
@@ -134,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
                 loginGgtvButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
                 loginBroadcastButton.setBackgroundColor(getResources().getColor(R.color.radio_bai));
                 loginChinaButton.setBackgroundColor(getResources().getColor(R.color.radio_hui));
-                if (live_china_fragment == null) {
-                    live_china_fragment = new Live_China_Fragment();
-                    transaction.add(R.id.login_fragment, live_china_fragment);
+                if (china_live_fragment == null) {
+                    china_live_fragment = new China_Live_Fragment();
+                    transaction.add(R.id.login_fragment, china_live_fragment);
                 } else {
-                    transaction.show(live_china_fragment);
+                    transaction.show(china_live_fragment);
 
                 }
                 break;
@@ -149,26 +153,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hind_show(FragmentTransaction transaction) {
-        if (home_fragment != null) {
-            transaction.hide(home_fragment);
+        if (homeFragment != null) {
+            transaction.hide(homeFragment);
 
         }
-        if (live_fragment != null) {
-            transaction.hide(live_fragment);
+        if (pandan_live_fragment != null) {
+            transaction.hide(pandan_live_fragment);
 
         }
-        if (culture_fragment != null) {
-            transaction.hide(culture_fragment);
+        if (gg_tv_fragment != null) {
+            transaction.hide(gg_tv_fragment);
 
         }
-        if (eye_pressed_fragment != null) {
-            transaction.hide(eye_pressed_fragment);
+        if (pandan_broadcast_fragment != null) {
+            transaction.hide(pandan_broadcast_fragment);
 
         }
-        if (live_china_fragment != null) {
-            transaction.hide(live_china_fragment);
+        if (china_live_fragment != null) {
+            transaction.hide(china_live_fragment);
 
         }
 
     }
+
+
 }

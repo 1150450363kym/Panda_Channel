@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="这是熊猫直播页面"
+        android:text="这是熊猫播报页面"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
