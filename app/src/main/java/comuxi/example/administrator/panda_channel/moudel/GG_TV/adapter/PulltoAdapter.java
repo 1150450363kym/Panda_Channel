@@ -28,11 +28,7 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
 
 
 
-
-
     }
-
-
 
 
     @Override
