@@ -29,6 +29,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
+
         loginCultureFragmentPulltorefresh.setLayoutManager(manager);
         loginCultureFragmentPulltorefresh.setLoadingMoreEnabled(true);
         loginCultureFragmentPulltorefresh.setPullRefreshEnabled(true);
