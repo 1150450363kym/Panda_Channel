@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,24 +25,25 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
 
 /**
  * Created by Administrator on 2017/7/12.
+ * 首页适配器
  */
 
 public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements ViewPager.OnPageChangeListener {
     private FragmentActivity activity;
     private ArrayList<Home_Data_TextBean.DataBean> home_data;
-//    存放滚动轮播的 集合
+    //    存放滚动轮播的 集合
     private ArrayList<View> rotation_array = new ArrayList<>();
-//    滚动轮播的图片
+    //    滚动轮播的图片
     private ImageView imag;
-//    滚动轮播图片上的文字
+    //    滚动轮播图片上的文字
     private TextView textView;
-//    滚动轮播的ViewPage
+    //    滚动轮播的ViewPage
     private ViewPager viewPager;
-//    Viewpage 的 适配器
+    //    Viewpage 的 适配器
     private Home_page_Rotation home_page_rotation;
-//    时间2类
+    //    时间2类
     private Timer timer;
-//    轮播的四个小点
+    //    轮播的四个小点
     LinearLayout point_ratio = null;
     Handler handler = new Handler() {
         @Override
@@ -54,6 +56,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
                     break;
             }
+
         }
     };
 
@@ -76,18 +79,47 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         My_View my_view = (My_View) holder;
-
-
         login_home_rotation(my_view);
+
+//        设置 熊猫播报的 数据
+        my_view.broad_title_one.setText(home_data.get(0).getPandaeye().getItems().get(0).getBrief());
+        my_view.broad_title_two.setText(home_data.get(0).getPandaeye().getItems().get(1).getBrief());
+        my_view.broad_content_one.setText(home_data.get(0).getPandaeye().getItems().get(0).getTitle());
+        my_view.broad_content_two.setText(home_data.get(0).getPandaeye().getItems().get(1).getTitle());
+        Glide.with(activity).load(home_data.get(0).getPandaeye().getPandaeyelogo()).into(my_view.broad_imag);
+
+//        设置 直播秀场 数据
+
+        GridLayoutManager manager = new GridLayoutManager(activity, 3);
+
+        my_view.live_show_recy.setLayoutManager(manager);
+
+        Home_Live_Show_Adapter show_adapter = new Home_Live_Show_Adapter(activity, home_data.get(0).getArea().getListscroll());
+
+        my_view.live_show_recy.setAdapter(show_adapter);
+        show_adapter.notifyDataSetChanged();
 
 
     }
 
     class My_View extends RecyclerView.ViewHolder {
 
+        private ImageView broad_imag;//熊猫播报 图片
+        private TextView broad_title_one, broad_title_two, broad_content_one, broad_content_two;//熊猫播报 内容
+        private RecyclerView live_show_recy;
 
         public My_View(View itemView) {
             super(itemView);
+//        设置 熊猫播报的 数据
+            broad_imag = (ImageView) itemView.findViewById(R.id.broad_image);
+            broad_title_one = (TextView) itemView.findViewById(R.id.panda_broadcast_text_one);
+            broad_title_two = (TextView) itemView.findViewById(R.id.panda_broadcast_text_two);
+            broad_content_one = (TextView) itemView.findViewById(R.id.panda_broadcast_content_one);
+            broad_content_two = (TextView) itemView.findViewById(R.id.panda_broadcast_content_two);
+
+//               设置 直播秀场 数据
+            live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_live_show_recycle);
+
 
         }
     }

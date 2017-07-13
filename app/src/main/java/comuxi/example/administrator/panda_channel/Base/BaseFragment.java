@@ -39,6 +39,13 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+
+    public void  setBundle (Bundle bundle){
+
+    }
+
+
+
     //    加载布局的
     protected abstract int getlayoutID();
 
