@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <!--熊猫观察下面的-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+
+        <ImageView
+            android:id="@+id/look_down_image"
+            android:layout_width="170dp"
+            android:layout_height="120dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/look_down_image">
+
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:id="@+id/look_down_data"
+                android:layout_width="wrap_content"
+                android:text="eee"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/look_down_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="14dp"
+                android:maxLines="2"
+                android:text="英国一年一度抬床比赛  比赛过程欢乐多"
+                android:textSize="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

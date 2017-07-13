@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,33 +18,41 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Look_Down_Text;
+import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
 
 /**
  * Created by Administrator on 2017/7/12.
+ * 首页适配器
  */
 
 public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements ViewPager.OnPageChangeListener {
     private FragmentActivity activity;
     private ArrayList<Home_Data_TextBean.DataBean> home_data;
-//    存放滚动轮播的 集合
+    //    存放滚动轮播的 集合
     private ArrayList<View> rotation_array = new ArrayList<>();
-//    滚动轮播的图片
+    //    滚动轮播的图片
     private ImageView imag;
-//    滚动轮播图片上的文字
+    //    滚动轮播图片上的文字
     private TextView textView;
-//    滚动轮播的ViewPage
+    //    滚动轮播的ViewPage
     private ViewPager viewPager;
-//    Viewpage 的 适配器
+    //    Viewpage 的 适配器
     private Home_page_Rotation home_page_rotation;
-//    时间2类
+    //    时间2类
     private Timer timer;
-//    轮播的四个小点
+    //    轮播的四个小点
     LinearLayout point_ratio = null;
+
+    private ArrayList<Look_Down_Text.ListBean> Look_Down_Array = new ArrayList();
+
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -54,6 +64,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
                     break;
             }
+
         }
     };
 
@@ -76,18 +87,100 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         My_View my_view = (My_View) holder;
-
-
         login_home_rotation(my_view);
+
+//        设置 熊猫观察的 数据
+        my_view.broad_title_one.setText(home_data.get(0).getPandaeye().getItems().get(0).getBrief());
+        my_view.broad_title_two.setText(home_data.get(0).getPandaeye().getItems().get(1).getBrief());
+        my_view.broad_content_one.setText(home_data.get(0).getPandaeye().getItems().get(0).getTitle());
+        my_view.broad_content_two.setText(home_data.get(0).getPandaeye().getItems().get(1).getTitle());
+        Glide.with(activity).load(home_data.get(0).getPandaeye().getPandaeyelogo()).into(my_view.broad_imag);
+
+
+//        精彩推荐的数据
+        LinearLayoutManager linmanage = new LinearLayoutManager(activity);
+        linmanage.setOrientation(LinearLayoutManager.HORIZONTAL);
+        my_view.wonderful_recycel.setLayoutManager(linmanage);
+        Home_Wonderful_Adapter wonderful_adapter = new Home_Wonderful_Adapter(activity, home_data.get(0).getArea().getListscroll());
+        my_view.wonderful_recycel.setAdapter(wonderful_adapter);
+        wonderful_adapter.notifyDataSetChanged();
+        Glide.with(activity).load(home_data.get(0).getArea().getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.wonderful_image);
+
+
+//        精彩推荐 下面 的数据
+        LinearLayoutManager down_linmanage = new LinearLayoutManager(activity);
+        down_linmanage.setOrientation(LinearLayoutManager.VERTICAL);
+        my_view.look_down_recycle.setLayoutManager(down_linmanage);
+        PandaItemMode.I_HTTP.get(home_data.get(0).getPandaeye().getPandaeyelist(), null, new MyHttpCallBack<Look_Down_Text>() {
+            @Override
+            public void onSuccess(Look_Down_Text look_down_text) {
+                List<Look_Down_Text.ListBean> list = look_down_text.getList();
+                Look_Down_Array.addAll(list);
+            }
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+            }
+        });
+        Look_Down_Adapter down_adapter = new Look_Down_Adapter(activity, Look_Down_Array);
+        my_view.look_down_recycle.setAdapter(down_adapter);
+        down_adapter.notifyDataSetChanged();
+
+        //        设置 熊猫直播 数据
+        GridLayoutManager manager = new GridLayoutManager(activity, 3);
+        my_view.live_show_recy.setLayoutManager(manager);
+        Home_Live_Show_Adapter show_adapter = new Home_Live_Show_Adapter(activity, home_data.get(0).getPandalive().getList());
+        my_view.live_show_recy.setAdapter(show_adapter);
+        show_adapter.notifyDataSetChanged();
+
+        //  设置  长城直播  数据
+
+
+
+
+
+
+
 
 
     }
 
     class My_View extends RecyclerView.ViewHolder {
 
+        private ImageView broad_imag, wonderful_image;//熊猫播报 图片
+        private TextView broad_title_one, broad_title_two, broad_content_one, broad_content_two;//熊猫播报 内容
+        private RecyclerView live_show_recy, wonderful_recycel, look_down_recycle,Great_Wall_recycle;
 
         public My_View(View itemView) {
             super(itemView);
+//        设置 熊猫观察的 数据
+            broad_imag = (ImageView) itemView.findViewById(R.id.broad_image);
+            broad_title_one = (TextView) itemView.findViewById(R.id.panda_broadcast_text_one);
+            broad_title_two = (TextView) itemView.findViewById(R.id.panda_broadcast_text_two);
+            broad_content_one = (TextView) itemView.findViewById(R.id.panda_broadcast_content_one);
+            broad_content_two = (TextView) itemView.findViewById(R.id.panda_broadcast_content_two);
+
+
+//             精彩推荐的数据
+
+            wonderful_recycel = (RecyclerView) itemView.findViewById(R.id.home_Wonderful_recommendation_recycle);
+            wonderful_image = (ImageView) itemView.findViewById(R.id.home_Wonderful_recommendation_image);
+
+
+//        精彩推荐 下面 的数据
+            look_down_recycle = (RecyclerView) itemView.findViewById(R.id.home_panda_look_two_recycle);
+
+//               设置 熊猫直播 数据
+            live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_live_show_recycle);
+
+//            设置 长城直播  数  据
+
+
+
+            Great_Wall_recycle = (RecyclerView) itemView.findViewById(R.id.Home_Great_wall_recycle);
+
+
+
+
 
         }
     }

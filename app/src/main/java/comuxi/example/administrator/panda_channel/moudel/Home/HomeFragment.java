@@ -73,22 +73,20 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myXrecycleHome.setLayoutManager(layoutManager);
-
         home_adapter = new Home_proRecycle_Adapter(getActivity(), home_data);
         myXrecycleHome.setAdapter(home_adapter);
-
-
-
 
     }
 
     @Override
     public void shouProgress() {
 
+
     }
 
     @Override
     public void dissProgress() {
+
 
     }
 
@@ -96,24 +94,34 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     @Override
     public void showCarousel(Home_Data_TextBean data_textBean) {
 
-//        请求到的 首页所有的 数据
         Home_Data_TextBean.DataBean data = data_textBean.getData();
 
         home_data.add(data);
-//        Log.e("TAG",""+home_data.get(0).getBigImg().size());
 
         handler.sendEmptyMessage(300);
 
-//        List<Home_Data_TextBean.DataBean.BigImgBean> bigImg = data_textBean.getData().getBigImg();
-//        for (int i = 0; i < bigImg.size(); i++) {
-//            Log.e("TAG", "打印——首页——轮播图片——地址" + bigImg.get(i).getImage());
-//
-//        }
 
     }
 
     @Override
     public void showMessage(String s) {
+
+
+    }
+
+//熊猫播报方法
+    @Override
+    public void showPandaBroadcast(Home_Data_TextBean data_textBean) {
+
+
+
+    }
+//展示xRecycleView
+    @Override
+    public void showXrecycleView(Home_Data_TextBean data_textBean) {
+
+
+
 
     }
 

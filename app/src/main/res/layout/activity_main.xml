@@ -28,6 +28,7 @@
             android:background="#0000EB">
 
             <ImageView
+                android:id="@+id/login_panda_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -45,12 +46,26 @@
 
 
             <ImageView
+                android:id="@+id/login_hudong_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:layout_toLeftOf="@id/login_person_sign"
                 android:background="@mipmap/hudong_sign" />
+
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/login_title"
+                android:textColor="#fff"
+                android:textSize="25dp"
+                android:layout_centerInParent="true"
+                android:text="熊猫直播"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
 
         </RelativeLayout>
 
