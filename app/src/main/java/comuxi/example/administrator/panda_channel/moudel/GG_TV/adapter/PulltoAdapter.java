@@ -44,6 +44,8 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
         });
     }
 
+
+
     interface MyCall{
         void setOnItemClintLinstener(int position);
     }
