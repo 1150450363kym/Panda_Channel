@@ -70,6 +70,7 @@ public class Live extends BaseFragment {
 
 
         liveCenterLinear.setVisibility(View.VISIBLE);
+
         if(!liveCenterBlueImg.isChecked()){
             liveCenterLinear.setVisibility(View.GONE);
         }
