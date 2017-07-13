@@ -35,6 +35,7 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
         ImageView imageView = (ImageView) holder.itemView.findViewById(R.id.item_pandalive_pullto_img);
         Glide.with(context).load(listBean.getImage()).into(imageView);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,VideoplayerActivity.class);
