@@ -22,7 +22,6 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_Text
 public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
 
 
-    private MyCall myCall;
     public PulltoAdapter(Context context, List<GG_TV_TextBean.ListBean> datas) {
         super(context, R.layout.item_pandalive_pullto, datas);
 
@@ -43,7 +42,6 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
             }
         });
     }
-
 
     interface MyCall{
         void setOnItemClintLinstener(int position);
