@@ -16,8 +16,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static android.R.attr.value;
-
 /**
  * Created by Administrator on 2017/7/11.
  * IHttp 的实现类
@@ -68,7 +66,7 @@ public class OkHttpUtils implements IHttp {
 
             for (String key : keys) {
                 String valus = map.get(key);
-                buffer.append(key).append("=").append(value).append("&");
+                buffer.append(key).append("=").append(valus).append("&");
             }
 //追加 参数 后的  一个 地址
             url = buffer.deleteCharAt(buffer.length() - 1).toString();

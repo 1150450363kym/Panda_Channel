@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="radio_bai">#fff</color>
     <color name="radio_hui">#dcdcdc</color>
+    <color name="radio_black">#000000</color>
+    <color name="radio_litterwhite">#f7f1f1</color>
 </resources>

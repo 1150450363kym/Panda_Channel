@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    </LinearLayout>
+
+    <TextView
+        android:textColor="@color/radio_black"
+        android:text="成都基地"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:text="简介"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+
+        android:button="@null"
+        android:id="@+id/live_center_blue_img"
+        android:background="@drawable/live_tooltip_blue_select"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="20dp"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:background="@color/radio_hui"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/live_center_linearlayout"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:text="123456789"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:background="@color/radio_hui"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+
+        android:id="@+id/live_center_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.design.widget.TabLayout>
+
+    <comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager
+        android:id="@+id/live_bottom_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
+
+
+
+</LinearLayout>

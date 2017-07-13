@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">熊猫频道</string>
+    <string name="tablayout_live">直播</string>
+    <string name="Marvellous_one">精彩一刻</string>
+    <string name="let_panda">当熊不让</string>
+    <string name="lovely">超萌滚滚秀</string>
+    <string name="panda_archives">熊猫档案</string>
+    <string name="panda_top">熊猫TOP</string>
+    <string name="panda_things">熊猫那些事儿</string>
+    <string name="especially_progress">特别节目</string>
+    <string name="original_news">原创新闻</string>
+    <string name="Premiere_time">首播时间</string>
 </resources>
