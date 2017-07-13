@@ -172,7 +172,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 //               设置 熊猫直播 数据
             live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_live_show_recycle);
 
-//            设置 长城直播  数据
+//            设置 长城直播  数  据
 
 
             Great_Wall_recycle = (RecyclerView) itemView.findViewById(R.id.Home_Great_wall_recycle);
