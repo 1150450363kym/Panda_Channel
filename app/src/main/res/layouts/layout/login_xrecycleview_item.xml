@@ -5,6 +5,15 @@
     android:background="#dcdcdc"
     android:orientation="vertical">
 
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="160dp">
@@ -44,12 +53,63 @@
             android:layout_width="match_parent"
             android:layout_height="40dp">
 
+            <ImageView
+
+                android:id="@+id/home_Wonderful_recommendation_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                />
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="熊猫播报"
+                android:layout_toRightOf="@id/home_Wonderful_recommendation_image"
+                android:text="精彩推荐"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#dcdcdc" />
+
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_Wonderful_recommendation_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#dcdcdc" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="熊猫观察"
                 android:textSize="13dp" />
 
             <TextView
@@ -93,7 +153,7 @@
                         android:background="@drawable/text_broadcast"
                         android:text="生日"
                         android:textColor="#FF6347"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/panda_broadcast_content_one"
@@ -127,7 +187,7 @@
                         android:background="@drawable/text_broadcast"
                         android:text="新生"
                         android:textColor="#FF6347"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/panda_broadcast_content_two"
@@ -148,6 +208,23 @@
 
         </LinearLayout>
 
+        <!--熊猫观察下面的俩数据-->
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_panda_look_two_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="5dp"
@@ -163,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="直播秀场"
+                android:text="熊猫直播"
                 android:textSize="13dp" />
 
             <TextView
@@ -175,15 +252,54 @@
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:id="@+id/home_live_show_recycle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp">
 
 
         </android.support.v7.widget.RecyclerView>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#dcdcdc" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="长城直播"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#dcdcdc" />
+
+        </RelativeLayout>
+
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/Home_Great_wall_recycle"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+
+</android.support.v7.widget.RecyclerView>
 
 
 
@@ -193,4 +309,6 @@
     </LinearLayout>
 
 
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

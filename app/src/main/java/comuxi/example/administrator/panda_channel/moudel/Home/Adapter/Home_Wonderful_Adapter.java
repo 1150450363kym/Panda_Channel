@@ -17,59 +17,54 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
 
 /**
  * Created by Administrator on 2017/7/13.
- *
- * 熊猫观察的Adapter
+ * 精彩推荐的Adapter
  */
 
-public class Home_Live_Show_Adapter extends RecyclerView.Adapter {
+public class Home_Wonderful_Adapter extends RecyclerView.Adapter {
+
     FragmentActivity activity;
-    List<Home_Data_TextBean.DataBean.PandaliveBean.ListBean> listscroll;
+    List<Home_Data_TextBean.DataBean.AreaBean.ListscrollBean> listscroll;
 
-    public Home_Live_Show_Adapter(FragmentActivity activity, List<Home_Data_TextBean.DataBean.PandaliveBean.ListBean> list) {
-        this.activity =activity;
-        this.listscroll = list;
+    public Home_Wonderful_Adapter(FragmentActivity activity, List<Home_Data_TextBean.DataBean.AreaBean.ListscrollBean> listscroll) {
+        this.activity=activity;
+        this.listscroll=listscroll;
     }
-
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(activity).inflate(R.layout.login_home_live__show_item,null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.home_wonderful_recommenda_item,null);
+
 
         return new My_View(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
         My_View my_view = (My_View) holder;
-
 
         my_view.textView.setText(listscroll.get(position).getTitle());
 
-        Glide.with(activity).load(listscroll.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imag);
+        Glide.with(activity).load(listscroll.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imageView);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return listscroll.size();
+        return 9;
     }
-
     class My_View extends RecyclerView.ViewHolder {
-        private ImageView imag;
+        private ImageView imageView;
         private TextView textView;
 
         public My_View(View itemView) {
             super(itemView);
-
-
-            imag = (ImageView) itemView.findViewById(R.id.live_show_image);
-            textView = (TextView) itemView.findViewById(R.id.live_show_text);
-
+            imageView = (ImageView) itemView.findViewById(R.id.wonderful_image);
+            textView = (TextView) itemView.findViewById(R.id.wonderful_text);
 
         }
     }
+
+
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2017/7/12.
+ * 轮播图的Adapter
  */
 
 public class Home_page_Rotation extends PagerAdapter{
