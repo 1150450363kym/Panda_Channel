@@ -68,6 +68,7 @@ public class Live extends BaseFragment {
     @OnClick(R.id.live_center_blue_img)
     public void onViewClicked() {
 
+
         liveCenterLinear.setVisibility(View.VISIBLE);
         if(!liveCenterBlueImg.isChecked()){
             liveCenterLinear.setVisibility(View.GONE);
