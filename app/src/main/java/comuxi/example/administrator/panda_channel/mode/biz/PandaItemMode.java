@@ -1,6 +1,7 @@
 package comuxi.example.administrator.panda_channel.mode.biz;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
 
@@ -9,11 +10,18 @@ import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
  */
 
 public class PandaItemMode implements PandaMode {
+
     @Override
     public void getHomeData(MyHttpCallBack<Home_Data_TextBean> callBack) {
 
 
         I_HTTP.get(Url.PANDAHOME,null,callBack);
 
+    }
+
+    @Override
+    public void getGGTV(MyHttpCallBack<GG_TV_TextBean> callBack) {
+
+        I_HTTP.get(Url.GGTV,null,callBack);
     }
 }

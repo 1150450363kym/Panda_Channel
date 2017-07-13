@@ -14,5 +14,9 @@ public class Url {
     //    首页
     public static final String PANDAHOME = BASE_URL + "PAGE14501749764071042/index.json";
 
+    //滚滚视频
+
+    public static final String GGTV = BASE_URL +"xmwh/index.json";
+
 
 }

@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="120dp">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="160dp"
+        android:layout_height="80dp">
 
         <ImageView
+
             android:id="@+id/item_pandalive_pullto_img"
             android:layout_width="160dp"
-            android:layout_height="100dp" />
+            android:layout_height="80dp" />
 
         <TextView
-
-
+            android:id="@+id/item_pandalive_pullto_video_time"
+            android:textSize="12dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="60dp"
+            android:textColor="@color/radio_bai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </RelativeLayout>
 
 
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -29,16 +39,23 @@
         <TextView
             android:id="@+id/item_pandalive_pullto_title"
             android:textColor="@color/radio_black"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:text="《精彩一刻》"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:ellipsize="end"
+            android:lines="2"
             android:id="@+id/item_pandalive_pullto_time"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="5dp"
             android:text="2017-07-12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:background="@color/radio_hui"
+        android:layout_width="match_parent"
+        android:layout_height="3dp" />
 </LinearLayout>
