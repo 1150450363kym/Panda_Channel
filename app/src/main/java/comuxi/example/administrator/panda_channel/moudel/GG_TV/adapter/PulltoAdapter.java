@@ -26,6 +26,8 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
     public PulltoAdapter(Context context, List<GG_TV_TextBean.ListBean> datas) {
         super(context, R.layout.item_pandalive_pullto, datas);
 
+
+
     }
 
 
