@@ -168,6 +168,11 @@ public class MainActivity extends BaseActivity {
 
                 pandan_live_fragment = (Pandan_Live_Fragment) changeFragment(Pandan_Live_Fragment.class, R.id.login_fragment, true, null, true);
 
+
+
+
+
+
                 break;
             case R.id.login_ggtv_button:
 

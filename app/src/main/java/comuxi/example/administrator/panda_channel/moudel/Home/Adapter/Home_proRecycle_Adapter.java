@@ -111,6 +111,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         LinearLayoutManager down_linmanage = new LinearLayoutManager(activity);
         down_linmanage.setOrientation(LinearLayoutManager.VERTICAL);
         my_view.look_down_recycle.setLayoutManager(down_linmanage);
+
         PandaItemMode.I_HTTP.get(home_data.get(0).getPandaeye().getPandaeyelist(), null, new MyHttpCallBack<Look_Down_Text>() {
             @Override
             public void onSuccess(Look_Down_Text look_down_text) {
