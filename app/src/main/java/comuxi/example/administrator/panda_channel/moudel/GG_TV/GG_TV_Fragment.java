@@ -47,8 +47,6 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
         loginCultureFragmentPulltorefresh.setPullRefreshEnabled(true);
         loginCultureFragmentPulltorefresh.setPullToRefreshListener(this);
 
-
-
     }
 
     @Override
@@ -96,6 +94,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
     @Override
     public void showMsg(String msg) {
+
 
     }
 
