@@ -2,6 +2,9 @@ package comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast;
 
 import android.view.View;
 
+import com.androidkun.PullToRefreshRecyclerView;
+
+import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
 
@@ -10,6 +13,9 @@ import comuxi.example.administrator.panda_channel.R;
  */
 
 public class Pandan_Broadcast_Fragment extends BaseFragment {
+
+    @BindView(R.id.eyepress_fragment_pullto)
+    PullToRefreshRecyclerView eyepressFragmentPullto;
 
     @Override
     protected int getlayoutID() {
@@ -25,4 +31,6 @@ public class Pandan_Broadcast_Fragment extends BaseFragment {
     protected void loadData() {
 
     }
+
+
 }
