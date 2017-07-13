@@ -175,6 +175,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 //            设置 长城直播  数  据
 
 
+
             Great_Wall_recycle = (RecyclerView) itemView.findViewById(R.id.Home_Great_wall_recycle);
 
 
