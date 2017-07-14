@@ -215,7 +215,7 @@ public class MainActivity extends BaseActivity {
 
                 break;
             case R.id.login_china_button:
-
+   
 
                 loginPandaSign.setVisibility(View.GONE);
                 loginTitle.setVisibility(View.VISIBLE);
