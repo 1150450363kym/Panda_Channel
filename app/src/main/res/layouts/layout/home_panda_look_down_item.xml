@@ -2,18 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
     <!--熊猫观察下面的-->
 
     <RelativeLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="120dp">
 
 
+
         <ImageView
             android:id="@+id/look_down_image"
+            android:scaleType="fitXY"
             android:layout_width="170dp"
             android:layout_height="120dp" />
+
+        <LinearLayout
+            android:background="@drawable/jian_bian"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:background="@mipmap/play"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/movie_time"
+            android:gravity="center"
+
+
+            android:layout_width="60dp"
+            android:layout_height="20dp" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -39,12 +64,17 @@
                 android:maxLines="2"
                 android:text="英国一年一度抬床比赛  比赛过程欢乐多"
                 android:textSize="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                 />
 
 
         </RelativeLayout>
 
 
     </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:background="#dcdcdc"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 </LinearLayout>

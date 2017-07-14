@@ -69,12 +69,26 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     protected void loadData() {
         home_present.start();
 
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myXrecycleHome.setLayoutManager(layoutManager);
         home_adapter = new Home_proRecycle_Adapter(getActivity(), home_data);
         myXrecycleHome.setAdapter(home_adapter);
+
+
+        myXrecycleHome.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                home_adapter.notifyDataSetChanged();
+                myXrecycleHome.refreshComplete();
+
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
 
     }
 
@@ -95,7 +109,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     public void showCarousel(Home_Data_TextBean data_textBean) {
 
         Home_Data_TextBean.DataBean data = data_textBean.getData();
-
+        home_data.clear();
         home_data.add(data);
 
         handler.sendEmptyMessage(300);
@@ -118,7 +132,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     }
 //展示xRecycleView
     @Override
-    public void showXrecycleView(Home_Data_TextBean data_textBean) {
+    public void showXrecycleView(final Home_Data_TextBean data_textBean) {
 
 
 

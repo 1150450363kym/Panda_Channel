@@ -13,47 +13,46 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import comuxi.example.administrator.panda_channel.R;
-import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Look_Down_Text;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_China_Movie_Text;
 
 /**
  * Created by Administrator on 2017/7/13.
- * 熊猫观察 的Adapter
  */
 
-public class Look_Down_Adapter extends RecyclerView.Adapter {
+public class Home_China_Moive_Adapter extends RecyclerView.Adapter {
     FragmentActivity activity;
-    ArrayList<Look_Down_Text.ListBean> look_down_array;
-    public Look_Down_Adapter(FragmentActivity activity, ArrayList<Look_Down_Text.ListBean> look_down_array) {
+    ArrayList<Home_China_Movie_Text.ListBean> movie_array;
+    public Home_China_Moive_Adapter(FragmentActivity activity, ArrayList<Home_China_Movie_Text.ListBean> movie_array) {
         this.activity=activity;
-        this.look_down_array = look_down_array;
+        this.movie_array = movie_array;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(activity).inflate(R.layout.home_panda_look_down_item,null);
 
+        View view = LayoutInflater.from(activity).inflate(R.layout.home_panda_look_down_item,null);
 
         return new My_View(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+       My_View my_view = (My_View) holder;
 
-        My_View my_view = (My_View) holder;
-
-        my_view.title.setText(look_down_array.get(position).getTitle());
-        my_view.data.setText(look_down_array.get(position).getDaytime());
-        my_view.time.setText(look_down_array.get(position).getVideoLength());
-        Glide.with(activity).load(look_down_array.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imageView);
+        my_view.title.setText(movie_array.get(position).getTitle());
+        my_view.data.setText(movie_array.get(position).getDaytime());
+        my_view.time.setText(movie_array.get(position).getVideoLength());
+        Glide.with(activity).load(movie_array.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imageView);
 
     }
 
     @Override
     public int getItemCount() {
-        return look_down_array.size();
+        return movie_array.size();
     }
     class My_View extends RecyclerView.ViewHolder {
+
         private ImageView imageView;
         private TextView title,data,time;
         public My_View(View itemView) {
@@ -63,8 +62,6 @@ public class Look_Down_Adapter extends RecyclerView.Adapter {
             title = (TextView) itemView.findViewById(R.id.look_down_title);
             data= (TextView) itemView.findViewById(R.id.look_down_data);
             time = (TextView) itemView.findViewById(R.id.movie_time);
-
-
         }
     }
 }

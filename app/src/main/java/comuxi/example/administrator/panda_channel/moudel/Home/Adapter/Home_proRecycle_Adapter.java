@@ -23,7 +23,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_CCTV_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_China_Movie_Text;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Look_Down_Text;
 import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
@@ -51,7 +54,13 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     //    轮播的四个小点
     LinearLayout point_ratio = null;
 
+    private boolean time_flg = false;
+
+
     private ArrayList<Look_Down_Text.ListBean> Look_Down_Array = new ArrayList();
+    private ArrayList<Home_CCTV_TextBean.ListBean> cctv_Array = new ArrayList();
+    private ArrayList<Home_China_Movie_Text.ListBean> movie_Array = new ArrayList<>();
+
 
     Handler handler = new Handler() {
         @Override
@@ -86,8 +95,11 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        My_View my_view = (My_View) holder;
+        final My_View my_view = (My_View) holder;
+
         login_home_rotation(my_view);
+
+
 
 //        设置 熊猫观察的 数据
         my_view.broad_title_one.setText(home_data.get(0).getPandaeye().getItems().get(0).getBrief());
@@ -116,8 +128,11 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             @Override
             public void onSuccess(Look_Down_Text look_down_text) {
                 List<Look_Down_Text.ListBean> list = look_down_text.getList();
+
+                Look_Down_Array.clear();
                 Look_Down_Array.addAll(list);
             }
+
             @Override
             public void onError(int errorCode, String errorMsg) {
             }
@@ -126,19 +141,88 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         my_view.look_down_recycle.setAdapter(down_adapter);
         down_adapter.notifyDataSetChanged();
 
+
         //        设置 熊猫直播 数据
         GridLayoutManager manager = new GridLayoutManager(activity, 3);
         my_view.live_show_recy.setLayoutManager(manager);
         Home_Live_Show_Adapter show_adapter = new Home_Live_Show_Adapter(activity, home_data.get(0).getPandalive().getList());
         my_view.live_show_recy.setAdapter(show_adapter);
+
         show_adapter.notifyDataSetChanged();
 
-        //  设置  长城直播  数据
+
+//    设置  长城直播  数据
+        GridLayoutManager manager_great = new GridLayoutManager(activity, 3);
+
+        my_view.Great_Wall_recycle.setLayoutManager(manager_great);
+        Home_Great_Wall_Adapter great_wall_adapter = new Home_Great_Wall_Adapter(activity, home_data.get(0).getWalllive().getList());
+
+        my_view.Great_Wall_recycle.setAdapter(great_wall_adapter);
 
 
+//        设置直播中国的数据
+        GridLayoutManager manager_china = new GridLayoutManager(activity, 3);
+
+        my_view.Live_China_Recycle.setLayoutManager(manager_china);
+        Home_China_Live_Adapter wall_adapter = new Home_China_Live_Adapter(activity, home_data.get(0).getChinalive().getList());
+
+        my_view.Live_China_Recycle.setAdapter(wall_adapter);
+
+//      设置特别策划  的数据
+
+        my_view.Special_planning_title.setText(home_data.get(0).getInteractive().getInteractiveone().get(0).getTitle());
+
+        Glide.with(activity).load(home_data.get(0).getInteractive().getInteractiveone().get(0).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.Special_planning_Imagee);
+
+//        设置CCTV里面的数据
+        PandaItemMode.I_HTTP.get(home_data.get(0).getCctv().getListurl(), null, new MyHttpCallBack<Home_CCTV_TextBean>() {
+            @Override
+            public void onSuccess(Home_CCTV_TextBean look_down_text) {
+                List<Home_CCTV_TextBean.ListBean> list = look_down_text.getList();
+                cctv_Array.clear();
+                cctv_Array.addAll(list);
+                App.content.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        GridLayoutManager manager_cctv = new GridLayoutManager(activity, 2);
+                        my_view.CCTV_recycle.setLayoutManager(manager_cctv);
+                        Home_CCTV_Adapter cctv_adapter = new Home_CCTV_Adapter(activity, cctv_Array);
+                        my_view.CCTV_recycle.setAdapter(cctv_adapter);
+                    }
+                });
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+            }
+        });
 
 
+//     设置供应中国的  数据
+        PandaItemMode.I_HTTP.get(home_data.get(0).getList().get(0).getListUrl(), null, new MyHttpCallBack<Home_China_Movie_Text>() {
+            @Override
+            public void onSuccess(Home_China_Movie_Text look_down_text) {
 
+                List<Home_China_Movie_Text.ListBean> list = look_down_text.getList();
+                movie_Array.clear();
+                movie_Array.addAll(list);
+                App.content.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        LinearLayoutManager china_movie_mange = new LinearLayoutManager(activity);
+                        china_movie_mange.setOrientation(LinearLayoutManager.VERTICAL);
+                        my_view.china_movie_recyclee.setLayoutManager(china_movie_mange);
+
+                        Home_China_Moive_Adapter moive_adapter = new Home_China_Moive_Adapter(activity, movie_Array);
+                        my_view.china_movie_recyclee.setAdapter(moive_adapter);
+                    }
+                });
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+            }
+        });
 
 
 
@@ -147,9 +231,9 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
     class My_View extends RecyclerView.ViewHolder {
 
-        private ImageView broad_imag, wonderful_image;//熊猫播报 图片
-        private TextView broad_title_one, broad_title_two, broad_content_one, broad_content_two;//熊猫播报 内容
-        private RecyclerView live_show_recy, wonderful_recycel, look_down_recycle,Great_Wall_recycle;
+        private ImageView broad_imag, wonderful_image, Special_planning_Imagee;
+        private TextView broad_title_one, broad_title_two, broad_content_one, broad_content_two, Special_planning_title;//熊猫播报 内容
+        private RecyclerView live_show_recy, wonderful_recycel, look_down_recycle, Great_Wall_recycle, Live_China_Recycle, CCTV_recycle, china_movie_recyclee;
 
         public My_View(View itemView) {
             super(itemView);
@@ -175,12 +259,24 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
 //            设置 长城直播  数  据
 
-
-
             Great_Wall_recycle = (RecyclerView) itemView.findViewById(R.id.Home_Great_wall_recycle);
 
 
+//            设置直播中国的数据
+            Live_China_Recycle = (RecyclerView) itemView.findViewById(R.id.Home_Live_China_recycle);
 
+//      设置特别策划  的数据
+
+            Special_planning_Imagee = (ImageView) itemView.findViewById(R.id.Special_planning_Image);
+
+            Special_planning_title = (TextView) itemView.findViewById(R.id.Special_planning_text);
+
+//     设置 CCTV  里面 的  数据
+            CCTV_recycle = (RecyclerView) itemView.findViewById(R.id.home_CCTV_recycle);
+
+
+//            设置供应中国 的 数据
+            china_movie_recyclee = (RecyclerView) itemView.findViewById(R.id.home_china_movie_recycle);
 
 
         }
@@ -195,8 +291,9 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     //    设置轮播图的方法
 //
     public void login_home_rotation(My_View my_view) {
-
-
+        point_ratio = (LinearLayout) my_view.itemView.findViewById(R.id.my_login_home_rotation_point);
+        rotation_array.clear();
+        point_ratio.removeAllViews();
         for (int i = 0; i < home_data.get(0).getBigImg().size(); i++) {
 
             View page_item = LayoutInflater.from(activity).inflate(R.layout.login_home_rotation_item, null);
@@ -215,7 +312,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             v_point.setBackgroundResource(R.drawable.rotation_point_blue);
             LinearLayout.LayoutParams LP = new LinearLayout.LayoutParams(20, 20);
             LP.setMargins(20, 0, 0, 0);
-            point_ratio = (LinearLayout) my_view.itemView.findViewById(R.id.my_login_home_rotation_point);
             point_ratio.addView(v_point, LP);
 
         }
@@ -230,10 +326,15 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         viewPager.setOnPageChangeListener(this);
         viewPager.setCurrentItem(100000000);
 
-        timer = new Timer();
-        timer.schedule(task, 4000, 4000);
 
 
+        if (time_flg == false) {
+
+            timer = new Timer();
+            timer.schedule(task, 4000, 4000);
+
+            time_flg = true;
+        }
     }
 
     private TimerTask task = new TimerTask() {
