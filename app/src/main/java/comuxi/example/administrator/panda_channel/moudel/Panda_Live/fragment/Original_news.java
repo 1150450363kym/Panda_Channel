@@ -7,10 +7,16 @@ import android.view.View;
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.WinderfulonePulltoAdapter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.contract.OriginalnewsContract;
 
 
 /**
@@ -19,11 +25,14 @@ import comuxi.example.administrator.panda_channel.R;
  * 熊猫直播 --- 原创新闻
  */
 
-public class Original_news extends BaseFragment implements PullToRefreshListener {
+public class Original_news extends BaseFragment implements PullToRefreshListener,OriginalnewsContract.View {
     @BindView(R.id.original_news_pulltorefresh)
     PullToRefreshRecyclerView originalNewsPulltorefresh;
     Unbinder unbinder;
-
+    private int i = 1;
+    private OriginalnewsContract.presenter presenter ;
+    private List<WonderfulOneBean.VideoBean> list;
+    private WinderfulonePulltoAdapter adapter;
     @Override
     protected int getlayoutID() {
         return R.layout.original_news;
@@ -32,6 +41,9 @@ public class Original_news extends BaseFragment implements PullToRefreshListener
     @Override
     protected void init(View view) {
 
+        list = new ArrayList<>();
+        adapter = new WinderfulonePulltoAdapter(getContext(),list);
+        originalNewsPulltorefresh.setAdapter(adapter);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
         originalNewsPulltorefresh.setLayoutManager(manager);
 
@@ -43,16 +55,54 @@ public class Original_news extends BaseFragment implements PullToRefreshListener
     @Override
     protected void loadData() {
 
+        presenter.start();
+        presenter.showData("VSET100219009515","7","panda","desc","time",i);
     }
 
 
     @Override
     public void onRefresh() {
+        originalNewsPulltorefresh.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                list.clear();
+                loadData();
+                adapter.notifyDataSetChanged();
+                originalNewsPulltorefresh.setRefreshComplete();
+            }
+        },1000);
+    }
+    @Override
+    public void onLoadMore() {
+
+        originalNewsPulltorefresh.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                i++;
+                loadData();
+
+                adapter.notifyDataSetChanged();
+                originalNewsPulltorefresh.setLoadMoreComplete();
+
+            }
+        }, 1000);
+    }
+
+    @Override
+    public void showData(WonderfulOneBean moreLiveBean) {
+
+        list.addAll(moreLiveBean.getVideo());
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showMsg(String msg) {
 
     }
 
     @Override
-    public void onLoadMore() {
+    public void setPresenter(OriginalnewsContract.presenter presenter) {
 
+        this.presenter = presenter;
     }
 }

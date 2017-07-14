@@ -18,7 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VideoplayerActivity"></activity>
+        <activity android:name=".VideoplayerActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".PersonalCenterActivity" />
+        <activity android:name=".Historical_recordActivity" />
+        <activity android:name=".MyCollectionActivity" />
+        <activity android:name=".PresonalSetActivity"></activity>
     </application>
 
 </manifest>

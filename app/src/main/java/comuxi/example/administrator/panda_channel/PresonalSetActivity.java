@@ -1,0 +1,13 @@
+package comuxi.example.administrator.panda_channel;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class PresonalSetActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_presonal_set);
+    }
+}

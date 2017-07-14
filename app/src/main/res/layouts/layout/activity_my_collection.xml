@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_collection"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="comuxi.example.administrator.panda_channel.MyCollectionActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/historical_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/personal_back_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="收藏"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mycollection_tablayout"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </android.support.design.widget.TabLayout>
+
+    <comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager
+        android:id="@+id/mycollection_viewpager"
+        android:layout_below="@id/mycollection_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
+
+</RelativeLayout>

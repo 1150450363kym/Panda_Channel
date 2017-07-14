@@ -66,6 +66,7 @@ public class Live extends BaseFragment {
         liveCenterTablayout.setupWithViewPager(liveBottomViewpager);
 
         new MoreLivePresenter(moreLive);
+
     }
 
     @Override

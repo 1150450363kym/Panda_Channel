@@ -24,10 +24,19 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Pan
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.PandaThing;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Panda_archives;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Wonderful_moment;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.EspeciallyprogramPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LetPandaPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LovelyLivePresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.OriginalnewsPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.PandaTOPPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.PandaThingPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.Panda_archivesPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.WonderfulOnePresenter;
 
 
 /**
  * Created by Administrator on 2017/7/11.
+ * 熊猫直播
  */
 
 public class Pandan_Live_Fragment extends BaseFragment {
@@ -74,9 +83,6 @@ public class Pandan_Live_Fragment extends BaseFragment {
         adapter = new PageAdapter(getFragmentManager(),list);
         liveFragmentViewpager.setAdapter(adapter);
 
-
-
-
         liveFragmentTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         liveFragmentTablayout.setTabTextColors(R.color.colorPrimaryDark,R.color.radio_black);
 
@@ -87,6 +93,14 @@ public class Pandan_Live_Fragment extends BaseFragment {
         liveFragmentTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(),R.color.colorPrimaryDark));
         liveFragmentTablayout.setupWithViewPager(liveFragmentViewpager);
 
+        new WonderfulOnePresenter(wonderful_moment);
+        new LetPandaPresenter(letPanda);
+        new LovelyLivePresenter(lovelyLive);
+        new Panda_archivesPresenter(panda_archives);
+        new PandaTOPPresenter(pandaTOP);
+        new PandaThingPresenter(pandaThing);
+        new EspeciallyprogramPresenter(especially_program);
+        new OriginalnewsPresenter(original_news);
     }
 
     @Override
