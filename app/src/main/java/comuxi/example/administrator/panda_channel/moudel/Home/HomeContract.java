@@ -16,6 +16,7 @@ public interface HomeContract {
             void dissProgress();//结束 进度条
             void  showCarousel(Home_Data_TextBean data_textBean);// 展示轮播图
             void  showMessage(String s);//打印报错信息
+            void  setResult(Home_Data_TextBean data_textBean);
         void  showPandaBroadcast(Home_Data_TextBean data_textBean);//熊猫播报
         void showXrecycleView(Home_Data_TextBean data_textBean);//设置XrecycleView
 

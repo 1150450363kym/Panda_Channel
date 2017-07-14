@@ -31,7 +31,7 @@ public class HomePresenter implements HomeContract.presenter {
             @Override
             public void onSuccess(Home_Data_TextBean home_data_textBean) {
 
-            homeview.showCarousel(home_data_textBean);
+            homeview.setResult(home_data_textBean);
 
 
             }
