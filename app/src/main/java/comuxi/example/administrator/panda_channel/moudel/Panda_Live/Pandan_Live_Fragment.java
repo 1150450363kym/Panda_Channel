@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,9 +73,17 @@ public class Pandan_Live_Fragment extends BaseFragment {
         list.add(original_news);
         adapter = new PageAdapter(getFragmentManager(),list);
         liveFragmentViewpager.setAdapter(adapter);
+
+
+
+
         liveFragmentTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         liveFragmentTablayout.setTabTextColors(R.color.colorPrimaryDark,R.color.radio_black);
 
+        LinearLayout linearLayout = (LinearLayout) liveFragmentTablayout.getChildAt(0);
+        linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+        linearLayout.setDividerDrawable(ContextCompat.getDrawable(getContext(),
+                R.drawable.tablayout_fg));
         liveFragmentTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(),R.color.colorPrimaryDark));
         liveFragmentTablayout.setupWithViewPager(liveFragmentViewpager);
 

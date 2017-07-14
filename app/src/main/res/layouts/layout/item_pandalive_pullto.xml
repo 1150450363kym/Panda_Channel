@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_gravity="center_horizontal"
+    android:layout_marginLeft="5dp"
+    android:orientation="vertical" android:layout_width="350dp"
+    android:layout_height="wrap_content">
 
     <LinearLayout
+
+        android:background="@color/radio_bai"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="100dp">
     <RelativeLayout
         android:layout_width="160dp"
-        android:layout_height="80dp">
+        android:layout_height="100dp">
 
         <ImageView
 
+            android:layout_centerVertical="true"
+            android:layout_marginTop="1dp"
             android:id="@+id/item_pandalive_pullto_img"
             android:layout_width="160dp"
             android:layout_height="80dp" />
@@ -41,7 +47,7 @@
             android:textColor="@color/radio_black"
             android:layout_marginTop="5dp"
             android:text="《精彩一刻》"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -49,7 +55,15 @@
             android:lines="2"
             android:id="@+id/item_pandalive_pullto_time"
             android:layout_marginTop="5dp"
-            android:text="2017-07-12"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:ellipsize="end"
+            android:lines="2"
+            android:id="@+id/item_pandabroadcast_pullto_time"
+            android:layout_marginTop="5dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -57,5 +71,5 @@
     <TextView
         android:background="@color/radio_hui"
         android:layout_width="match_parent"
-        android:layout_height="3dp" />
+        android:layout_height="1dp" />
 </LinearLayout>

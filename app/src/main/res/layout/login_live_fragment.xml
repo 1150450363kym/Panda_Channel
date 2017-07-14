@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/radio_hui"
     android:orientation="vertical"
     android:layout_height="match_parent">
     <android.support.design.widget.TabLayout
+        android:background="@color/radio_bai"
+        android:layout_marginTop="5dp"
         android:id="@+id/live_fragment_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
     </android.support.design.widget.TabLayout>
 
     <comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager
         android:id="@+id/live_fragment_viewpager"
-        android:layout_width="match_parent"
+        android:background="@color/radio_bai"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="370dp"
         android:layout_height="match_parent"></comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
 
 </LinearLayout>

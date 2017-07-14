@@ -2,7 +2,8 @@ package comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast;
 
 import comuxi.example.administrator.panda_channel.Base.BasePresenter;
 import comuxi.example.administrator.panda_channel.Base.BaseView;
-import comuxi.example.administrator.panda_channel.moudel.Home.HomeContract;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
 
 /**
  * 契约类
@@ -11,13 +12,19 @@ import comuxi.example.administrator.panda_channel.moudel.Home.HomeContract;
  */
 
 public class Pandan_Broadcast_Contract {
-    interface View extends BaseView<HomeContract.presenter> {
+    interface View extends BaseView<presenter> {
+
+        void showData(PandaBroadCastBean pandaBroadCastListBean);
+        void showDatalist(PandaBroadCastListBean pandaBroadCastListBean);
+        void showMsg(String msg);
 
 
     }
 
 //    契约类 网络请求的接口
     interface presenter extends BasePresenter {
+
+    void showPandapresenter(String path, String primary_id, String serviceId);
 
     }
 }

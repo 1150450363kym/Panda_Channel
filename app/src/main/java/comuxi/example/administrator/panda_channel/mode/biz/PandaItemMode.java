@@ -1,8 +1,14 @@
 package comuxi.example.administrator.panda_channel.mode.biz;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
 import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
 
 /**
@@ -23,5 +29,27 @@ public class PandaItemMode implements PandaMode {
     public void getGGTV(MyHttpCallBack<GG_TV_TextBean> callBack) {
 
         I_HTTP.get(Url.GGTV,null,callBack);
+    }
+
+    @Override
+    public void getMoreLive(MyHttpCallBack<MoreLiveBean> myHttpCallBack) {
+
+        I_HTTP.get(Url.MORELIVE,null,myHttpCallBack);
+    }
+
+    @Override
+    public void getPandaBroadcast(MyHttpCallBack<PandaBroadCastBean> myHttpCallBack) {
+
+        I_HTTP.get(Url.PANDABROADCASTIMG,null,myHttpCallBack);
+    }
+
+    @Override
+    public void getPandaBroadcastList(String path, String primary_id, String serviceId, MyHttpCallBack<PandaBroadCastListBean> myHttpCallBack) {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("path",path);
+        map.put("primary_id",primary_id);
+        map.put("serviceId",serviceId);
+        I_HTTP.get(Url.PANDABROADCAST,map,myHttpCallBack);
     }
 }
