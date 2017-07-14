@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -13,9 +14,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.TwoPageAdapter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.MoreLivePresenter;
 
 
 /**
@@ -33,6 +36,10 @@ public class Live extends BaseFragment {
     TabLayout liveCenterTablayout;
     @BindView(R.id.live_bottom_viewpager)
     ViewPager liveBottomViewpager;
+    @BindView(R.id.live_top_img)
+    ImageView liveTopImg;
+    Unbinder unbinder;
+
     private List<Fragment> list;
     private TwoPageAdapter twoPageAdapter;
     private MoreLive moreLive = new MoreLive();
@@ -51,13 +58,14 @@ public class Live extends BaseFragment {
         list.add(moreLive);
         list.add(watchChat);
 
-        twoPageAdapter = new TwoPageAdapter(getFragmentManager(),list);
+        twoPageAdapter = new TwoPageAdapter(getFragmentManager(), list);
         liveBottomViewpager.setAdapter(twoPageAdapter);
         liveCenterTablayout.setTabMode(TabLayout.MODE_FIXED);
-        liveCenterTablayout.setTabTextColors(R.color.colorPrimaryDark,R.color.radio_black);
-        liveCenterTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(),R.color.colorPrimaryDark));
+        liveCenterTablayout.setTabTextColors(R.color.colorPrimaryDark, R.color.radio_black);
+        liveCenterTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
         liveCenterTablayout.setupWithViewPager(liveBottomViewpager);
 
+        new MoreLivePresenter(moreLive);
     }
 
     @Override
@@ -71,8 +79,11 @@ public class Live extends BaseFragment {
 
         liveCenterLinear.setVisibility(View.VISIBLE);
 
-        if(!liveCenterBlueImg.isChecked()){
+        if (!liveCenterBlueImg.isChecked()) {
             liveCenterLinear.setVisibility(View.GONE);
         }
     }
+
+
+
 }

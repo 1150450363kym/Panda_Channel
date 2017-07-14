@@ -67,7 +67,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
                 adapter.notifyDataSetChanged();
                 loginCultureFragmentPulltorefresh.setRefreshComplete();
             }
-        },2000);
+        },1000);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
                 loadData();
                 adapter.notifyDataSetChanged();
             }
-        },2000);
+        },1000);
 
     }
 

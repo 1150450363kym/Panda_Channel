@@ -20,10 +20,12 @@ import butterknife.OnClick;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.China_Live_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.GG_TV_Fragment;
+import comuxi.example.administrator.panda_channel.moudel.GG_TV.GG_TV_Presenter;
 import comuxi.example.administrator.panda_channel.moudel.Home.HomeFragment;
 import comuxi.example.administrator.panda_channel.moudel.Home.HomePresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.Pandan_Live_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast.Pandan_Broadcast_Fragment;
+import comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast.Pandan_Broadcast_Presenter;
 
 /**
  * Activity界面
@@ -190,6 +192,7 @@ public class MainActivity extends BaseActivity {
 
                 gg_tv_fragment = (GG_TV_Fragment) changeFragment(GG_TV_Fragment.class, R.id.login_fragment, true, null, true);
 
+                new GG_TV_Presenter(gg_tv_fragment);
 
                 break;
             case R.id.login_Broadcast_button:
@@ -208,6 +211,7 @@ public class MainActivity extends BaseActivity {
 
                 pandan_broadcast_fragment = (Pandan_Broadcast_Fragment) changeFragment(Pandan_Broadcast_Fragment.class, R.id.login_fragment, true, null, true);
 
+                new Pandan_Broadcast_Presenter(pandan_broadcast_fragment);
 
                 break;
             case R.id.login_china_button:

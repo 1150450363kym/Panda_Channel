@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#0117a1</color>
     <color name="colorAccent">#FF4081</color>
     <color name="radio_bai">#fff</color>
+
     <color name="radio_hui">#dcdcdc</color>
     <color name="radio_black">#000000</color>
     <color name="radio_litterwhite">#f7f1f1</color>
