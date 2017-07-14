@@ -37,6 +37,29 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
  */
 
 public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements ViewPager.OnPageChangeListener {
+
+    public interface x_Recy_Onclick{
+//        精彩推荐  监听的方法
+        void get_wonderful_Click(Home_Data_TextBean.DataBean.AreaBean.ListscrollBean home_data);
+//        熊猫观察第一条 监听的方法
+        void get_pandan_loog_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean itemsBean);
+//       熊猫观察第 二条 监听的方法
+        void get_pandan_loog_second_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean second_itemsBean);
+
+
+    }
+
+    private x_Recy_Onclick recy_onclick;
+
+    public void set_wonderful_Click(x_Recy_Onclick recy_onclick){
+        this.recy_onclick=recy_onclick;
+    };
+
+
+
+
+
+
     private FragmentActivity activity;
     private ArrayList<Home_Data_TextBean.DataBean> home_data;
     //    存放滚动轮播的 集合
@@ -93,7 +116,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         final My_View my_view = (My_View) holder;
 
@@ -109,6 +132,25 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         Glide.with(activity).load(home_data.get(0).getPandaeye().getPandaeyelogo()).into(my_view.broad_imag);
 
 
+        my_view.broad_content_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recy_onclick.get_pandan_loog_Click(v,home_data.get(0).getPandaeye().getItems().get(0));
+            }
+        });
+
+        my_view.broad_content_two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recy_onclick.get_pandan_loog_second_Click(v,home_data.get(0).getPandaeye().getItems().get(1));
+            }
+        });
+
+
+
+
+
+
 //        精彩推荐的数据
         LinearLayoutManager linmanage = new LinearLayoutManager(activity);
         linmanage.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -117,6 +159,17 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         my_view.wonderful_recycel.setAdapter(wonderful_adapter);
         wonderful_adapter.notifyDataSetChanged();
         Glide.with(activity).load(home_data.get(0).getArea().getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.wonderful_image);
+//        精彩推荐 的 点击事件
+        wonderful_adapter.Wonder_setOnclick(new Home_Wonderful_Adapter.Wonder_Onclick() {
+            @Override
+            public void Wonder_getOnclick(View view, int pos) {
+
+                recy_onclick.get_wonderful_Click(home_data.get(0).getArea().getListscroll().get(pos));
+
+            }
+        });
+
+
 
 
 //        精彩推荐 下面 的数据

@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="100dp">
 
 
 
@@ -16,7 +16,7 @@
             android:id="@+id/look_down_image"
             android:scaleType="fitXY"
             android:layout_width="170dp"
-            android:layout_height="120dp" />
+            android:layout_height="100dp" />
 
         <LinearLayout
             android:background="@drawable/jian_bian"
@@ -28,14 +28,13 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:background="@mipmap/play"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/movie_time"
             android:gravity="center"
-
-
+            android:textColor="#fff"
             android:layout_width="60dp"
             android:layout_height="20dp" />
         </LinearLayout>

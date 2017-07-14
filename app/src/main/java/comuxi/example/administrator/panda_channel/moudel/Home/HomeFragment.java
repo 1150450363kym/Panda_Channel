@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.moudel.Home.Adapter.Home_proRecycle_Adapter;
 
@@ -68,6 +70,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     @Override
     protected void loadData() {
         home_present.start();
+
+
+
+
+
 
 
     }
@@ -126,11 +133,23 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
 
 
+        home_adapter.set_wonderful_Click(new Home_proRecycle_Adapter.x_Recy_Onclick() {
+            @Override
+//            精彩推荐的 点击事件
+            public void get_wonderful_Click(Home_Data_TextBean.DataBean.AreaBean.ListscrollBean home_data) {
+                Toast.makeText(App.content, ""+home_data.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+//        熊猫观察的点击
+            @Override
+            public void get_pandan_loog_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean itemsBean) {
+                Toast.makeText(App.content, ""+itemsBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
 
-
-
-
-
+            @Override
+            public void get_pandan_loog_second_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean second_itemsBean) {
+                Toast.makeText(App.content, ""+second_itemsBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
