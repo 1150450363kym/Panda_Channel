@@ -46,7 +46,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 //       熊猫观察第 二条 监听的方法
         void get_pandan_loog_second_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean second_itemsBean);
 
-
     }
 
     private x_Recy_Onclick recy_onclick;
@@ -54,10 +53,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     public void set_wonderful_Click(x_Recy_Onclick recy_onclick){
         this.recy_onclick=recy_onclick;
     };
-
-
-
-
 
 
     private FragmentActivity activity;
@@ -76,14 +71,11 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     private Timer timer;
     //    轮播的四个小点
     LinearLayout point_ratio = null;
-
     private boolean time_flg = false;
-
 
     private ArrayList<Look_Down_Text.ListBean> Look_Down_Array = new ArrayList();
     private ArrayList<Home_CCTV_TextBean.ListBean> cctv_Array = new ArrayList();
     private ArrayList<Home_China_Movie_Text.ListBean> movie_Array = new ArrayList<>();
-
 
     Handler handler = new Handler() {
         @Override
@@ -91,9 +83,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             super.handleMessage(msg);
             switch (msg.what) {
                 case 300:
-
                     viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-
                     break;
             }
 
@@ -110,8 +100,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(activity).inflate(R.layout.login_xrecycleview_item, null);
-
-
         return new My_View(view);
     }
 
@@ -119,10 +107,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         final My_View my_view = (My_View) holder;
-
         login_home_rotation(my_view);
-
-
 
 //        设置 熊猫观察的 数据
         my_view.broad_title_one.setText(home_data.get(0).getPandaeye().getItems().get(0).getBrief());
@@ -130,7 +115,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         my_view.broad_content_one.setText(home_data.get(0).getPandaeye().getItems().get(0).getTitle());
         my_view.broad_content_two.setText(home_data.get(0).getPandaeye().getItems().get(1).getTitle());
         Glide.with(activity).load(home_data.get(0).getPandaeye().getPandaeyelogo()).into(my_view.broad_imag);
-
 
         my_view.broad_content_one.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,10 +129,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 recy_onclick.get_pandan_loog_second_Click(v,home_data.get(0).getPandaeye().getItems().get(1));
             }
         });
-
-
-
-
 
 
 //        精彩推荐的数据
@@ -168,8 +148,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
             }
         });
-
-
 
 
 //        精彩推荐 下面 的数据
@@ -277,9 +255,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             }
         });
 
-
-
-
     }
 
     class My_View extends RecyclerView.ViewHolder {
@@ -297,12 +272,9 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             broad_content_one = (TextView) itemView.findViewById(R.id.panda_broadcast_content_one);
             broad_content_two = (TextView) itemView.findViewById(R.id.panda_broadcast_content_two);
 
-
 //             精彩推荐的数据
-
             wonderful_recycel = (RecyclerView) itemView.findViewById(R.id.home_Wonderful_recommendation_recycle);
             wonderful_image = (ImageView) itemView.findViewById(R.id.home_Wonderful_recommendation_image);
-
 
 //        精彩推荐 下面 的数据
             look_down_recycle = (RecyclerView) itemView.findViewById(R.id.home_panda_look_two_recycle);
@@ -311,26 +283,20 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_live_show_recycle);
 
 //            设置 长城直播  数  据
-
             Great_Wall_recycle = (RecyclerView) itemView.findViewById(R.id.Home_Great_wall_recycle);
-
 
 //            设置直播中国的数据
             Live_China_Recycle = (RecyclerView) itemView.findViewById(R.id.Home_Live_China_recycle);
 
 //      设置特别策划  的数据
-
             Special_planning_Imagee = (ImageView) itemView.findViewById(R.id.Special_planning_Image);
-
             Special_planning_title = (TextView) itemView.findViewById(R.id.Special_planning_text);
 
 //     设置 CCTV  里面 的  数据
             CCTV_recycle = (RecyclerView) itemView.findViewById(R.id.home_CCTV_recycle);
 
-
 //            设置供应中国 的 数据
             china_movie_recyclee = (RecyclerView) itemView.findViewById(R.id.home_china_movie_recycle);
-
 
         }
     }
@@ -340,9 +306,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         return home_data.size();
     }
 
-
     //    设置轮播图的方法
-//
     public void login_home_rotation(My_View my_view) {
         point_ratio = (LinearLayout) my_view.itemView.findViewById(R.id.my_login_home_rotation_point);
         rotation_array.clear();
@@ -355,9 +319,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 //            轮播图的文字
             textView = (TextView) page_item.findViewById(R.id.home_rotation_item_text);
             textView.setText(home_data.get(0).getBigImg().get(i).getTitle());
-
             Glide.with(activity).load(home_data.get(0).getBigImg().get(i).getImage()).into(imag);
-
             rotation_array.add(page_item);
 
 //            储存俩个点
@@ -370,7 +332,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         }
 
         viewPager = (ViewPager) my_view.itemView.findViewById(R.id.my_login_home_rotation);
-
         point_ratio.getChildAt(0).setBackgroundResource(
                 R.drawable.rotation_point_write);
         home_page_rotation = new Home_page_Rotation(rotation_array);
@@ -378,8 +339,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         viewPager.setAdapter(home_page_rotation);
         viewPager.setOnPageChangeListener(this);
         viewPager.setCurrentItem(100000000);
-
-
 
         if (time_flg == false) {
 
