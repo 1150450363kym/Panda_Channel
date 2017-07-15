@@ -14,6 +14,7 @@ import java.util.List;
 import comuxi.example.administrator.panda_channel.R;
 import comuxi.example.administrator.panda_channel.VideoplayerActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
+import comuxi.example.administrator.panda_channel.moudel.GG_TV.PandaThingsActivity;
 
 /**
  * Created by lenovo on 2017/7/13.
@@ -38,10 +39,20 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,VideoplayerActivity.class);
+                if(listBean.getOrder().equals("1")){
+                    Intent intent = new Intent(context,PandaThingsActivity.class);
+                    intent.putExtra("top_title",listBean.getTitle());
+                    intent.putExtra("top_content",listBean.getBrief());
+
+                    context.startActivity(intent);
+                }else{
+
+                    Intent intent = new Intent(context,VideoplayerActivity.class);
 
 //                intent.putExtra("top_title",listBean.getOrder());
-                context.startActivity(intent);
+                    context.startActivity(intent);
+
+            }
             }
         });
     }

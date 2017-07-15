@@ -129,7 +129,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     public static final int special_planning_type = 7;
     public static final int cctv_type = 8;
     public static final int movie_china_type = 9;
-
     private FragmentActivity activity;
     //        private ArrayList<Home_Data_TextBean.DataBean> home_data;
     private ArrayList<Object> datas;
@@ -397,6 +396,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 sim_viewHolder.Special_planning_Imagee.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         recy_onclick.get_special_planning_Click(v,interactiveBean.getInteractiveone().get(0));
 
                     }
@@ -427,7 +427,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                                         recy_onclick.get_cctv_live_Click(cctv_Array.get(cctv_postion));
                                     }
                                 });
-
                             }
                         });
                     }

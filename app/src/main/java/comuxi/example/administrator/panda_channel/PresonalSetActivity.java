@@ -1,13 +1,20 @@
 package comuxi.example.administrator.panda_channel;
 
-import android.app.Activity;
-import android.os.Bundle;
+import comuxi.example.administrator.panda_channel.Base.BaseActivity;
 
-public class PresonalSetActivity extends Activity {
+public class PresonalSetActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_presonal_set);
+    protected int getLayoutId() {
+        return R.layout.activity_presonal_set;
     }
+
+    @Override
+    protected void initView() {
+
+    }
+
+
+
 }

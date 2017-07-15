@@ -3,6 +3,7 @@ package comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.androidkun.adapter.BaseAdapter;
 import com.androidkun.adapter.ViewHolder;
@@ -26,7 +27,7 @@ public class WinderfulonePulltoAdapter extends BaseAdapter<WonderfulOneBean.Vide
     }
 
     @Override
-    public void convert(ViewHolder holder, WonderfulOneBean.VideoBean listBean) {
+    public void convert(ViewHolder holder, final WonderfulOneBean.VideoBean listBean) {
         holder.setText(R.id.item_pandalive_pullto_title,listBean.getT());
         holder.setText(R.id.item_pandalive_pullto_time,listBean.getPtime());
         holder.setText(R.id.item_pandalive_pullto_video_time,listBean.getLen());
@@ -34,6 +35,9 @@ public class WinderfulonePulltoAdapter extends BaseAdapter<WonderfulOneBean.Vide
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(context, listBean.getT(), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(context, VideoplayerActivity.class);
+//                context.startActivity(intent);
             }
         });
         ImageView imageView = (ImageView) holder.itemView.findViewById(R.id.item_pandalive_pullto_img);

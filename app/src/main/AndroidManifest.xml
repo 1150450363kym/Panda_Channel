@@ -25,6 +25,7 @@
         <activity android:name=".MyCollectionActivity" />
         <activity android:name=".PresonalSetActivity" />
         <activity android:name=".RegistActivity"></activity>
+        <activity android:name=".moudel.GG_TV.PandaThingsActivity"/>
     </application>
 
 </manifest>

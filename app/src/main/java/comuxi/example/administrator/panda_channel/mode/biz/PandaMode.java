@@ -3,6 +3,7 @@ package comuxi.example.administrator.panda_channel.mode.biz;
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
@@ -35,5 +36,7 @@ public interface PandaMode extends BaseMode {
     void getWatchChat(String app,String itemid,String nature,int page,MyHttpCallBack<WonderfulOneBean> myHttpCallBack);
 
 
-
+    //熊猫直播
+    //http:www.ipanda.com/kehuduan/PAGE14501769230331752/index.json
+    void getPandaLive(MyHttpCallBack<MLiveBean> myHttpCallBack);
 }

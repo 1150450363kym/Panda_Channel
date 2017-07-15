@@ -1,5 +1,6 @@
 package comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,7 +21,7 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.contract.Mor
  * 熊猫直播 ---直播 --- 多视角直播
  */
 
-public class MoreLive extends BaseFragment implements MoreLiveContract.View{
+public class MoreLive extends BaseFragment implements MoreLiveContract.View, MoreLiveAdapter.MyCall {
     @BindView(R.id.morelive_recyclerview)
     RecyclerView moreliveRecyclerview;
 
@@ -38,7 +39,7 @@ public class MoreLive extends BaseFragment implements MoreLiveContract.View{
     protected void init(View view) {
 
         list = new ArrayList<>();
-        adapter = new MoreLiveAdapter(list,getContext());
+        adapter = new MoreLiveAdapter(list,getContext(),this);
         moreliveRecyclerview.setLayoutManager(new GridLayoutManager(getContext(),3));
         moreliveRecyclerview.setAdapter(adapter);
 
@@ -70,5 +71,14 @@ public class MoreLive extends BaseFragment implements MoreLiveContract.View{
     public void setPresenter(MoreLiveContract.presenter presenter) {
 
         this.presenter = presenter;
+    }
+
+    @Override
+    public void setOnItemClickListener(int position) {
+
+        Intent intent = new Intent();
+        intent.putExtra("title",list.get(position).getTitle());
+        intent.setAction("video_title");
+        getContext().sendBroadcast(intent);
     }
 }

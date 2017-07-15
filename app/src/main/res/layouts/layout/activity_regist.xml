@@ -34,67 +34,19 @@
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
-    <LinearLayout
+    <android.support.design.widget.TabLayout
+        android:id="@+id/regist_tablayout"
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="132px"
         android:layout_marginTop="1px">
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+    </android.support.design.widget.TabLayout>
 
-            <TextView
-                android:id="@+id/tvphonereg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#ffffff"
-                android:gravity="center"
-                android:text="@string/regist_phone"
-                android:textColor="@drawable/cctv_tab_item_selector"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvphonereg_line"
-                android:layout_width="match_parent"
-                android:layout_height="10px"
-                android:layout_alignBottom="@id/tvphonereg"
-                android:layout_marginTop="-10px"
-                android:background="@color/cctv_tab_sel"
-                android:visibility="invisible" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tvemailreg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2px"
-                android:background="#ffffff"
-                android:gravity="center"
-                android:text="@string/regist_email"
-                android:textColor="@drawable/cctv_tab_item_selector"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvemailreg_line"
-                android:layout_width="match_parent"
-                android:layout_height="10px"
-                android:layout_alignBottom="@id/tvemailreg"
-                android:layout_marginTop="-10px"
-                android:background="@color/cctv_tab_sel"
-                android:visibility="invisible" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <FrameLayout
+    <comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager
+        android:layout_below="@id/regist_tablayout"
         android:id="@+id/framelayout_register_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"></comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
 
 </RelativeLayout>

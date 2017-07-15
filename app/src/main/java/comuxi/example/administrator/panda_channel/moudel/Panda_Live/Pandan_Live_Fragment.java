@@ -26,6 +26,7 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Pan
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Wonderful_moment;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.EspeciallyprogramPresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LetPandaPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LivePresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LovelyLivePresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.OriginalnewsPresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.PandaTOPPresenter;
@@ -102,6 +103,7 @@ public class Pandan_Live_Fragment extends BaseFragment {
         new PandaThingPresenter(pandaThing);
         new EspeciallyprogramPresenter(especially_program);
         new OriginalnewsPresenter(original_news);
+        new LivePresenter(live);
     }
 
     @Override

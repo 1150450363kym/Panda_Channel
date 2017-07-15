@@ -36,5 +36,8 @@ public class Url {
     //http://newcomment.cntv.cn/comment/list?app=ipandaApp&itemid=zhiboye_chat&nature=1&page=1
     public static final String WATCHCHAT =  "//http://newcomment.cntv.cn/comment/list";
 
+    //熊猫直播
+    //http:www.ipanda.com/kehuduan/PAGE14501769230331752/index.json
+    public static final String MPANDALIVE = BASE_URL +"PAGE14501769230331752/index.json";
 
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
@@ -75,6 +76,11 @@ public class PandaItemMode implements PandaMode {
         map.put("nature",nature);
         map.put("page",page+"");
         I_HTTP.get(Url.WATCHCHAT,map,myHttpCallBack);
+    }
+    @Override
+    public void getPandaLive(MyHttpCallBack<MLiveBean> myHttpCallBack) {
+
+        I_HTTP.get(Url.MPANDALIVE,null,myHttpCallBack);
     }
 
 }
