@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -17,7 +18,11 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.app.App;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_CCTV_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_China_Movie_Text;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Look_Down_Text;
 import comuxi.example.administrator.panda_channel.moudel.Home.Adapter.Home_proRecycle_Adapter;
 
 /**
@@ -32,8 +37,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     @BindView(R.id.my_xrecycle_home)
     XRecyclerView myXrecycleHome;
     //        请求到的 首页所有的 数据
-    private ArrayList<Home_Data_TextBean.DataBean> home_data = new ArrayList<>();
-
+    private ArrayList<Object> home_data_object = new ArrayList<>();
+    private ArrayList<Home_Data_TextBean.DataBean>  home_data = new ArrayList<>();
 
     private Home_proRecycle_Adapter home_adapter;
 
@@ -70,12 +75,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         home_present.start();
 
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        myXrecycleHome.setLayoutManager(layoutManager);
-        home_adapter = new Home_proRecycle_Adapter(getActivity(), home_data);
-        myXrecycleHome.setAdapter(home_adapter);
-
     }
 
     @Override
@@ -94,13 +93,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     @Override
     public void showCarousel(Home_Data_TextBean data_textBean) {
 
-        Home_Data_TextBean.DataBean data = data_textBean.getData();
-
-        home_data.add(data);
-
-        handler.sendEmptyMessage(300);
-
-
     }
 
     @Override
@@ -109,7 +101,110 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     }
 
-//熊猫播报方法
+//    设置数据
+    @Override
+    public void setResult(Home_Data_TextBean data_textBean) {
+        Home_Data_TextBean.DataBean data = data_textBean.getData();
+
+        home_data_object.clear();
+        home_data_object.add(data.getBigImg().get(0));
+        home_data_object.add(data.getArea());
+        home_data_object.add(data.getPandaeye());
+        home_data_object.add(data.getPandalive());
+        home_data_object.add(data.getWalllive());
+        home_data_object.add(data.getChinalive());
+        home_data_object.add(data.getInteractive());
+        home_data_object.add(data.getCctv());
+        home_data_object.add(data.getList().get(0));
+
+
+        home_data.add(data);
+
+        handler.sendEmptyMessage(300);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myXrecycleHome.setLayoutManager(layoutManager);
+        home_adapter = new Home_proRecycle_Adapter(getActivity(), home_data_object,home_data);
+        myXrecycleHome.setAdapter(home_adapter);
+
+        myXrecycleHome.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                home_adapter.notifyDataSetChanged();
+                myXrecycleHome.refreshComplete();
+
+            }
+
+            @Override
+            public void onLoadMore() {
+
+
+            }
+        });
+        myXrecycleHome.setLoadingMoreEnabled(false);
+
+
+        home_adapter.set_wonderful_Click(new Home_proRecycle_Adapter.x_Recy_Onclick() {
+            @Override
+//            精彩推荐的 点击事件
+            public void get_wonderful_Click(Home_Data_TextBean.DataBean.AreaBean.ListscrollBean home_data) {
+                Toast.makeText(App.content, ""+home_data.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+//        熊猫观察的点击
+            @Override
+            public void get_pandan_loog_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean itemsBean) {
+                Toast.makeText(App.content, ""+itemsBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_pandan_loog_second_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean second_itemsBean) {
+                Toast.makeText(App.content, ""+second_itemsBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_pandan_look_down_Click(Look_Down_Text.ListBean look_down_text) {
+
+                Toast.makeText(App.content, ""+look_down_text.getDaytime(), Toast.LENGTH_SHORT).show();
+
+            }
+//熊猫直播
+            @Override
+            public void get_Panda_live_Click(Home_Data_TextBean.DataBean.PandaliveBean.ListBean pandalivebean) {
+                Toast.makeText(App.content, ""+pandalivebean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_great_live_Click(Home_Data_TextBean.DataBean.WallliveBean.ListBeanX listBeanX) {
+                Toast.makeText(App.content, ""+listBeanX.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_china_live_Click(Home_Data_TextBean.DataBean.ChinaliveBean.ListBeanXX listBeanXX) {
+                Toast.makeText(App.content, ""+listBeanXX.getTitle(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void get_special_planning_Click(View v, Home_Data_TextBean.DataBean.InteractiveBean.InteractiveoneBean interactiveoneBean) {
+                Toast.makeText(App.content, ""+interactiveoneBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_cctv_live_Click(Home_CCTV_TextBean.ListBean listBean) {
+                Toast.makeText(App.content, ""+listBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_movie_live_Click(Home_China_Movie_Text.ListBean listBean) {
+                Toast.makeText(App.content, ""+listBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    //熊猫播报方法
     @Override
     public void showPandaBroadcast(Home_Data_TextBean data_textBean) {
 
@@ -118,9 +213,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     }
 //展示xRecycleView
     @Override
-    public void showXrecycleView(Home_Data_TextBean data_textBean) {
-
-
+    public void showXrecycleView(final Home_Data_TextBean data_textBean) {
 
 
     }

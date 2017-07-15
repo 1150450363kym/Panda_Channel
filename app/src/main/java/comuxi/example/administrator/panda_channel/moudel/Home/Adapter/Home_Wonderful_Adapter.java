@@ -22,30 +22,52 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
 
 public class Home_Wonderful_Adapter extends RecyclerView.Adapter {
 
+    //     精彩推荐的  监听接口
+    public interface Wonder_Onclick {
+        void Wonder_getOnclick(View view, int postion);
+    }
+    private Wonder_Onclick wonder_onclick;
+    public void Wonder_setOnclick(Wonder_Onclick wonder_onclick) {
+        this.wonder_onclick = wonder_onclick;
+    }
+
+
     FragmentActivity activity;
     List<Home_Data_TextBean.DataBean.AreaBean.ListscrollBean> listscroll;
 
     public Home_Wonderful_Adapter(FragmentActivity activity, List<Home_Data_TextBean.DataBean.AreaBean.ListscrollBean> listscroll) {
-        this.activity=activity;
-        this.listscroll=listscroll;
+        this.activity = activity;
+        this.listscroll = listscroll;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(activity).inflate(R.layout.home_wonderful_recommenda_item,null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.home_wonderful_recommenda_item, null);
 
 
         return new My_View(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         My_View my_view = (My_View) holder;
 
         my_view.textView.setText(listscroll.get(position).getTitle());
 
         Glide.with(activity).load(listscroll.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imageView);
+
+
+//        精彩直播的点击事件
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                wonder_onclick.Wonder_getOnclick(v,position);
+
+            }
+        });
+
 
 
     }
@@ -54,6 +76,7 @@ public class Home_Wonderful_Adapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return 9;
     }
+
     class My_View extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView textView;
