@@ -52,7 +52,6 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.login_panda_sign)
     ImageView loginPandaSign;
 
-
     //    互动的图片
     @BindView(R.id.login_hudong_sign)
     ImageView loginHudongSign;
