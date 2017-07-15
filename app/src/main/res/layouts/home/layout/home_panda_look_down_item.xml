@@ -59,7 +59,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="14dp"
                 android:maxLines="2"
                 android:text="英国一年一度抬床比赛  比赛过程欢乐多"
                 android:textSize="20dp"

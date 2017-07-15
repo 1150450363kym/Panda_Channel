@@ -48,18 +48,20 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.start_linear)
     RelativeLayout startLinear;
 
-//    熊猫频道的图片
+    //    熊猫频道的图片
     @BindView(R.id.login_panda_sign)
     ImageView loginPandaSign;
 
-    @BindView(R.id.login_person_sign)
-    ImageView loginPersonSign;
-//    互动的图片
+
+    //    互动的图片
     @BindView(R.id.login_hudong_sign)
     ImageView loginHudongSign;
-//    中间的文字
+    //    中间的文字
     @BindView(R.id.login_title)
     TextView loginTitle;
+    //    互动旁边的文字
+    @BindView(R.id.login_person_sign)
+    ImageView loginPersonSign;
 
 
     private HomeFragment homeFragment;//首页
@@ -171,10 +173,6 @@ public class MainActivity extends BaseActivity {
                 pandan_live_fragment = (Pandan_Live_Fragment) changeFragment(Pandan_Live_Fragment.class, R.id.login_fragment, true, null, true);
 
 
-
-
-
-
                 break;
             case R.id.login_ggtv_button:
 
@@ -192,7 +190,7 @@ public class MainActivity extends BaseActivity {
 
                 gg_tv_fragment = (GG_TV_Fragment) changeFragment(GG_TV_Fragment.class, R.id.login_fragment, true, null, true);
 
-                 new GG_TV_Presenter(gg_tv_fragment);
+                new GG_TV_Presenter(gg_tv_fragment);
 
 
                 break;
@@ -215,7 +213,7 @@ public class MainActivity extends BaseActivity {
 
                 break;
             case R.id.login_china_button:
-   
+
 
                 loginPandaSign.setVisibility(View.GONE);
                 loginTitle.setVisibility(View.VISIBLE);

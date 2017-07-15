@@ -20,6 +20,20 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
  */
 
 public class Home_China_Live_Adapter extends RecyclerView.Adapter {
+
+    public interface China_live_Onclick{
+        void  get_china_live(View view,int great_postion);
+    }
+    private China_live_Onclick china_live_onclick;
+
+    public void set_Great_live_click(China_live_Onclick china_live_onclick){
+        this.china_live_onclick=china_live_onclick;
+    }
+
+
+
+
+
     FragmentActivity activity;
     List<Home_Data_TextBean.DataBean.ChinaliveBean.ListBeanXX> list;
 
@@ -44,6 +58,9 @@ public class Home_China_Live_Adapter extends RecyclerView.Adapter {
 
         my_view.textView.setText(list.get(position).getTitle());
         Glide.with(activity).load(list.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imag);
+
+
+
 
     }
 

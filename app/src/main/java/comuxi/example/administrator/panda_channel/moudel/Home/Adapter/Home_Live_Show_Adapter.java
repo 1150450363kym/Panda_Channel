@@ -22,6 +22,18 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
  */
 
 public class Home_Live_Show_Adapter extends RecyclerView.Adapter {
+
+    public interface panda_live_Onclick{
+        void  get_panda_live(View view,int panda_postion);
+    }
+    private panda_live_Onclick panda_live_onclick;
+
+    public void set_panda_live_click(panda_live_Onclick panda_live_onclick){
+        this.panda_live_onclick=panda_live_onclick;
+    }
+
+
+
     FragmentActivity activity;
     List<Home_Data_TextBean.DataBean.PandaliveBean.ListBean> listscroll;
     List<Home_Data_TextBean.DataBean.WallliveBean.ListBeanX> listBeanXes;
@@ -41,12 +53,21 @@ public class Home_Live_Show_Adapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         My_View my_view = (My_View) holder;
 
         my_view.textView.setText(listscroll.get(position).getTitle());
         Glide.with(activity).load(listscroll.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imag);
+
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                panda_live_onclick.get_panda_live(v,position);
+            }
+        });
+
 
     }
 

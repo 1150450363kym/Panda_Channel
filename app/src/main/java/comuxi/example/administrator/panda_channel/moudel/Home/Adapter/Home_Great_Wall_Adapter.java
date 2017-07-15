@@ -17,9 +17,22 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
 
 /**
  * Created by Administrator on 2017/7/13.
+ *
  */
 
 public class Home_Great_Wall_Adapter extends RecyclerView.Adapter {
+
+    public interface Great_live_Onclick{
+        void  get_Great_live(View view,int great_postion);
+    }
+    private Great_live_Onclick great_live_onclick;
+
+    public void set_Great_live_click(Great_live_Onclick great_live_onclick){
+        this.great_live_onclick=great_live_onclick;
+    }
+
+
+
     FragmentActivity activity;
     List<Home_Data_TextBean.DataBean.WallliveBean.ListBeanX> list;
 
@@ -39,7 +52,7 @@ public class Home_Great_Wall_Adapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         My_View my_view = (My_View) holder;
 
@@ -47,6 +60,13 @@ public class Home_Great_Wall_Adapter extends RecyclerView.Adapter {
         Glide.with(activity).load(list.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imag);
 
 
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                great_live_onclick.get_Great_live(v,position);
+            }
+        });
 
     }
 
