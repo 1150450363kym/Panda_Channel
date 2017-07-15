@@ -64,16 +64,16 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         void get_great_live_Click(Home_Data_TextBean.DataBean.WallliveBean.ListBeanX listBeanX);
 //
 //        //        直播中国
-//        void get_china_live_Click();
+        void get_china_live_Click(Home_Data_TextBean.DataBean.ChinaliveBean.ListBeanXX listBeanXX);
 //
 //        //        特别策划
-//        void get_special_planning_Click();
+        void get_special_planning_Click(View v, Home_Data_TextBean.DataBean.InteractiveBean.InteractiveoneBean interactiveoneBean);
 //
 //        //        CCTV 点击事件
-//        void get_cctv_live_Click();
+        void get_cctv_live_Click(Home_CCTV_TextBean.ListBean listBean);
 //
 //        //        公映中国
-//        void get_movie_live_Click();
+        void get_movie_live_Click(Home_China_Movie_Text.ListBean listBean);
 
     }
 
@@ -375,18 +375,36 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
                 break;
             case lice_china_type:
-                Home_Data_TextBean.DataBean.ChinaliveBean chinaliveBean = (Home_Data_TextBean.DataBean.ChinaliveBean) o;
+                final Home_Data_TextBean.DataBean.ChinaliveBean chinaliveBean = (Home_Data_TextBean.DataBean.ChinaliveBean) o;
                 Live_china_viewHolder china_holder = (Live_china_viewHolder) holder;
                 GridLayoutManager manager_china = new GridLayoutManager(activity, 3);
                 china_holder.Live_China_Recycle.setLayoutManager(manager_china);
                 Home_China_Live_Adapter wall_adapter = new Home_China_Live_Adapter(activity, chinaliveBean.getList());
                 china_holder.Live_China_Recycle.setAdapter(wall_adapter);
+
+                wall_adapter.set_China_live_click(new Home_China_Live_Adapter.China_live_Onclick() {
+                    @Override
+                    public void get_china_live(View view, int great_postion) {
+                        recy_onclick.get_china_live_Click(chinaliveBean.getList().get(great_postion));
+                    }
+                });
+
+
                 break;
             case special_planning_type:
-                Home_Data_TextBean.DataBean.InteractiveBean interactiveBean = (Home_Data_TextBean.DataBean.InteractiveBean) o;
+                final Home_Data_TextBean.DataBean.InteractiveBean interactiveBean = (Home_Data_TextBean.DataBean.InteractiveBean) o;
                 Simping_viewHolder sim_viewHolder = (Simping_viewHolder) holder;
                 sim_viewHolder.Special_planning_title.setText(interactiveBean.getInteractiveone().get(0).getTitle());
                 Glide.with(activity).load(interactiveBean.getInteractiveone().get(0).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(sim_viewHolder.Special_planning_Imagee);
+
+                sim_viewHolder.Special_planning_Imagee.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        recy_onclick.get_special_planning_Click(v,interactiveBean.getInteractiveone().get(0));
+
+                    }
+                });
+
                 break;
             case cctv_type:
                 final Cctv_viewHolder cctv_viewholder = (Cctv_viewHolder) holder;
@@ -405,6 +423,14 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                                 cctv_viewholder.CCTV_recycle.setLayoutManager(manager_cctv);
                                 Home_CCTV_Adapter cctv_adapter = new Home_CCTV_Adapter(activity, cctv_Array);
                                 cctv_viewholder.CCTV_recycle.setAdapter(cctv_adapter);
+
+                                cctv_adapter.set_China_live_click(new Home_CCTV_Adapter.CCTV_live_Onclick() {
+                                    @Override
+                                    public void get_cctv_live(View view, int cctv_postion) {
+                                        recy_onclick.get_cctv_live_Click(cctv_Array.get(cctv_postion));
+                                    }
+                                });
+
                             }
                         });
                     }
@@ -413,6 +439,10 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                     public void onError(int errorCode, String errorMsg) {
                     }
                 });
+
+
+
+
                 break;
             case movie_china_type:
                 final Movie_china_viewHolder chian_viewholder = (Movie_china_viewHolder) holder;
@@ -432,9 +462,21 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                                 LinearLayoutManager china_movie_mange = new LinearLayoutManager(activity);
                                 china_movie_mange.setOrientation(LinearLayoutManager.VERTICAL);
                                 chian_viewholder.china_movie_recyclee.setLayoutManager(china_movie_mange);
-
                                 Home_China_Moive_Adapter moive_adapter = new Home_China_Moive_Adapter(activity, movie_Array);
                                 chian_viewholder.china_movie_recyclee.setAdapter(moive_adapter);
+
+
+                                moive_adapter.set_China_movie_click(new Home_China_Moive_Adapter.Movie_live_Onclick() {
+                                    @Override
+                                    public void get_movie_live(View view, int movie_postion) {
+
+                                       recy_onclick.get_movie_live_Click(movie_Array.get(movie_postion));
+
+                                    }
+                                });
+
+
+
                             }
                         });
                     }

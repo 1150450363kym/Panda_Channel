@@ -20,6 +20,21 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_China
  */
 
 public class Home_China_Moive_Adapter extends RecyclerView.Adapter {
+
+    public interface Movie_live_Onclick{
+        void  get_movie_live(View view,int movie_postion);
+    }
+    private Movie_live_Onclick movie_live_onclick;
+
+    public void set_China_movie_click(Movie_live_Onclick movie_live_onclick){
+        this.movie_live_onclick=movie_live_onclick;
+    }
+
+
+
+
+
+
     FragmentActivity activity;
     ArrayList<Home_China_Movie_Text.ListBean> movie_array;
     public Home_China_Moive_Adapter(FragmentActivity activity, ArrayList<Home_China_Movie_Text.ListBean> movie_array) {
@@ -37,13 +52,22 @@ public class Home_China_Moive_Adapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
        My_View my_view = (My_View) holder;
 
         my_view.title.setText(movie_array.get(position).getTitle());
         my_view.data.setText(movie_array.get(position).getDaytime());
         my_view.time.setText(movie_array.get(position).getVideoLength());
         Glide.with(activity).load(movie_array.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imageView);
+
+
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movie_live_onclick.get_movie_live(v,position);
+            }
+        });
+
 
     }
 

@@ -59,7 +59,13 @@ public class Home_Great_Wall_Adapter extends RecyclerView.Adapter {
         my_view.textView.setText(list.get(position).getTitle());
         Glide.with(activity).load(list.get(position).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(my_view.imag);
 
-
+        int number=Integer.parseInt(list.get(position).getOrder());
+        if(number==1||number==4) {
+            ViewGroup.LayoutParams lp=my_view.yuan.getLayoutParams();
+            lp.height=40;
+            lp.width=40;
+            my_view.yuan.setLayoutParams(lp);
+        }
         my_view.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,12 +83,17 @@ public class Home_Great_Wall_Adapter extends RecyclerView.Adapter {
     class My_View extends RecyclerView.ViewHolder {
         private ImageView imag;
         private TextView textView;
-
+        private ImageView  yuan;
         public My_View(View itemView) {
             super(itemView);
 
             imag = (ImageView) itemView.findViewById(R.id.live_show_image);
             textView = (TextView) itemView.findViewById(R.id.live_show_text);
+
+
+            yuan = (ImageView) itemView.findViewById(R.id.live_red_yuan);
+
+
 
         }
     }

@@ -19,6 +19,8 @@ import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
 import comuxi.example.administrator.panda_channel.app.App;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_CCTV_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_China_Movie_Text;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Look_Down_Text;
 import comuxi.example.administrator.panda_channel.moudel.Home.Adapter.Home_proRecycle_Adapter;
@@ -175,6 +177,27 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             @Override
             public void get_great_live_Click(Home_Data_TextBean.DataBean.WallliveBean.ListBeanX listBeanX) {
                 Toast.makeText(App.content, ""+listBeanX.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_china_live_Click(Home_Data_TextBean.DataBean.ChinaliveBean.ListBeanXX listBeanXX) {
+                Toast.makeText(App.content, ""+listBeanXX.getTitle(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void get_special_planning_Click(View v, Home_Data_TextBean.DataBean.InteractiveBean.InteractiveoneBean interactiveoneBean) {
+                Toast.makeText(App.content, ""+interactiveoneBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_cctv_live_Click(Home_CCTV_TextBean.ListBean listBean) {
+                Toast.makeText(App.content, ""+listBean.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void get_movie_live_Click(Home_China_Movie_Text.ListBean listBean) {
+                Toast.makeText(App.content, ""+listBean.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
 

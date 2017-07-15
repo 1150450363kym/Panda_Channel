@@ -68,6 +68,14 @@ public class Home_Live_Show_Adapter extends RecyclerView.Adapter {
             }
         });
 
+        int number=Integer.parseInt(listscroll.get(position).getOrder());
+        if(number==1||number==4) {
+            ViewGroup.LayoutParams lp=my_view.yuan.getLayoutParams();
+            lp.height=40;
+            lp.width=40;
+            my_view.yuan.setLayoutParams(lp);
+        }
+
 
     }
 
@@ -82,12 +90,15 @@ public class Home_Live_Show_Adapter extends RecyclerView.Adapter {
     class My_View extends RecyclerView.ViewHolder {
         private ImageView imag;
         private TextView textView;
+        private ImageView  yuan;
 
         public My_View(View itemView) {
             super(itemView);
 
             imag = (ImageView) itemView.findViewById(R.id.live_show_image);
             textView = (TextView) itemView.findViewById(R.id.live_show_text);
+            yuan = (ImageView) itemView.findViewById(R.id.live_red_yuan);
+
 
         }
     }

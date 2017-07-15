@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!--首页 直播 秀场 的  Item-->
+<RelativeLayout
+    android:layout_marginLeft="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="85dp">
+
+
+
 
     <ImageView
         android:layout_marginTop="7dp"
@@ -11,8 +18,35 @@
         android:layout_width="match_parent"
         android:scaleType="fitXY"
         android:layout_height="85dp"
-        android:layout_marginLeft="10dp" />
+        />
+    <RelativeLayout
+        android:background="@drawable/home_gradient"
+        android:layout_alignParentBottom="true"
+        android:layout_width="80dp"
+        android:layout_height="22dp">
 
+        <ImageView
+            android:id="@+id/live_red_yuan"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/home_live_shape"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:textColor="#fff"
+            android:layout_centerVertical="true"
+            android:text="Live"
+            android:textSize="12dp"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/live_red_yuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
     <TextView
         android:id="@+id/live_show_text"
         android:layout_width="match_parent"
