@@ -27,7 +27,7 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
 
     }
     @Override
-    public void convert(ViewHolder holder, GG_TV_TextBean.ListBean listBean) {
+    public void convert(ViewHolder holder, final GG_TV_TextBean.ListBean listBean) {
 
         holder.setText(R.id.item_pandalive_pullto_title,listBean.getTitle());
         holder.setText(R.id.item_pandalive_pullto_time,listBean.getBrief());
@@ -39,14 +39,11 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,VideoplayerActivity.class);
+
+//                intent.putExtra("top_title",listBean.getOrder());
                 context.startActivity(intent);
             }
         });
     }
 
-
-
-    interface MyCall{
-        void setOnItemClintLinstener(int position);
-    }
 }

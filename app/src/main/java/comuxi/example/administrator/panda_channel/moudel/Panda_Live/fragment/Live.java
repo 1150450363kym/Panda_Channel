@@ -60,6 +60,7 @@ public class Live extends BaseFragment {
 
         twoPageAdapter = new TwoPageAdapter(getFragmentManager(), list);
         liveBottomViewpager.setAdapter(twoPageAdapter);
+        liveBottomViewpager.setCurrentItem(2);
         liveCenterTablayout.setTabMode(TabLayout.MODE_FIXED);
         liveCenterTablayout.setTabTextColors(R.color.colorPrimaryDark, R.color.radio_black);
         liveCenterTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));

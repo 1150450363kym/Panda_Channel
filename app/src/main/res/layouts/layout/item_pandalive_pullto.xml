@@ -20,14 +20,21 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="1dp"
             android:id="@+id/item_pandalive_pullto_img"
-            android:layout_width="160dp"
-            android:layout_height="80dp" />
+            android:layout_width="300dp"
+            android:layout_height="150dp" />
 
+        <ImageView
+            android:id="@+id/img_blackwhite"
+            android:background="@mipmap/default_time_view"
+            android:layout_marginTop="80dp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_height="15dp" />
         <TextView
             android:id="@+id/item_pandalive_pullto_video_time"
             android:textSize="12dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="80dp"
             android:textColor="@color/radio_bai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

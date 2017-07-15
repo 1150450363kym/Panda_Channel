@@ -82,16 +82,17 @@ public class Pandan_Live_Fragment extends BaseFragment {
         list.add(original_news);
         adapter = new PageAdapter(getFragmentManager(),list);
         liveFragmentViewpager.setAdapter(adapter);
-
+        liveFragmentViewpager.setCurrentItem(9);
         liveFragmentTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        liveFragmentTablayout.setTabTextColors(R.color.colorPrimaryDark,R.color.radio_black);
+        liveFragmentTablayout.setTabTextColors(R.color.cctv_tab_sel,R.color.radio_black);
 
         LinearLayout linearLayout = (LinearLayout) liveFragmentTablayout.getChildAt(0);
         linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
         linearLayout.setDividerDrawable(ContextCompat.getDrawable(getContext(),
                 R.drawable.tablayout_fg));
-        liveFragmentTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(),R.color.colorPrimaryDark));
+        liveFragmentTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(),R.color.cctv_tab_sel));
         liveFragmentTablayout.setupWithViewPager(liveFragmentViewpager);
+
 
         new WonderfulOnePresenter(wonderful_moment);
         new LetPandaPresenter(letPanda);

@@ -83,8 +83,6 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
     }
 
-
-
     @Override
     public void showData(GG_TV_TextBean gg_tv_textBean) {
 
@@ -94,7 +92,6 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
     @Override
     public void showMsg(String msg) {
-
 
     }
 

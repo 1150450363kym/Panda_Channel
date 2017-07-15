@@ -54,6 +54,38 @@
     <string name="set_back_question5">显示异常</string>
     <string name="set_back_question6">其他建议</string>
     <string name="set_about_version">熊猫频道V1.0.0</string>
-    <!--<string name="set_about_content">熊猫频道以24小时直播中国名山大川、自然风光以及熊猫、金丝猴等世界珍稀动物为特色，以CCTV电视节目资源为基础，旨在打造一个传播中国声音、讲好中国故事、展示中国文化独特魅力的中国频道，充分满足海外华人以及喜爱中国文化的外国人的需求，最终建成以视频为特色的中国互联网大百科。现阶段主要开设有《熊猫观察》、《熊猫直播》、《直播中国》、《熊猫文化》等特色栏目。</string>-->
+    <string name="set_about_content">熊猫频道以24小时直播中国名山大川、自然风光以及熊猫、金丝猴等世界珍稀动物为特色，以CCTV电视节目资源为基础，旨在打造一个传播中国声音、讲好中国故事、展示中国文化独特魅力的中国频道，充分满足海外华人以及喜爱中国文化的外国人的需求，最终建成以视频为特色的中国互联网大百科。现阶段主要开设有《熊猫观察》、《熊猫直播》、《直播中国》、《熊猫文化》等特色栏目。</string>
+
+
+    <!--注册-->
+    <string name="regist">注册</string>
+    <string name="regist_phone">手机注册</string>
+    <string name="regist_email">邮箱注册</string>
+    <string name="regist_phone_tips">海外用户暂不支持手机号注册，您可以使用邮箱注册</string>
+    <string name="forget_image_yanzhengma">获取验证码</string>
+    <string name="regist_protorcal">我已阅读并同意《央视网网络服务使用协议》</string>
+    <string name="regist_email_tips">邮箱注册需要激活后才能登录</string>
+    <string name="regist_phone_account_hint">账号：请输入手机账号</string>
+    <string name="regist_email_account_hint">账号：请输入邮箱</string>
+    <string name="regist_phone_paswd_hint">请输入密码</string>
+    <string name="regist_confirm_paswd">请确认密码</string>
+    <string name="regist_sendmessage_again">重新获取</string>
+    <string name="regist_tips">请输入手机号码</string>
+    <string name="forget_img_yanzhengma_hint">请输入获取到的验证码</string>
+    <string name="regist_error_tips">图片验证码输入有误</string>
+    <string name="regist_nullphonenumber_tips">手机号码不能为空</string>
+    <string name="regist_phone_reg_error">手机号格式不正确</string>
+    <string name="regist_null_paswd_tips">密码不能为空</string>
+    <string name="regist_null_comfirm_paswd">确认密码不能为空</string>
+    <string name="regist_paswd_differ">密码不一致</string>
+    <string name="regist_email_null">邮箱不能为空</string>
+    <string name="regist_email_error">邮箱格式不正确</string>
+    <string name="regist_paswd_reg">密码仅限6-16个字符</string>
+    <string name="regist_yanzhengma_null">验证码不能为空</string>
+    <string name="regist_yanzhengma_error">验证码不正确</string>
+    <string name="regist_account_null">邮箱/手机号不能为空</string>
+    <string name="regist_account_error">邮箱/手机格式不正确</string>
+    <string name="regist_not_checked">未勾选《央视网网络服务使用协议》</string>
+    <string name="regist_email_success">请到您的邮箱激活账号后登录，是否现在去邮箱激活</string>
 
 </resources>

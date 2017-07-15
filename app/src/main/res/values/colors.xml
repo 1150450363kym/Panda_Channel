@@ -8,4 +8,6 @@
     <color name="radio_hui">#dcdcdc</color>
     <color name="radio_black">#000000</color>
     <color name="radio_litterwhite">#f7f1f1</color>
+    <color name="cctv_tab_sel">#1E539C</color>
+    <color name="cctv_tab_unsel">#000000</color>
 </resources>

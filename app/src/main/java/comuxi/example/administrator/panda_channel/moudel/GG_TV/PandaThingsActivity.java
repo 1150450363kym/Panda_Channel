@@ -3,6 +3,7 @@ package comuxi.example.administrator.panda_channel.moudel.GG_TV;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +29,10 @@ public class PandaThingsActivity extends BaseActivity {
     TabLayout pandaThingsTablayout;
     @BindView(R.id.panda_things_viewpager)
     NonSwipeableViewPager pandaThingsViewpager;
+    @BindView(R.id.gg_totop_title)
+    TextView ggTotopTitle;
+    @BindView(R.id.activity_panda_things)
+    LinearLayout activityPandaThings;
     private List<Fragment> list;
     private PageAdapter adapter;
     private HighcompleteFragment highcompleteFragment = new HighcompleteFragment();
@@ -45,7 +50,7 @@ public class PandaThingsActivity extends BaseActivity {
         list.add(highcompleteFragment);
         list.add(marvellousWatchFragment);
 
-        adapter = new PageAdapter(getSupportFragmentManager(),list);
+        adapter = new PageAdapter(getSupportFragmentManager(), list);
         pandaThingsViewpager.setAdapter(adapter);
 
     }
