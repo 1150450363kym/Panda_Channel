@@ -215,7 +215,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 return new Panda_live_viewHolder(panda_live_view);
             //            长城直播
             case 5:
-                View great_wall_view = LayoutInflater.from(activity).inflate(R.layout.home_great_wall_recy, null);
+                View great_wall_view = LayoutInflater.from(activity).inflate(R.layout.home_great_wall2_recy, null);
 
                 return new Great_wall_viewHolder(great_wall_view);
             //            直播中国
@@ -349,9 +349,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                         recy_onclick.get_Panda_live_Click(pandaliveBean.getList().get(panda_postion));
                     }
                 });
-
-
-
 
                 break;
             case great_wall_type:
