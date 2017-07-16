@@ -135,7 +135,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
     public static final int special_planning_type = 7;
     public static final int cctv_type = 8;
     public static final int movie_china_type = 9;
-
     private FragmentActivity activity;
     //        private ArrayList<Home_Data_TextBean.DataBean> home_data;
     private ArrayList<Object> datas;
@@ -346,6 +345,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 Home_Live_Show_Adapter show_adapter = new Home_Live_Show_Adapter(activity, pandaliveBean.getList());
                 live_holder.live_show_recy.setAdapter(show_adapter);
                 show_adapter.notifyDataSetChanged();
+
 
 
                 show_adapter.set_panda_live_click(new Home_Live_Show_Adapter.panda_live_Onclick() {
@@ -694,7 +694,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
         }
     }
-
     class Great_wall_viewHolder extends RecyclerView.ViewHolder {
         private RecyclerView Great_Wall_recycle;
 

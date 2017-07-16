@@ -16,12 +16,14 @@ import comuxi.example.administrator.panda_channel.R;
  * Created by lenovo on 2017/7/12.
  * <p>
  * 熊猫直播 ---直播 --- 边看边聊
+ * http://newcomment.cntv.cn/comment/list?app=ipandaApp&itemid=zhiboye_chat&nature=1&page=1
  */
 
 public class WatchChat extends BaseFragment implements PullToRefreshListener {
 
     @BindView(R.id.watchchat_pulltorefresh)
     PullToRefreshRecyclerView watchchatPulltorefresh;
+
 
     @Override
     protected int getlayoutID() {

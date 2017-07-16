@@ -1,7 +1,9 @@
 package comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.androidkun.adapter.BaseAdapter;
 import com.androidkun.adapter.ViewHolder;
@@ -24,12 +26,18 @@ public class PulltoAdapter extends BaseAdapter<PandaBroadCastListBean.ListBean> 
     }
 
     @Override
-    public void convert(ViewHolder holder, PandaBroadCastListBean.ListBean listBean) {
+    public void convert(ViewHolder holder, final PandaBroadCastListBean.ListBean listBean) {
 
         holder.setText(R.id.item_pandalive_pullto_title,listBean.getTitle());
         holder.setText(R.id.item_pandabroadcast_pullto_time,listBean.getVideolength());
         ImageView img = (ImageView) holder.itemView.findViewById(R.id.item_pandalive_pullto_img);
         Glide.with(context).load(listBean.getPicurl()).into(img);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,listBean.getTitle(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

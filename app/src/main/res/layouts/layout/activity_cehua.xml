@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cehua"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    tools:context="comuxi.example.administrator.panda_channel.CehuaActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/historical_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/personal_back_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="原创互动"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.androidkun.PullToRefreshRecyclerView
+        android:layout_below="@id/toolbar"
+        android:id="@+id/cehua_pullto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.androidkun.PullToRefreshRecyclerView>
+</RelativeLayout>

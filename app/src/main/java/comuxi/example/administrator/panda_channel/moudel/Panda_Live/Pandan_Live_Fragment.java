@@ -24,10 +24,20 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Pan
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.PandaThing;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Panda_archives;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Wonderful_moment;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.EspeciallyprogramPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LetPandaPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LivePresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LovelyLivePresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.OriginalnewsPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.PandaTOPPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.PandaThingPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.Panda_archivesPresenter;
+import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.WonderfulOnePresenter;
 
 
 /**
  * Created by Administrator on 2017/7/11.
+ * 熊猫直播
  */
 
 public class Pandan_Live_Fragment extends BaseFragment {
@@ -73,20 +83,27 @@ public class Pandan_Live_Fragment extends BaseFragment {
         list.add(original_news);
         adapter = new PageAdapter(getFragmentManager(),list);
         liveFragmentViewpager.setAdapter(adapter);
-
-
-
-
+        liveFragmentViewpager.setCurrentItem(9);
         liveFragmentTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        liveFragmentTablayout.setTabTextColors(R.color.colorPrimaryDark,R.color.radio_black);
+        liveFragmentTablayout.setTabTextColors(R.color.cctv_tab_sel,R.color.radio_black);
 
         LinearLayout linearLayout = (LinearLayout) liveFragmentTablayout.getChildAt(0);
         linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
         linearLayout.setDividerDrawable(ContextCompat.getDrawable(getContext(),
                 R.drawable.tablayout_fg));
-        liveFragmentTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(),R.color.colorPrimaryDark));
+        liveFragmentTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(),R.color.cctv_tab_sel));
         liveFragmentTablayout.setupWithViewPager(liveFragmentViewpager);
 
+
+        new WonderfulOnePresenter(wonderful_moment);
+        new LetPandaPresenter(letPanda);
+        new LovelyLivePresenter(lovelyLive);
+        new Panda_archivesPresenter(panda_archives);
+        new PandaTOPPresenter(pandaTOP);
+        new PandaThingPresenter(pandaThing);
+        new EspeciallyprogramPresenter(especially_program);
+        new OriginalnewsPresenter(original_news);
+        new LivePresenter(live);
     }
 
     @Override

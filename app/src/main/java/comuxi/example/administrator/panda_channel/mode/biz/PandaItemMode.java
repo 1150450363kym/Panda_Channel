@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
 import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
 
 /**
@@ -52,4 +55,39 @@ public class PandaItemMode implements PandaMode {
         map.put("serviceId",serviceId);
         I_HTTP.get(Url.PANDABROADCAST,map,myHttpCallBack);
     }
+
+    @Override
+    public void getWonderfulone(String vsid, String n, String serviceId, String o, String of, int p, MyHttpCallBack<WonderfulOneBean> myHttpCallBack) {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("vsid",vsid);
+        map.put("n",n);
+        map.put("serviceId",serviceId);
+        map.put("o",o);
+        map.put("of",of);
+        map.put("p",p+"");
+        I_HTTP.get(Url.WONDERFULONE,map,myHttpCallBack);
+    }
+
+    @Override
+    public void getWatchChat(String app, String itemid, String nature, int page, MyHttpCallBack<WonderfulOneBean> myHttpCallBack) {
+        Map<String,String> map = new HashMap<>();
+        map.put("app",app);
+        map.put("itemid",itemid);
+        map.put("nature",nature);
+        map.put("page",page+"");
+        I_HTTP.get(Url.WATCHCHAT,map,myHttpCallBack);
+    }
+    @Override
+    public void getPandaLive(MyHttpCallBack<MLiveBean> myHttpCallBack) {
+
+        I_HTTP.get(Url.MPANDALIVE,null,myHttpCallBack);
+    }
+
+    @Override
+    public void getCehua(MyHttpCallBack<CehuaBean> myHttpCallBack) {
+
+        I_HTTP.get(Url.CEHUA,null,myHttpCallBack);
+    }
+
 }

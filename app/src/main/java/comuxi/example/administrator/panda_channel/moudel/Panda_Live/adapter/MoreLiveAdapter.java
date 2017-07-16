@@ -23,10 +23,12 @@ public class MoreLiveAdapter extends RecyclerView.Adapter {
 
     private List<MoreLiveBean.ListBean> list;
     private Context context;
+    private MyCall myCall;
 
-    public MoreLiveAdapter(List<MoreLiveBean.ListBean> list, Context context) {
+    public MoreLiveAdapter(List<MoreLiveBean.ListBean> list, Context context,MyCall myCall) {
         this.list = list;
         this.context = context;
+        this.myCall = myCall;
     }
 
     @Override
@@ -42,6 +44,7 @@ public class MoreLiveAdapter extends RecyclerView.Adapter {
         ViewHolder holder1 = (ViewHolder) holder;
         holder1.title.setText(list.get(position).getTitle());
         Glide.with(context).load(list.get(position).getImage()).into(holder1.img);
+
     }
 
     @Override
@@ -49,7 +52,7 @@ public class MoreLiveAdapter extends RecyclerView.Adapter {
         return list.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView img;
         private TextView title;
@@ -58,6 +61,19 @@ public class MoreLiveAdapter extends RecyclerView.Adapter {
 
             img = (ImageView) itemView.findViewById(R.id.item_morelive_img);
             title = (TextView) itemView.findViewById(R.id.item_morelive_title);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+
+            if(myCall != null){
+                myCall.setOnItemClickListener(getAdapterPosition());
+            }
+        }
+    }
+
+    public interface MyCall{
+        void setOnItemClickListener(int position);
     }
 }

@@ -227,7 +227,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             }
         });
 
-
     }
 
     //熊猫播报方法
