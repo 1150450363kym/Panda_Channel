@@ -45,6 +45,12 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
 public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements ViewPager.OnPageChangeListener {
 
     public interface x_Recy_Onclick {
+
+//        轮播图   监听方法
+
+        void get_Ratation_Click(View v, Home_Data_TextBean.DataBean.BigImgBean bigImgBean);
+
+
         //        精彩推荐  监听的方法
         void get_wonderful_Click(Home_Data_TextBean.DataBean.AreaBean.ListscrollBean home_data);
 
@@ -761,6 +767,18 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             textView.setText(home_data.get(0).getBigImg().get(i).getTitle());
             Glide.with(activity).load(home_data.get(0).getBigImg().get(i).getImage()).into(imag);
             rotation_array.add(page_item);
+
+
+            final int finalI = i;
+            imag.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    recy_onclick.get_Ratation_Click(v,home_data.get(0).getBigImg().get(finalI));
+
+                }
+            });
+
 
 //            储存俩个点
             View v_point = new View(activity);

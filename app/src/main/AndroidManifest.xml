@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".VideoplayerActivity"></activity>
+        <activity android:name=".web_view.Home_Web_View_"></activity>
     </application>
 
 </manifest>

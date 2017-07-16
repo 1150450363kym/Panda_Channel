@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1f539e">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/web_view_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/personal_back_img" />
+
+    <TextView
+        android:id="@+id/web_view_text"
+        android:textSize="19dp"
+        android:textColor="#fff"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:text="二十四节气————芒种"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+        <ImageView
+            android:id="@+id/web_view_fenxiang"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/play_fullsrcee_share" />
+
+</RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <WebView
+        android:id="@+id/my_home_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </WebView>
+
+</LinearLayout>

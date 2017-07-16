@@ -26,11 +26,33 @@ public class Home_page_Rotation extends PagerAdapter{
     public boolean isViewFromObject(View view, Object object) {
         return view==object;
     }
+//    private Onclick onclick;
+//public interface Onclick{
+//
+//    void getOnclick(int postion);
+//}
+
+
+
+
+
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         int newPosition = position % rotation_array.size();
         container.addView(rotation_array.get(newPosition));
+
+//            View view = rotation_array.get(position);
+//            view.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//
+//                    onclick.getOnclick(position);
+//
+//                }
+//            });
+
         return rotation_array.get(newPosition);
     }
 
