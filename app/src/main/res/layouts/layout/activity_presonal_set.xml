@@ -4,7 +4,6 @@
     android:id="@+id/activity_presonal_set"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/radio_litterwhite"
     tools:context="comuxi.example.administrator.panda_channel.PresonalSetActivity">
 
     <android.support.v7.widget.Toolbar

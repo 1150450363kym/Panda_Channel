@@ -1,6 +1,7 @@
 package comuxi.example.administrator.panda_channel.mode.biz;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
@@ -39,4 +40,7 @@ public interface PandaMode extends BaseMode {
     //熊猫直播
     //http:www.ipanda.com/kehuduan/PAGE14501769230331752/index.json
     void getPandaLive(MyHttpCallBack<MLiveBean> myHttpCallBack);
+
+    //特别策划
+    void getCehua(MyHttpCallBack<CehuaBean> myHttpCallBack);
 }

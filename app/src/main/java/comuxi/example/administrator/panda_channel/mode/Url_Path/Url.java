@@ -40,4 +40,6 @@ public class Url {
     //http:www.ipanda.com/kehuduan/PAGE14501769230331752/index.json
     public static final String MPANDALIVE = BASE_URL +"PAGE14501769230331752/index.json";
 
+    //24节气之芒种
+    public static final String CEHUA = BASE_URL+"PAGE14501767715521482/index.json";
 }

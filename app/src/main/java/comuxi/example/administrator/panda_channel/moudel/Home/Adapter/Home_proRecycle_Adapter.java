@@ -341,6 +341,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 show_adapter.notifyDataSetChanged();
 
 
+
                 show_adapter.set_panda_live_click(new Home_Live_Show_Adapter.panda_live_Onclick() {
                     @Override
                     public void get_panda_live(View view, int panda_postion) {
@@ -396,7 +397,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 sim_viewHolder.Special_planning_Imagee.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         recy_onclick.get_special_planning_Click(v,interactiveBean.getInteractiveone().get(0));
 
                     }
@@ -427,6 +427,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                                         recy_onclick.get_cctv_live_Click(cctv_Array.get(cctv_postion));
                                     }
                                 });
+
                             }
                         });
                     }
@@ -687,7 +688,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
         }
     }
-
     class Great_wall_viewHolder extends RecyclerView.ViewHolder {
         private RecyclerView Great_Wall_recycle;
 

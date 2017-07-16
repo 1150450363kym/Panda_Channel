@@ -24,8 +24,9 @@
         <activity android:name=".Historical_recordActivity" />
         <activity android:name=".MyCollectionActivity" />
         <activity android:name=".PresonalSetActivity" />
-        <activity android:name=".RegistActivity"></activity>
-        <activity android:name=".moudel.GG_TV.PandaThingsActivity"/>
+        <activity android:name=".RegistActivity" />
+        <activity android:name=".moudel.GG_TV.PandaThingsActivity" />
+        <activity android:name=".CehuaActivity"></activity>
     </application>
 
 </manifest>

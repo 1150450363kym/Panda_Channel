@@ -69,6 +69,8 @@ public class RegistActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.historical_image:
+
+                this.finish();
                 break;
             case R.id.toolbar:
                 break;

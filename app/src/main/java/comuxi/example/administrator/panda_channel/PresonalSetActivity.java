@@ -1,9 +1,16 @@
 package comuxi.example.administrator.panda_channel;
 
+import android.widget.ImageView;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
 
 public class PresonalSetActivity extends BaseActivity {
 
+
+    @BindView(R.id.historical_image)
+    ImageView historicalImage;
 
     @Override
     protected int getLayoutId() {
@@ -16,5 +23,9 @@ public class PresonalSetActivity extends BaseActivity {
     }
 
 
+    @OnClick(R.id.historical_image)
+    public void onViewClicked() {
 
+        this.finish();
+    }
 }

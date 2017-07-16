@@ -133,7 +133,7 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.login_home_button, R.id.login_live_button, R.id.login_ggtv_button, R.id.login_Broadcast_button, R.id.login_china_button,R.id.login_person_sign})
+    @OnClick({R.id.login_home_button, R.id.login_live_button, R.id.login_ggtv_button, R.id.login_Broadcast_button, R.id.login_china_button,R.id.login_person_sign,R.id.login_hudong_sign})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_home_button:
@@ -234,6 +234,10 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this,PersonalCenterActivity.class));
                 break;
 
+            case R.id.login_hudong_sign:
+
+
+                startActivity(new Intent(this,CehuaActivity.class));
         }
 
     }

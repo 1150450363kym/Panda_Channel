@@ -53,7 +53,7 @@ public class LoginActivity extends Activity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.tv_toRegist, R.id.llweixinlogin, R.id.llqqlogin, R.id.llsinalogin, R.id.edit_account, R.id.hint_account, R.id.edit_password, R.id.hint_password, R.id.personal_login_forget_pwd, R.id.loding_btn, R.id.login_in_layout})
+    @OnClick({R.id.tv_toRegist, R.id.llweixinlogin, R.id.llqqlogin, R.id.llsinalogin, R.id.edit_account, R.id.hint_account, R.id.edit_password, R.id.hint_password, R.id.personal_login_forget_pwd, R.id.loding_btn, R.id.login_in_layout,R.id.personal_image})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_toRegist:
@@ -79,6 +79,10 @@ public class LoginActivity extends Activity {
             case R.id.loding_btn:
                 break;
             case R.id.login_in_layout:
+                break;
+            case R.id.personal_image:
+
+                this.finish();
                 break;
         }
     }

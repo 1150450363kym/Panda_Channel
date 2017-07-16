@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
@@ -81,6 +82,12 @@ public class PandaItemMode implements PandaMode {
     public void getPandaLive(MyHttpCallBack<MLiveBean> myHttpCallBack) {
 
         I_HTTP.get(Url.MPANDALIVE,null,myHttpCallBack);
+    }
+
+    @Override
+    public void getCehua(MyHttpCallBack<CehuaBean> myHttpCallBack) {
+
+        I_HTTP.get(Url.CEHUA,null,myHttpCallBack);
     }
 
 }
