@@ -42,16 +42,7 @@ public class Home_page_Rotation extends PagerAdapter{
         int newPosition = position % rotation_array.size();
         container.addView(rotation_array.get(newPosition));
 
-//            View view = rotation_array.get(position);
-//            view.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//                public void onClick(View v) {
-//
-//                    onclick.getOnclick(position);
-//
-//                }
-//            });
+
 
         return rotation_array.get(newPosition);
     }
