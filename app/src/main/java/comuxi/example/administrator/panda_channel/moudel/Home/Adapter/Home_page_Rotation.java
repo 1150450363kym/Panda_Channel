@@ -58,6 +58,8 @@ public class Home_page_Rotation extends PagerAdapter{
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+
         container.removeView((View) object);
+
     }
 }
