@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import comuxi.example.administrator.panda_channel.R;
-import comuxi.example.administrator.panda_channel.VideoplayerActivity;
+import comuxi.example.administrator.panda_channel.activity.VideoplayerActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.PandaThingsActivity;
 

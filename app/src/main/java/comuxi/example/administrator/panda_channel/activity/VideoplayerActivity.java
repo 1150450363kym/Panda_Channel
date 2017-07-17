@@ -1,11 +1,10 @@
-package comuxi.example.administrator.panda_channel;
+package comuxi.example.administrator.panda_channel.activity;
 
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
+import comuxi.example.administrator.panda_channel.R;
 
 public class VideoplayerActivity extends BaseActivity {
 
-//    @BindView(R.id.jiecaovideoplayer)
-//    JCVideoPlayer jiecaovideoplayer;
 
 
     @Override
@@ -16,7 +15,7 @@ public class VideoplayerActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-//        jiecaovideoplayer.setUp("http://tv.cctv.com/2016/10/10/VIDEqlbYiOXMR1idfKoFeHBw161010.shtml","复原失传600年的珠光青瓷");
+
 
     }
 
@@ -24,6 +23,5 @@ public class VideoplayerActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
 
-//        jiecaovideoplayer.releaseAllVideos();
     }
 }

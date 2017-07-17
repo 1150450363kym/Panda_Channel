@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VideoplayerActivity" />
+        <activity android:name=".activity.VideoplayerActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".PersonalCenterActivity" />
         <activity android:name=".Historical_recordActivity" />
@@ -27,6 +27,11 @@
         <activity android:name=".RegistActivity" />
         <activity android:name=".moudel.GG_TV.PandaThingsActivity" />
         <activity android:name=".CehuaActivity"></activity>
+        <activity android:name=".web_view.Home_Web_View_"></activity>
+
+
+
+
     </application>
 
 </manifest>
