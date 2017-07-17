@@ -26,15 +26,6 @@ public class Home_page_Rotation extends PagerAdapter{
     public boolean isViewFromObject(View view, Object object) {
         return view==object;
     }
-//    private Onclick onclick;
-//public interface Onclick{
-//
-//    void getOnclick(int postion);
-//}
-
-
-
-
 
 
     @Override
