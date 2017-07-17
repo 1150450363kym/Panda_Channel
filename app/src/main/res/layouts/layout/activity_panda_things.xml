@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/radio_litterwhite"
+    android:background="@color/radio_hui"
     tools:context="moudel.GG_TV.PandaThingsActivity">
 
     <android.support.v7.widget.Toolbar
@@ -46,7 +46,6 @@
         android:background="@color/radio_bai"
         android:textSize="18dp"
         android:textColor="@color/radio_black"
-        android:layout_marginLeft="10dp"
         android:text="@string/Premiere_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -80,28 +79,33 @@
         android:background="@color/radio_bai"
         android:id="@+id/panda_things_tv_pandacolumn"
         android:visibility="gone"
-        android:gravity="center"
+
         android:text="熊猫频道栏目"
         android:textColor="@color/radio_black"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content" />
 
-    <android.support.design.widget.TabLayout
+    <TextView
 
-        android:layout_marginTop="20dp"
+
+        android:text="高清完整"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18dp"
+        android:textColor="@color/radio_black"
         android:background="@color/radio_bai"
         android:id="@+id/panda_things_tablayout"
-        android:layout_width="match_parent"
+        android:layout_width="340dp"
         android:layout_height="wrap_content">
 
-    </android.support.design.widget.TabLayout>
+    </TextView>
 
-    <comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager
-        android:id="@+id/panda_things_viewpager"
-        android:layout_width="match_parent"
+    <com.androidkun.PullToRefreshRecyclerView
+        android:layout_gravity="center_horizontal"
         android:background="@color/radio_bai"
-        android:layout_height="230dp"></comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
-
+        android:id="@+id/panda_things_pullto"
+        android:layout_width="340dp"
+        android:layout_height="260dp"></com.androidkun.PullToRefreshRecyclerView>
     <LinearLayout
         android:background="@color/radio_litterwhite"
         android:layout_width="match_parent"

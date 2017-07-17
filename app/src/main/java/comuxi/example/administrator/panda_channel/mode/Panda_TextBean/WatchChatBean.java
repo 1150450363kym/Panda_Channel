@@ -1,5 +1,7 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.util.ArrayList;
+
 /**
  * Created by lenovo on 2017/7/14.
  */
@@ -7,15 +9,97 @@ package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 public class WatchChatBean {
 
 
-    /**
-     * code : 0
-     * msg : success
-     * time : 1500030030
-     * data : {"total":"174567","content":[{"pid":"41395818","tid":"41395818","pics":[],"piccount":0,"message":"互怼的两只团子是who和who啊","mark":"","author":"央视网网友","authorid":"2434419400","dateline":"1500029973","sub_count":"0","stype":2,"locale":"江苏省常州市","agree":0,"disagree":0},{"pid":"41395813","tid":"41395813","pics":[],"piccount":0,"message":"宝二爷在架子上玩耍","mark":"","author":"央视网网友","authorid":"2355342580","dateline":"1500029917","sub_count":"0","stype":2,"locale":"河南省","agree":0,"disagree":0},{"pid":"41395754","tid":"41395754","pics":[],"piccount":0,"message":"顺哥来妹生日快乐","mark":"","author":"央视网网友","authorid":"2405383260","dateline":"1500028351","sub_count":"0","stype":2,"locale":"山东省济南市","agree":0,"disagree":0},{"pid":"41395707","tid":"41395707","pics":[],"piccount":0,"message":"幼年园那耗子个头也太大了\u2026\u2026这么肥的耗子","mark":"","author":"央视网网友","authorid":"2402470353","dateline":"1500027349","sub_count":"0","stype":2,"locale":"上海市","agree":0,"disagree":0},{"pid":"41395577","tid":"41395577","pics":[],"piccount":0,"message":"核桃坪的镜头是怎么了","mark":"","author":"央视网网友","authorid":"2392404156","dateline":"1500025081","sub_count":"0","stype":2,"locale":"广东省深圳市宝安区","agree":0,"disagree":0},{"pid":"41395527","tid":"41395527","pics":[],"piccount":0,"message":"完全看不见π_π","mark":"","author":"央视网网友","authorid":"2447953251","dateline":"1500024451","sub_count":"0","stype":2,"locale":"中国","agree":0,"disagree":0},{"pid":"41395513","tid":"41395513","pics":[],"piccount":0,"message":"我觉得肉肉的大脸和幼年园的猪猪有的比。","mark":"","author":"央视网网友","authorid":"2545665563","dateline":"1500024241","sub_count":"0","stype":2,"locale":"河北省石家庄市","agree":0,"disagree":0},{"pid":"41395509","tid":"41395509","pics":[],"piccount":0,"message":"4个挤一起睡，一个醒别的都得醒","mark":"","author":"央视网网友","authorid":"2545665563","dateline":"1500024186","sub_count":"0","stype":2,"locale":"河北省石家庄市","agree":0,"disagree":0},{"pid":"41395508","tid":"41395508","pics":[],"piccount":0,"message":"哈哈，都醒了，还舍不得下架子。","mark":"","author":"央视网网友","authorid":"2545665563","dateline":"1500024152","sub_count":"0","stype":2,"locale":"河北省石家庄市","agree":0,"disagree":0},{"pid":"41395492","tid":"41395492","pics":[],"piccount":0,"message":"雅幼两姐弟在左边的小树下玩呢","mark":"","author":"央视网网友","authorid":"2434419400","dateline":"1500023981","sub_count":"0","stype":2,"locale":"广东省汕头市","agree":0,"disagree":0},{"pid":"41395490","tid":"41395490","pics":[],"piccount":0,"message":"在草业里怼架","mark":"","author":"央视网网友","authorid":"2432580578","dateline":"1500023952","sub_count":"0","stype":2,"locale":"浙江省绍兴市","agree":0,"disagree":0},{"pid":"41395486","tid":"41395486","pics":[],"piccount":0,"message":"雅幼团子呢？","mark":"","author":"央视网网友","authorid":"2434298931","dateline":"1500023881","sub_count":"0","stype":2,"locale":"中国","agree":0,"disagree":0},{"pid":"41395468","tid":"41395468","pics":[],"piccount":0,"message":"幼年园这四只太可爱了，非得挤在一起睡","mark":"","author":"央视网网友","authorid":"2399322786","dateline":"1500023726","sub_count":"0","stype":2,"locale":"广西贵港市","agree":0,"disagree":0},{"pid":"41395458","tid":"41395458","pics":[],"piccount":0,"message":"大熊猫原来不会流汗的，长知识了","mark":"","author":"央视网网友","authorid":"2434298931","dateline":"1500023596","sub_count":"0","stype":2,"locale":"中国","agree":0,"disagree":0},{"pid":"41395451","tid":"41395451","pics":[],"piccount":0,"message":"4个猪猪紧紧的挤一块睡觉，好亲密啊。","mark":"","author":"央视网网友","authorid":"2455540887","dateline":"1500023502","sub_count":"0","stype":2,"locale":"河北省石家庄市","agree":0,"disagree":0},{"pid":"41395427","tid":"41395427","pics":[],"piccount":0,"message":"大别墅的又在舔另一只身上的渣渣\u2026","mark":"","author":"央视网网友","authorid":"2416330561","dateline":"1500023242","sub_count":"0","stype":2,"locale":"广东省广州市","agree":0,"disagree":0},{"pid":"41395397","tid":"41395397","pics":[],"piccount":0,"message":"看着有点像弟弟","mark":"","author":"央视网网友","authorid":"2683382837","dateline":"1500022712","sub_count":"0","stype":2,"locale":"广东省深圳市宝安区","agree":0,"disagree":0},{"pid":"41395391","tid":"41395391","pics":[],"piccount":0,"message":"是迪迪还是解解在那里钻来钻去的","mark":"","author":"央视网网友","authorid":"2457889767","dateline":"1500022656","sub_count":"0","stype":2,"locale":"广东省深圳市宝安区","agree":0,"disagree":0},{"pid":"41395383","tid":"41395383","pics":[],"piccount":0,"message":"雅幼两只是不是怼到架子那的草丛里去了","mark":"","author":"央视网网友","authorid":"2402470353","dateline":"1500022580","sub_count":"0","stype":2,"locale":"广东省深圳市宝安区","agree":0,"disagree":0},{"pid":"41395379","tid":"41395379","pics":[],"piccount":0,"message":"要去网页版留言才管用","mark":"","author":"央视网网友","authorid":"2278258677","dateline":"1500022528","sub_count":"0","stype":2,"locale":"广东省深圳市宝安区","agree":0,"disagree":0}],"reply":{},"replyCount":{}}
-     */
+    private int time;
+    private String total;
+    ArrayList<Bean> list = new ArrayList<>();
 
-//    private int code;
-//    private String msg;
-//    private int time;
-//    private DataBean data;
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    public ArrayList<Bean> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<Bean> list) {
+        this.list = list;
+    }
+
+    public static class Bean{
+        private String pid;
+        private String tid;
+        private String message;
+        private String author;
+        private String authorId;
+        private String dateline;
+        private String locale;
+
+        public String getPid() {
+            return pid;
+        }
+
+        public void setPid(String pid) {
+            this.pid = pid;
+        }
+
+        public String getTid() {
+            return tid;
+        }
+
+        public void setTid(String tid) {
+            this.tid = tid;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public String getAuthor() {
+            return author;
+        }
+
+        public void setAuthor(String author) {
+            this.author = author;
+        }
+
+        public String getAuthorId() {
+            return authorId;
+        }
+
+        public void setAuthorId(String authorId) {
+            this.authorId = authorId;
+        }
+
+        public String getDateline() {
+            return dateline;
+        }
+
+        public void setDateline(String dateline) {
+            this.dateline = dateline;
+        }
+
+        public String getLocale() {
+            return locale;
+        }
+
+        public void setLocale(String locale) {
+            this.locale = locale;
+        }
+    }
 }

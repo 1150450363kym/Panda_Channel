@@ -9,6 +9,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBe
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.XiquaimationBean;
 
 /**
  * Created by Administrator on 2017/7/12.
@@ -43,4 +44,8 @@ public interface PandaMode extends BaseMode {
 
     //特别策划
     void getCehua(MyHttpCallBack<CehuaBean> myHttpCallBack);
+
+    //熊猫文化--第一个item点击跳转
+    //http://api.cntv.cn/video/videolistById?n=6&vsid=VSET100311356635&p=1&serviceId=panda&em=1
+    void getXiquanimation(String n,String vsid,String p,String serviceId,int em,MyHttpCallBack<XiquaimationBean> myHttpCallBack);
 }

@@ -36,7 +36,12 @@ public class PulltoAdapter extends BaseAdapter<PandaBroadCastListBean.ListBean> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(context,listBean.getTitle(),Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(context, WebActivity.class);
+//                intent.putExtra("url",listBean.getUrl());
+//                context.startActivity(intent);
+
             }
         });
     }

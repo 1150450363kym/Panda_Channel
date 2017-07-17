@@ -42,4 +42,7 @@ public class Url {
 
     //24节气之芒种
     public static final String CEHUA = BASE_URL+"PAGE14501767715521482/index.json";
+
+    //熊猫文化第一条点击跳转
+    public static final String XIQUANIMATION =  "http://api.cntv.cn/video/videolistById";
 }
