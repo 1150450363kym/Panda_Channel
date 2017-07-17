@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e2284786"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/live_china_delect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/live_china_delect_channel" />
+
+    <RelativeLayout
+        android:id="@+id/popwindow_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/live_china_delect">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="切换内容"
+
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/popwindow_biankuang"
+            android:text="编辑"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/Switch_the_section_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/popwindow_linear"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp">
+
+    </GridView>
+
+    <TextView
+        android:id="@+id/Switch_the_section_gridviewP_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Switch_the_section_gridview"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="点击添加更多栏目"
+        android:textColor="#fff"
+        android:textSize="20dp" />
+
+    <GridView
+        android:id="@+id/more_Switch_the_section_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Switch_the_section_gridviewP_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp">
+
+    </GridView>
+
+
+</RelativeLayout>

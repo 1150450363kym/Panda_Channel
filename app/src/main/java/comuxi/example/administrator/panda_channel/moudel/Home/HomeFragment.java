@@ -119,7 +119,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         home_data_object.add(data.getCctv());
         home_data_object.add(data.getList().get(0));
 
-
         home_data.add(data);
 
         handler.sendEmptyMessage(300);

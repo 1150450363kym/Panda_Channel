@@ -2,7 +2,7 @@ package comuxi.example.administrator.panda_channel.moudel.China_Live;
 
 import comuxi.example.administrator.panda_channel.Base.BasePresenter;
 import comuxi.example.administrator.panda_channel.Base.BaseView;
-import comuxi.example.administrator.panda_channel.moudel.Home.HomeContract;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 
 /**
  * 契约类
@@ -12,8 +12,10 @@ import comuxi.example.administrator.panda_channel.moudel.Home.HomeContract;
  */
 
 public interface China_Live_Contract {
-    interface View extends BaseView<HomeContract.presenter> {
+    interface View extends BaseView<presenter> {
 
+        void getMessage(String message);
+        void getNetData(China_Live_Path_TextBean china_live_path_textBean);
 
 
 
@@ -21,6 +23,7 @@ public interface China_Live_Contract {
 
 //    契约类 网络请求的接口
     interface presenter extends BasePresenter {
+
 
     }
 }

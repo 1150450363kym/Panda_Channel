@@ -81,7 +81,7 @@ public class OkHttpUtils implements IHttp {
                 App.content.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        callBack.onError(404, e.getMessage().toString());
+//                        callBack.onError(404, e.getMessage().toString());
                     }
                 });
             }

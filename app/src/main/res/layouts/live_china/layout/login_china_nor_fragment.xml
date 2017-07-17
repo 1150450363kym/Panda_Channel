@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login_china_live_relation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/china_live_tablayoutlin"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fff">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/china_live_tablayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </android.support.design.widget.TabLayout>
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#dcdcdc" />
+
+        <ImageView
+            android:id="@+id/chian_live_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/live_china_add" />
+
+    </LinearLayout>
+
+
+
+    <comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager
+
+        android:id="@+id/china_live_viewpage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/china_live_tablayoutlin">
+
+
+    </comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
+
+</RelativeLayout>

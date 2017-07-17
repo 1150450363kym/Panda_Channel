@@ -5,6 +5,7 @@ import java.util.Map;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
@@ -24,70 +25,76 @@ public class PandaItemMode implements PandaMode {
     public void getHomeData(MyHttpCallBack<Home_Data_TextBean> callBack) {
 
 
-        I_HTTP.get(Url.PANDAHOME,null,callBack);
+        I_HTTP.get(Url.PANDAHOME, null, callBack);
 
     }
 
     @Override
     public void getGGTV(MyHttpCallBack<GG_TV_TextBean> callBack) {
 
-        I_HTTP.get(Url.GGTV,null,callBack);
+        I_HTTP.get(Url.GGTV, null, callBack);
     }
 
     @Override
     public void getMoreLive(MyHttpCallBack<MoreLiveBean> myHttpCallBack) {
 
-        I_HTTP.get(Url.MORELIVE,null,myHttpCallBack);
+        I_HTTP.get(Url.MORELIVE, null, myHttpCallBack);
     }
 
     @Override
     public void getPandaBroadcast(MyHttpCallBack<PandaBroadCastBean> myHttpCallBack) {
 
-        I_HTTP.get(Url.PANDABROADCASTIMG,null,myHttpCallBack);
+        I_HTTP.get(Url.PANDABROADCASTIMG, null, myHttpCallBack);
     }
 
     @Override
     public void getPandaBroadcastList(String path, String primary_id, String serviceId, MyHttpCallBack<PandaBroadCastListBean> myHttpCallBack) {
 
-        Map<String,String> map = new HashMap<>();
-        map.put("path",path);
-        map.put("primary_id",primary_id);
-        map.put("serviceId",serviceId);
-        I_HTTP.get(Url.PANDABROADCAST,map,myHttpCallBack);
+        Map<String, String> map = new HashMap<>();
+        map.put("path", path);
+        map.put("primary_id", primary_id);
+        map.put("serviceId", serviceId);
+        I_HTTP.get(Url.PANDABROADCAST, map, myHttpCallBack);
     }
 
     @Override
     public void getWonderfulone(String vsid, String n, String serviceId, String o, String of, int p, MyHttpCallBack<WonderfulOneBean> myHttpCallBack) {
 
-        Map<String,String> map = new HashMap<>();
-        map.put("vsid",vsid);
-        map.put("n",n);
-        map.put("serviceId",serviceId);
-        map.put("o",o);
-        map.put("of",of);
-        map.put("p",p+"");
-        I_HTTP.get(Url.WONDERFULONE,map,myHttpCallBack);
+        Map<String, String> map = new HashMap<>();
+        map.put("vsid", vsid);
+        map.put("n", n);
+        map.put("serviceId", serviceId);
+        map.put("o", o);
+        map.put("of", of);
+        map.put("p", p + "");
+        I_HTTP.get(Url.WONDERFULONE, map, myHttpCallBack);
     }
 
     @Override
     public void getWatchChat(String app, String itemid, String nature, int page, MyHttpCallBack<WonderfulOneBean> myHttpCallBack) {
-        Map<String,String> map = new HashMap<>();
-        map.put("app",app);
-        map.put("itemid",itemid);
-        map.put("nature",nature);
-        map.put("page",page+"");
-        I_HTTP.get(Url.WATCHCHAT,map,myHttpCallBack);
+        Map<String, String> map = new HashMap<>();
+        map.put("app", app);
+        map.put("itemid", itemid);
+        map.put("nature", nature);
+        map.put("page", page + "");
+        I_HTTP.get(Url.WATCHCHAT, map, myHttpCallBack);
     }
+
     @Override
     public void getPandaLive(MyHttpCallBack<MLiveBean> myHttpCallBack) {
 
-        I_HTTP.get(Url.MPANDALIVE,null,myHttpCallBack);
+        I_HTTP.get(Url.MPANDALIVE, null, myHttpCallBack);
     }
 
     @Override
     public void getCehua(MyHttpCallBack<CehuaBean> myHttpCallBack) {
 
-        I_HTTP.get(Url.CEHUA,null,myHttpCallBack);
+        I_HTTP.get(Url.CEHUA, null, myHttpCallBack);
+    }
+
+    @Override
+    public void get_Live_China(MyHttpCallBack<China_Live_Path_TextBean> live_path_textBeanMyHttpCallBack) {
+        I_HTTP.get(Url.Live_CHINA, null, live_path_textBeanMyHttpCallBack);
     }
 
 }
