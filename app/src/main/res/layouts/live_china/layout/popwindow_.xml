@@ -44,6 +44,7 @@
     </RelativeLayout>
 
 
+
     <GridView
         android:id="@+id/Switch_the_section_gridview"
         android:layout_width="match_parent"
