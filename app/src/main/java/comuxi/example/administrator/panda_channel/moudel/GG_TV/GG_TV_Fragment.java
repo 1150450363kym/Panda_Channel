@@ -1,5 +1,6 @@
 package comuxi.example.administrator.panda_channel.moudel.GG_TV;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,7 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.WebActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.adapter.PulltoAdapter;
 import comuxi.example.administrator.panda_channel.moudel.Home.Adapter.Home_page_Rotation;
@@ -31,15 +33,12 @@ import comuxi.example.administrator.panda_channel.moudel.Home.Adapter.Home_page_
  * Created by Administrator on 2017/7/11.
  */
 
-public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListener,GG_TV_Contract.View,ViewPager.OnPageChangeListener {
+public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListener,GG_TV_Contract.View,ViewPager.OnPageChangeListener{
 
     @BindView(R.id.login_culture_fragment_pulltorefresh)
     PullToRefreshRecyclerView loginCultureFragmentPulltorefresh;
     private List<GG_TV_TextBean.ListBean>  list = new ArrayList<>();;
     private PulltoAdapter adapter;
-
-
-
     private ArrayList<GG_TV_TextBean.BigImgBean> bigbim_array = new ArrayList<>();
     private ArrayList<View> rotation_array  = new ArrayList<>();
     private   View topviewpager;
@@ -72,11 +71,8 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
         }
     };
 
-
-
-
     GG_TV_Contract.presenter presenter;
-            private ViewPager pager;
+    private ViewPager pager;
     @Override
     protected int getlayoutID() {
         return R.layout.login_culture_fragment;
@@ -96,6 +92,8 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
         loginCultureFragmentPulltorefresh.setPullToRefreshListener(this);
         topviewpager = LayoutInflater.from(getContext()).inflate(R.layout.top_viewpager,null);
         loginCultureFragmentPulltorefresh.addHeaderView(topviewpager);
+
+
 
     }
 
@@ -195,6 +193,16 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
             LP.setMargins(20, 0, 0, 0);
             point_ratio.addView(vvv, LP);
 
+            final int finalI = i;
+            imag.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), WebActivity.class);
+                    intent.putExtra("url",bigbim_array.get(finalI).getUrl());
+                    startActivity(intent);
+                }
+            });
+
         }
         pager= (ViewPager) topviewpager.findViewById(R.id.top_viewpager);
 
@@ -213,7 +221,11 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
             time_flg = true;
         }
+
+
     }
+
+
 
     private TimerTask task = new TimerTask() {
         @Override

@@ -2,7 +2,6 @@ package comuxi.example.administrator.panda_channel.mode.biz;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
-import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
@@ -44,8 +43,9 @@ public interface PandaMode extends BaseMode {
 
     //特别策划
     void getCehua(MyHttpCallBack<CehuaBean> myHttpCallBack);
-
-
     void get_Live_China(MyHttpCallBack<China_Live_Path_TextBean> live_path_textBeanMyHttpCallBack);
 
+    //熊猫文化--第一个item点击跳转
+    //http://api.cntv.cn/video/videolistById?n=6&vsid=VSET100311356635&p=1&serviceId=panda&em=1
+    void getXiquanimation(String n,String vsid,String p,String serviceId,int em,MyHttpCallBack<XiquaimationBean> myHttpCallBack);
 }

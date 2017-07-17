@@ -42,14 +42,11 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
                 if(listBean.getOrder().equals("1")){
                     Intent intent = new Intent(context,PandaThingsActivity.class);
                     intent.putExtra("top_title",listBean.getTitle());
-                    intent.putExtra("top_content",listBean.getBrief());
-
                     context.startActivity(intent);
                 }else{
 
                     Intent intent = new Intent(context,VideoplayerActivity.class);
 
-//                intent.putExtra("top_title",listBean.getOrder());
                     context.startActivity(intent);
 
             }

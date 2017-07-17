@@ -13,6 +13,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBe
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.XiquaimationBean;
 import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
 
 /**
@@ -95,6 +96,18 @@ public class PandaItemMode implements PandaMode {
     @Override
     public void get_Live_China(MyHttpCallBack<China_Live_Path_TextBean> live_path_textBeanMyHttpCallBack) {
         I_HTTP.get(Url.Live_CHINA, null, live_path_textBeanMyHttpCallBack);
+    }
+
+    @Override
+    public void getXiquanimation(String n, String vsid, String p, String serviceId, int em, MyHttpCallBack<XiquaimationBean> myHttpCallBack) {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("n",n);
+        map.put("vsid",vsid);
+        map.put("p",p);
+        map.put("serviceId",serviceId);
+        map.put("em",em+"");
+        I_HTTP.get(Url.XIQUANIMATION,map,myHttpCallBack);
     }
 
 }

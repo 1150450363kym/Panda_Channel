@@ -1,5 +1,6 @@
 package comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.WebActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
 
@@ -45,6 +47,7 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
     private String primary_id2 = "PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE145147362893414";
     int i=4;
     private String serviceId = "panda";
+    private String url;
     @Override
     protected int getlayoutID() {
         return R.layout.login_eyepress_fragment;
@@ -68,6 +71,15 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
         View top_view = LayoutInflater.from(getContext()).inflate(R.layout.panda_broadcast_topview,null);
         top_img = (ImageView) top_view.findViewById(R.id.panda_broadcast_topview_img);
         top_title = (TextView) top_view.findViewById(R.id.panda_broadcast_topview_title);
+
+        top_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), WebActivity.class);
+                intent.putExtra("url",url);
+                startActivity(intent);
+            }
+        });
 
 
         eyepressFragmentPullto.addHeaderView(top_view);
@@ -122,6 +134,7 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
         imgBeenlist.addAll(pandaBroadCastListBean.getData().getBigImg());
         top_title.setText(imgBeenlist.get(0).getTitle());
         Glide.with(getContext()).load(imgBeenlist.get(0).getImage()).into(top_img);
+        url = imgBeenlist.get(0).getUrl();
     }
 
     @Override

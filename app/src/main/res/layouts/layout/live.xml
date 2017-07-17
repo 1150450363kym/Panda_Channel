@@ -51,7 +51,6 @@
             android:layout_height="wrap_content" />
 
         <CheckBox
-
             android:button="@null"
             android:id="@+id/live_center_blue_img"
             android:background="@drawable/live_tooltip_blue_select"
@@ -64,15 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
-
 
             <TextView
                 android:layout_marginTop="15dp"
@@ -102,11 +96,8 @@
 
             </LinearLayout>
 
-
-
             <android.support.design.widget.TabLayout
 
-                android:layout_marginTop="10dp"
                 android:id="@+id/live_center_tablayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

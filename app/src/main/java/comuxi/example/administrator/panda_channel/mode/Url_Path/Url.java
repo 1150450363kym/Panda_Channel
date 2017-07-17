@@ -42,11 +42,10 @@ public class Url {
 
     //24节气之芒种
     public static final String CEHUA = BASE_URL+"PAGE14501767715521482/index.json";
-
-//直播中国
+    //直播中国
 //    http://www.ipanda.com/kehuduan/
 //    http://www.ipanda.com/kehuduan/
-public static final String Live_CHINA = BASE_URL+"PAGE14501775094142282/index.json";
-
-
+    public static final String Live_CHINA = BASE_URL+"PAGE14501775094142282/index.json";
+    //熊猫文化第一条点击跳转
+    public static final String XIQUANIMATION =  "http://api.cntv.cn/video/videolistById";
 }
