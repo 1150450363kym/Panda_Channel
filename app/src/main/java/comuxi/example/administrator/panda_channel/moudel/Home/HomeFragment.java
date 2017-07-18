@@ -53,7 +53,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                     break;
             }
 
-
         }
     };
 
@@ -72,8 +71,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     @Override
     protected void loadData() {
-        home_present.start();
 
+        home_present.start();
 
     }
 
