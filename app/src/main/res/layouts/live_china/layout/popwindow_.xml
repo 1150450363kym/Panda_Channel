@@ -5,6 +5,16 @@
     android:background="#e2284786"
     android:orientation="vertical">
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
 
     <ImageView
         android:id="@+id/live_china_delect"
@@ -22,15 +32,30 @@
         android:layout_below="@id/live_china_delect">
 
         <TextView
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="切换内容"
-
+            android:id="@+id/qiehuan"
             android:textColor="#fff"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <TextView
+            android:id="@+id/tuodong"
+            android:visibility="gone"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:layout_marginLeft="20dp"
+            android:text="长按拖动可以排序"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/qiehuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/edtix_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -38,14 +63,14 @@
             android:background="@drawable/popwindow_biankuang"
             android:text="编辑"
             android:textColor="#000"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
 
     </RelativeLayout>
 
 
 
-    <GridView
+    <comuxi.example.administrator.panda_channel.moudel.China_Live.gridview_my.My_GridView
         android:id="@+id/Switch_the_section_gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,7 +80,7 @@
         android:numColumns="3"
         android:verticalSpacing="20dp">
 
-    </GridView>
+    </comuxi.example.administrator.panda_channel.moudel.China_Live.gridview_my.My_GridView>
 
     <TextView
         android:id="@+id/Switch_the_section_gridviewP_text"
@@ -66,9 +91,9 @@
         android:layout_marginTop="30dp"
         android:text="点击添加更多栏目"
         android:textColor="#fff"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
-    <GridView
+    <comuxi.example.administrator.panda_channel.moudel.China_Live.gridview_my.My_GridView
         android:id="@+id/more_Switch_the_section_gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,7 +103,10 @@
         android:numColumns="3"
         android:verticalSpacing="20dp">
 
-    </GridView>
+    </comuxi.example.administrator.panda_channel.moudel.China_Live.gridview_my.My_GridView>
+    </RelativeLayout>
 
+
+</ScrollView>
 
 </RelativeLayout>

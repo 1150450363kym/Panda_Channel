@@ -2,6 +2,7 @@ package comuxi.example.administrator.panda_channel.mode.biz;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
@@ -9,6 +10,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBe
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.XiquaimationBean;
 
 /**
  * Created by Administrator on 2017/7/12.

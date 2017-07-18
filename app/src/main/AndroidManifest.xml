@@ -65,6 +65,7 @@
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.UMDefault" />
+        <activity android:name=".web_view.Home_Web_View_"></activity>
 
         <meta-data
             android:name="UMENG_APPKEY"

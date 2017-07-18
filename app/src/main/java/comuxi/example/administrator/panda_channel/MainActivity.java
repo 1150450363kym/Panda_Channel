@@ -83,7 +83,7 @@ public class MainActivity extends BaseActivity {
             switch (msg.what) {
                 case 300:
                     loginImage.setVisibility(View.GONE);
-
+                    quitFullScreen();
                     startLinear.setVisibility(View.VISIBLE);
                     task.cancel();
 
@@ -280,5 +280,13 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+
+    private void quitFullScreen(){
+        final WindowManager.LayoutParams attrs = getWindow().getAttributes();
+        attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setAttributes(attrs);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
 }

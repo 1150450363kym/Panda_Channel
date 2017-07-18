@@ -11,6 +11,8 @@ public class China_Live_Path_TextBean  {
     private List<TablistBean> tablist;
     private List<AlllistBean> alllist;
 
+
+
     public List<TablistBean> getTablist() {
         return tablist;
     }
@@ -27,6 +29,8 @@ public class China_Live_Path_TextBean  {
         this.alllist = alllist;
     }
 
+
+
     public static class TablistBean {
         /**
          * title : 八达岭
@@ -39,6 +43,9 @@ public class China_Live_Path_TextBean  {
         private String url;
         private String type;
         private String order;
+        private boolean flg;
+
+
 
         public String getTitle() {
             return title;
@@ -70,6 +77,14 @@ public class China_Live_Path_TextBean  {
 
         public void setOrder(String order) {
             this.order = order;
+        }
+
+        public boolean getFlg() {
+            return flg;
+        }
+
+        public void setFlg(boolean flg) {
+            this.flg = flg;
         }
     }
 

@@ -11,9 +11,10 @@
         android:layout_height="45dp"
         android:background="#fff">
 
+
         <android.support.design.widget.TabLayout
             android:id="@+id/china_live_tablayout"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
@@ -33,7 +34,6 @@
             android:src="@mipmap/live_china_add" />
 
     </LinearLayout>
-
 
 
     <comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager

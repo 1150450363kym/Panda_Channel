@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -51,17 +52,14 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     ImageView chianLiveAdd;
     @BindView(R.id.login_china_live_relation)
     RelativeLayout loginChinaLiveRelation;
-    private PopupWindow popup;
-
-
     @BindView(R.id.china_live_tablayoutlin)
     LinearLayout chinaLiveTablayoutlin;
 
-
     private ArrayList<Fragment> fargmet_array = new ArrayList<>();
-
     private ArrayList<China_Live_Path_TextBean.TablistBean> tablistBeen_array = new ArrayList<>();
     private ArrayList<China_Live_Path_TextBean.AlllistBean> alllistBeen_aray = new ArrayList<>();
+
+
     China_Tablayout_PageAdapter tablay_adapter;
     Handler handler = new Handler() {
         @Override
@@ -71,11 +69,13 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                 case 300:
                     tablay_adapter.notifyDataSetChanged();
                     break;
-            }
+                case 400:
 
+                    gridView_adapter.notifyDataSetChanged();
+                    break;
+            }
         }
     };
-
 
     @Override
     protected int getlayoutID() {
@@ -84,68 +84,54 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
     @Override
     protected void init(View view) {
-
-
     }
 
     @Override
     protected void loadData() {
         presenter.start();
         tablay_adapter = new China_Tablayout_PageAdapter(getActivity().getSupportFragmentManager(), fargmet_array, tablistBeen_array);
-
         chinaLiveViewpage.setAdapter(tablay_adapter);
-
         chinaLiveTablayout.setupWithViewPager(chinaLiveViewpage);
-
-        chinaLiveTablayout.setTabMode(TabLayout.MODE_FIXED);
-
+        chinaLiveTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
         return rootView;
-
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-
     }
-
 
     @Override
     public void getMessage(String message) {
-
     }
 
     @Override
     public void getNetData(China_Live_Path_TextBean china_live_path_textBean) {
-//        这是 国家地址
+//        这是 tablayout地址
         List<China_Live_Path_TextBean.TablistBean> tablist = china_live_path_textBean.getTablist();
         tablistBeen_array.addAll(tablist);
-        Log.e("TAG", "默认 的  一些地址" + tablistBeen_array.size());
+
+//        这是  popwindow  里面的 地址
         List<China_Live_Path_TextBean.AlllistBean> alllist = china_live_path_textBean.getAlllist();
+
         alllistBeen_aray.addAll(alllist);
-        Log.e("TAG", "后期添加 的  一些地址" + tablistBeen_array.size());
-
-        for (int i = 0; i < tablist.size(); i++) {
-
+        Log.e("TAG","点击 添加 以前 下面的长度 是"+alllistBeen_aray.size());
+//        Fragment  数量
+        for (int i = 0; i < tablistBeen_array.size(); i++) {
             Path_Fragment path_fragment = new Path_Fragment(tablist.get(i).getUrl());
-
             fargmet_array.add(path_fragment);
-
         }
 
         handler.sendEmptyMessage(300);
 
     }
-
 
     @Override
     public void setPresenter(China_Live_Contract.presenter presenter) {
@@ -156,21 +142,104 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     private ImageView dele_imag;
     private GridView gridView, more_gridView;
     private TextView enit_text;
+    private GridView_Adapter gridView_adapter;
+    private More_GridView_Adapter more_gridView_adapter;
+
 
     @OnClick(R.id.chian_live_add)
     public void onViewClicked() {
-
         View layout = getActivity().getLayoutInflater().inflate(R.layout.popwindow_, null);
-
+        enit_text = (TextView) layout.findViewById(R.id.edtix_button);
         gridView = (GridView) layout.findViewById(R.id.Switch_the_section_gridview);
         more_gridView = (GridView) layout.findViewById(R.id.more_Switch_the_section_gridview);
 
+        enit_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i < tablistBeen_array.size(); i++) {
+                    tablistBeen_array.get(i).setFlg(true);
+                }
+                if (enit_text.getText().equals("编辑")) {
+                    enit_text.setText("完成");
+//                    切换内容的点击事件
+                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        GridView_Adapter gridView_adapter = new GridView_Adapter(getActivity(), tablistBeen_array);
+                            if (tablistBeen_array.size() > 4) {
+//
+                                China_Live_Path_TextBean.AlllistBean down_array = new China_Live_Path_TextBean.AlllistBean();
+                                down_array.setTitle(tablistBeen_array.get(position).getTitle());
+                                down_array.setOrder(tablistBeen_array.get(position).getOrder());
+                                down_array.setType(tablistBeen_array.get(position).getType());
+                                down_array.setUrl(tablistBeen_array.get(position).getUrl());
+
+                                alllistBeen_aray.add(down_array);
+                                tablistBeen_array.remove(position);
+
+                                Log.e("TAG","点击 添加 以后 下面的长度 是"+alllistBeen_aray.size());
+
+                                gridView_adapter.notifyDataSetChanged();
+                                more_gridView_adapter.notifyDataSetChanged();
+                            }
+
+                            gridView_adapter.notifyDataSetChanged();
+
+                        }
+                    });
+
+
+                    handler.sendEmptyMessage(400);
+
+                    more_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View Qview, int DOposition, long id) {
+
+                        China_Live_Path_TextBean.TablistBean UP_array = new China_Live_Path_TextBean.TablistBean();
+                            UP_array.setTitle(alllistBeen_aray.get(DOposition).getTitle());
+                            UP_array.setOrder(alllistBeen_aray.get(DOposition).getOrder());
+                            UP_array.setFlg(true);
+                            UP_array.setType(alllistBeen_aray.get(DOposition).getType());
+                            UP_array.setUrl(alllistBeen_aray.get(DOposition).getUrl());
+                            tablistBeen_array.add(UP_array);
+
+                            alllistBeen_aray.remove(DOposition);
+
+                            more_gridView_adapter.notifyDataSetChanged();
+                            gridView_adapter.notifyDataSetChanged();
+
+                        }
+                    });
+
+//不可编辑
+                } else {
+
+                    enit_text.setText("编辑");
+                    for (int i = 0; i < tablistBeen_array.size(); i++) {
+                        tablistBeen_array.get(i).setFlg(false);
+                    }
+
+//                        重新 NEW  Fragment
+                    fargmet_array.clear();
+                    for (int i = 0; i < tablistBeen_array.size(); i++) {
+                        Path_Fragment path_fragment = new Path_Fragment(tablistBeen_array.get(i).getUrl());
+                        fargmet_array.add(path_fragment);
+                    }
+                    tablay_adapter.notifyDataSetChanged();
+
+                    handler.sendEmptyMessage(400);
+
+                }
+            }
+        });
+
+
+        gridView_adapter = new GridView_Adapter(getActivity(), tablistBeen_array);
         gridView.setAdapter(gridView_adapter);
 
-        More_GridView_Adapter more_gridView_adapter = new More_GridView_Adapter(getActivity(), alllistBeen_aray);
 
+
+        more_gridView_adapter = new More_GridView_Adapter(getActivity(), alllistBeen_aray);
         more_gridView.setAdapter(more_gridView_adapter);
 
         final PopupWindow pop = new PopupWindow(layout,

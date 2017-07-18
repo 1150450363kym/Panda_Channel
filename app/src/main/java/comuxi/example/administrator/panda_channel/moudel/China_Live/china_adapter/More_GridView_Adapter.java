@@ -59,8 +59,6 @@ public class More_GridView_Adapter extends BaseAdapter {
         my_view.content.setText(alllistBeen_aray.get(position).getTitle());
 
 
-
-
         return convertView;
     }
     class My_view{

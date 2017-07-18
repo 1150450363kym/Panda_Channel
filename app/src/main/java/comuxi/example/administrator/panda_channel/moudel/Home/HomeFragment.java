@@ -153,8 +153,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             public void get_Ratation_Click(View v, Home_Data_TextBean.DataBean.BigImgBean bigImgBean) {
                 if(bigImgBean.getTitle().equals("")) {
 
-                    Intent web_intent = new Intent(getActivity(), Home_Web_View_.class);
-
+                    Intent web_intent = new Intent(App.content, Home_Web_View_.class);
                     web_intent.putExtra("web_view_url",bigImgBean.getUrl());
 
                     startActivity(web_intent);
@@ -207,11 +206,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             @Override
             public void get_special_planning_Click(View v, Home_Data_TextBean.DataBean.InteractiveBean.InteractiveoneBean interactiveoneBean) {
 
-                Intent  special_intent = new Intent(getActivity(),Home_Web_View_.class);
+                Intent  special_intent = new Intent(App.content,Home_Web_View_.class);
                 special_intent.putExtra("special_url",interactiveoneBean.getUrl());
                 startActivity(special_intent);
-
-
 
             }
 

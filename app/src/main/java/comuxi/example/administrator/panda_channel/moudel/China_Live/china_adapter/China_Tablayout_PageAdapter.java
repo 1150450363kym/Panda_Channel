@@ -3,6 +3,7 @@ package comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapt
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public class China_Tablayout_PageAdapter extends FragmentPagerAdapter {
         this.fargmet_array = fargmet_array;
         this.tablistBeen_array = tablistBeen_array;
 
+        Log.e("TAG","点击删除 或者增加之后  Tablayout的  长度"+fargmet_array.size());
+
     }
 
     @Override
@@ -37,6 +40,7 @@ public class China_Tablayout_PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
+        Log.e("TAG","点击删除 或者增加之后  Tablayout的  长度"+tablistBeen_array.size());
         return tablistBeen_array.get(position).getTitle();
     }
 
