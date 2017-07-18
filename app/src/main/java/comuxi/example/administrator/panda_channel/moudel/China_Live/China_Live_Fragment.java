@@ -256,7 +256,7 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                             valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                                 @Override
                                 public void onAnimationUpdate(ValueAnimator animation) {
-                                    // 当插值计算进行时，获取中间的每个值，
+                                    // 当插值计算进行时，获取中额
                                     // 这里这个值是中间过程中的曲线长度（下面根据这个值来得出中间点的坐标值）
                                     float value = (Float) animation.getAnimatedValue();
                                     // 获取当前点坐标封装到mCurrentPosition
