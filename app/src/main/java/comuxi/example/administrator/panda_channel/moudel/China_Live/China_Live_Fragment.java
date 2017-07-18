@@ -1,5 +1,8 @@
 package comuxi.example.administrator.panda_channel.moudel.China_Live;
 
+import android.animation.ValueAnimator;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -28,6 +32,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapter.China_Tablayout_PageAdapter;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapter.GridView_Adapter;
@@ -72,6 +77,8 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                 case 400:
 
                     gridView_adapter.notifyDataSetChanged();
+                    more_gridView_adapter.notifyDataSetChanged();
+
                     break;
             }
         }
@@ -93,6 +100,7 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
         chinaLiveViewpage.setAdapter(tablay_adapter);
         chinaLiveTablayout.setupWithViewPager(chinaLiveViewpage);
         chinaLiveTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
     }
 
     @Override
@@ -122,7 +130,7 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
         List<China_Live_Path_TextBean.AlllistBean> alllist = china_live_path_textBean.getAlllist();
 
         alllistBeen_aray.addAll(alllist);
-        Log.e("TAG","点击 添加 以前 下面的长度 是"+alllistBeen_aray.size());
+        Log.e("TAG", "点击 添加 以前 下面的长度 是" + alllistBeen_aray.size());
 //        Fragment  数量
         for (int i = 0; i < tablistBeen_array.size(); i++) {
             Path_Fragment path_fragment = new Path_Fragment(tablist.get(i).getUrl());
@@ -144,7 +152,9 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     private TextView enit_text;
     private GridView_Adapter gridView_adapter;
     private More_GridView_Adapter more_gridView_adapter;
-
+    private RelativeLayout popwindow_parent;
+    // 贝塞尔曲线中间过程点坐标
+    private float[] mCurrentPosition = new float[2];
 
     @OnClick(R.id.chian_live_add)
     public void onViewClicked() {
@@ -152,6 +162,7 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
         enit_text = (TextView) layout.findViewById(R.id.edtix_button);
         gridView = (GridView) layout.findViewById(R.id.Switch_the_section_gridview);
         more_gridView = (GridView) layout.findViewById(R.id.more_Switch_the_section_gridview);
+        popwindow_parent = (RelativeLayout) layout.findViewById(R.id.popwindow_parent);
 
         enit_text.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,10 +188,8 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                                 alllistBeen_aray.add(down_array);
                                 tablistBeen_array.remove(position);
 
-                                Log.e("TAG","点击 添加 以后 下面的长度 是"+alllistBeen_aray.size());
+                                handler.sendEmptyMessage(400);
 
-                                gridView_adapter.notifyDataSetChanged();
-                                more_gridView_adapter.notifyDataSetChanged();
                             }
 
                             gridView_adapter.notifyDataSetChanged();
@@ -189,13 +198,11 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                     });
 
 
-                    handler.sendEmptyMessage(400);
-
                     more_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View Qview, int DOposition, long id) {
 
-                        China_Live_Path_TextBean.TablistBean UP_array = new China_Live_Path_TextBean.TablistBean();
+                            China_Live_Path_TextBean.TablistBean UP_array = new China_Live_Path_TextBean.TablistBean();
                             UP_array.setTitle(alllistBeen_aray.get(DOposition).getTitle());
                             UP_array.setOrder(alllistBeen_aray.get(DOposition).getOrder());
                             UP_array.setFlg(true);
@@ -203,10 +210,72 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                             UP_array.setUrl(alllistBeen_aray.get(DOposition).getUrl());
                             tablistBeen_array.add(UP_array);
 
-                            alllistBeen_aray.remove(DOposition);
+                            // 创造出执行动画的主题goodsImg
+                            final ImageView goods = new ImageView(App.content);
+                            goods.setImageDrawable(Qview.getBackground());
+                            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100, 100);
+                            popwindow_parent.addView(goods, params);
 
-                            more_gridView_adapter.notifyDataSetChanged();
-                            gridView_adapter.notifyDataSetChanged();
+                            // 得到父布局的起始点坐标（用于辅助计算动画开始/结束时的点的坐标）
+                            int[] parentLocation = new int[2];
+                            popwindow_parent.getLocationInWindow(parentLocation);
+                            // 得到商品图片的坐标（用于计算动画开始的坐标）
+                            int startLoc[] = new int[2];
+                            goods.getLocationInWindow(startLoc);
+
+                            // 得到购物车图片的坐标(用于计算动画结束后的坐标)
+                            int endLoc[] = new int[2];
+                            gridView.getLocationInWindow(endLoc);
+
+                            // 开始掉落的商品的起始点：商品起始点-父布局起始点+该商品图片的一半
+                            float startX = startLoc[0] - parentLocation[0] + goods.getWidth() / 2;
+                            float startY = startLoc[1] - parentLocation[1] + goods.getHeight() / 2;
+
+                            // 商品掉落后的终点坐标：购物车起始点-父布局起始点+购物车图片的1/5
+                            float toX = endLoc[0] - parentLocation[0] + gridView.getWidth() / 5;
+                            float toY = endLoc[1] - parentLocation[1];
+                            // 开始绘制贝塞尔曲线
+                            Path path = new Path();
+                            // 移动到起始点（贝塞尔曲线的起点）
+                            path.moveTo(startX, startY);
+                            // 使用二阶贝塞尔曲线：注意第一个起始坐标越大，贝塞尔曲线的横向距离就会越大，一般按照下面的式子取即可
+                            path.quadTo((startX + toX) / 2, startY, toX, toY);
+                            // mPathMeasure用来计算贝塞尔曲线的曲线长度和贝塞尔曲线中间插值的坐标，如果是true，path会形成一个闭环
+                            final PathMeasure mPathMeasure = new PathMeasure(path, false);
+
+                            // 属性动画实现（从0到贝塞尔曲线的长度之间进行插值计算，获取中间过程的距离值）
+                            ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
+                            valueAnimator.setDuration(500);
+
+                            // 属性动画实现（从0到贝塞尔曲线的长度之间进行插值计算，获取中间过程的距离值）
+                            valueAnimator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
+                            valueAnimator.setDuration(500);
+
+                            // 匀速线性插值器
+                            valueAnimator.setInterpolator(new LinearInterpolator());
+                            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                                @Override
+                                public void onAnimationUpdate(ValueAnimator animation) {
+                                    // 当插值计算进行时，获取中间的每个值，
+                                    // 这里这个值是中间过程中的曲线长度（下面根据这个值来得出中间点的坐标值）
+                                    float value = (Float) animation.getAnimatedValue();
+                                    // 获取当前点坐标封装到mCurrentPosition
+                                    // boolean getPosTan(float distance, float[] pos, float[] tan) ：
+                                    // 传入一个距离distance(0<=distance<=getLength())，然后会计算当前距离的坐标点和切线，pos会自动填充上坐标，这个方法很重要。
+                                    // mCurrentPosition此时就是中间距离点的坐标值
+                                    mPathMeasure.getPosTan(value, mCurrentPosition, null);
+                                    // 移动的商品图片（动画图片）的坐标设置为该中间点的坐标
+                                    goods.setTranslationX(mCurrentPosition[0]);
+                                    goods.setTranslationY(mCurrentPosition[1]);
+                                }
+                            });
+
+                            // 开始执行动画
+                            valueAnimator.start();
+
+                            alllistBeen_aray.remove(DOposition);
+                            handler.sendEmptyMessage(400);
+
 
                         }
                     });
@@ -236,7 +305,6 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
         gridView_adapter = new GridView_Adapter(getActivity(), tablistBeen_array);
         gridView.setAdapter(gridView_adapter);
-
 
 
         more_gridView_adapter = new More_GridView_Adapter(getActivity(), alllistBeen_aray);
