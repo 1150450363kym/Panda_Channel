@@ -1,12 +1,13 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lenovo on 2017/7/13.
  */
 
-public class PandaBroadCastBean {
+public class PandaBroadCastBean implements Serializable {
 
 
     /**
@@ -23,7 +24,7 @@ public class PandaBroadCastBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
 
         /**
          * bigImg : [{"image":"http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/6/13/1497337653079_517.jpg","title":"旅日大熊猫\u201c仙女\u201d成功产下2017首胎海外熊猫幼仔","url":"http://news.ipanda.com/2017/06/12/ARTIBdwYiZE71cob9CQLUz79170612.shtml","id":"ARTIBdwYiZE71cob9CQLUz79170612","type":"5","stype":"","pid":"","vid":"","order":"1"}]
@@ -49,7 +50,7 @@ public class PandaBroadCastBean {
             this.bigImg = bigImg;
         }
 
-        public static class BigImgBean {
+        public static class BigImgBean implements Serializable{
             /**
              * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/6/13/1497337653079_517.jpg
              * title : 旅日大熊猫“仙女”成功产下2017首胎海外熊猫幼仔

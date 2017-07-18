@@ -24,6 +24,8 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
+import comuxi.example.administrator.panda_channel.Utils.Log_Utils;
 import comuxi.example.administrator.panda_channel.WebActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.adapter.PulltoAdapter;
@@ -82,6 +84,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
     protected void init(View view) {
 
 
+        Log_Utils.log_d("TAG",GG_TV_Fragment.class.getSimpleName());
         adapter = new PulltoAdapter(getContext(),list);
         loginCultureFragmentPulltorefresh.setAdapter(adapter);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
@@ -101,8 +104,6 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
     protected void loadData() {
 
         presenter.start();
-
-
 
 
 // 调用轮播图的方法
@@ -159,16 +160,22 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
     @Override
     public void showMsg(String msg) {
 
+        ACache aCache =ACache.get(getContext());
+        GG_TV_TextBean bean = (GG_TV_TextBean) aCache.getAsObject("GG_TV_TextBean");
+        Log_Utils.log_d("TAG",bean.getList().size()+"");
+        list.addAll(bean.getList());
+        bigbim_array.addAll(bean.getBigImg());
+        handler.sendEmptyMessage(400);
+        handler.sendEmptyMessage(555);
 
     }
-
 
     @Override
     public void setPresenter(GG_TV_Contract.presenter presenter) {
         this.presenter = presenter;
+
     }
 //    轮播图的方法
-
 
     public void login_home_rotation() {
         point_ratio = (LinearLayout) topviewpager.findViewById(R.id.top_login_home_rotation_point);

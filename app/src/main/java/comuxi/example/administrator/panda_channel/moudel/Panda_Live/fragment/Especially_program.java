@@ -13,6 +13,8 @@ import java.util.List;
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
+import comuxi.example.administrator.panda_channel.Utils.Log_Utils;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.WinderfulonePulltoAdapter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.contract.EspeciallyprogramPresenterContract;
@@ -94,6 +96,12 @@ public class Especially_program extends BaseFragment implements PullToRefreshLis
 
     @Override
     public void showMsg(String msg) {
+
+        ACache aCache =ACache.get(getContext());
+        WonderfulOneBean bean = (WonderfulOneBean) aCache.getAsObject("WonderfulOneBean");
+        Log_Utils.log_d("TAG",bean.getVideo().size()+"");
+        list.addAll(bean.getVideo());
+        adapter.notifyDataSetChanged();
 
     }
 

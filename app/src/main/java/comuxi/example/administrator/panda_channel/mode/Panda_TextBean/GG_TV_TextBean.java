@@ -1,12 +1,13 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lenovo on 2017/7/13.
  */
 
-public class GG_TV_TextBean {
+public class GG_TV_TextBean implements Serializable{
 
 
     private List<BigImgBean> bigImg;
@@ -28,7 +29,7 @@ public class GG_TV_TextBean {
         this.list = list;
     }
 
-    public static class BigImgBean {
+    public static class BigImgBean implements Serializable{
         /**
          * url : http://culture.ipanda.com/2017/05/23/ARTILBLSMq3qlVgygrUMJEG2170523.shtml
          * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/5/23/1495533604076_403.jpg
@@ -124,7 +125,7 @@ public class GG_TV_TextBean {
         }
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         /**
          * url :
          * image : http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg

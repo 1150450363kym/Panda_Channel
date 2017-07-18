@@ -97,7 +97,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     @Override
     public void showMessage(String s) {
 
-
     }
 
 //    设置数据

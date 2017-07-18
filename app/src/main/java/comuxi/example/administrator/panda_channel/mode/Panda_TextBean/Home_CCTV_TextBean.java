@@ -1,12 +1,13 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/7/13.
  */
 
-public class Home_CCTV_TextBean {
+public class Home_CCTV_TextBean implements Serializable {
 
     private List<ListBean> list;
 
@@ -18,7 +19,7 @@ public class Home_CCTV_TextBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         /**
          * url :
          * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/2/20/1487557471950_184.jpg

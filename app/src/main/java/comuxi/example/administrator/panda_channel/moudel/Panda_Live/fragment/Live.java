@@ -22,6 +22,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
+import comuxi.example.administrator.panda_channel.Utils.Log_Utils;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.TwoPageAdapter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.contract.LiveContract;
@@ -125,6 +127,13 @@ public class Live extends BaseFragment implements LiveContract.View {
 
     @Override
     public void showMsg(String msg) {
+
+        ACache aCache =ACache.get(getContext());
+        MLiveBean bean = (MLiveBean) aCache.getAsObject("MLiveBean");
+        Log_Utils.log_d("TAG",liveBeen.size()+"");
+        liveBeen.addAll(bean.getLive());
+        tvVisibility.setText(liveBeen.get(0).getBrief());
+        radioTitle.setText(liveBeen.get(0).getTitle());
 
     }
 

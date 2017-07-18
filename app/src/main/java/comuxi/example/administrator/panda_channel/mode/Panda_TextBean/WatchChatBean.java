@@ -1,12 +1,13 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by lenovo on 2017/7/14.
  */
 
-public class WatchChatBean {
+public class WatchChatBean implements Serializable {
 
 
     private int time;
@@ -37,7 +38,7 @@ public class WatchChatBean {
         this.list = list;
     }
 
-    public static class Bean{
+    public static class Bean implements Serializable{
         private String pid;
         private String tid;
         private String message;

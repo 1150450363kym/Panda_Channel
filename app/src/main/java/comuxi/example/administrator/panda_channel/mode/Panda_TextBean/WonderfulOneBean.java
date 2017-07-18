@@ -2,6 +2,7 @@ package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * http://www.ipanda.com/kehuduan/PAGE14501773768112092/index.json
  */
 
-public class WonderfulOneBean {
+public class WonderfulOneBean implements Serializable {
 
 
     /**
@@ -36,7 +37,7 @@ public class WonderfulOneBean {
         this.video = video;
     }
 
-    public static class VideosetBean {
+    public static class VideosetBean implements Serializable{
         /**
          * 0 : {"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""}
          * count : 4420
@@ -62,7 +63,7 @@ public class WonderfulOneBean {
             this.count = count;
         }
 
-        public static class _$0Bean {
+        public static class _$0Bean implements Serializable{
             /**
              * vsid : VSET100167216881
              * name : 熊猫频道-精彩一刻
@@ -259,7 +260,7 @@ public class WonderfulOneBean {
         }
     }
 
-    public static class VideoBean {
+    public static class VideoBean implements Serializable{
         /**
          * vsid : VSET100167216881
          * order : 4424

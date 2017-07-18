@@ -1,5 +1,6 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * 熊猫直播--直播--多视角直播
  */
 
-public class MoreLiveBean {
+public class MoreLiveBean implements Serializable {
 
 
   private List<ListBean> list;
@@ -20,7 +21,7 @@ public class MoreLiveBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         /**
          * url :
          * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/6/14/1497428381378_816.jpg
