@@ -5,6 +5,7 @@ import android.webkit.WebView;
 
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
 
 public class WebActivity extends BaseActivity {
 
@@ -22,7 +23,19 @@ public class WebActivity extends BaseActivity {
     protected void initView() {
 
         settings =webview.getSettings();
-        stringurl = getIntent().getStringExtra("url");
+
+        if(stringurl == null){
+
+
+            stringurl = getIntent().getStringExtra("url");
+
+        }else{
+
+            ACache aCache = ACache.get(this);
+            stringurl = aCache.getAsString("cache_url");
+
+        }
+
 
         //      可以与什么交互
         settings.setJavaScriptEnabled(true);

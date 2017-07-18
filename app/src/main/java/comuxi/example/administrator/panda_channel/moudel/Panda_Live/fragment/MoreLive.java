@@ -45,8 +45,6 @@ public class MoreLive extends BaseFragment implements MoreLiveContract.View, Mor
         moreliveRecyclerview.setLayoutManager(new GridLayoutManager(getContext(),3));
         moreliveRecyclerview.setAdapter(adapter);
 
-
-
     }
 
     @Override

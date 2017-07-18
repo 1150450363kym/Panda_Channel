@@ -204,6 +204,9 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
             imag.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    ACache aCache = ACache.get(getContext());
+                    aCache.put("cache_url",bigbim_array.get(finalI).getUrl());
                     Intent intent = new Intent(getContext(), WebActivity.class);
                     intent.putExtra("url",bigbim_array.get(finalI).getUrl());
                     startActivity(intent);

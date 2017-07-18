@@ -76,9 +76,15 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
         top_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                ACache aCache = ACache.get(getContext());
+                aCache.put("cache_url",url);
                 Intent intent = new Intent(getContext(), WebActivity.class);
                 intent.putExtra("url",url);
                 startActivity(intent);
+
+
             }
         });
 
@@ -136,6 +142,7 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
         top_title.setText(imgBeenlist.get(0).getTitle());
         Glide.with(getContext()).load(imgBeenlist.get(0).getImage()).into(top_img);
         url = imgBeenlist.get(0).getUrl();
+
     }
 
     @Override
