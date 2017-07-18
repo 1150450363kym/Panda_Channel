@@ -32,7 +32,10 @@ public class LetPandaPresenter implements LetPandaContract.presenter {
 
             @Override
             public void onError(int errorCode, String errorMsg) {
+
                 oneView.showMsg(errorMsg);
+
+
             }
         });
     }

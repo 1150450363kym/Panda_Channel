@@ -14,6 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
@@ -69,6 +70,11 @@ public class CehuaActivity extends BaseActivity implements PullToRefreshListener
             @Override
             public void onError(int errorCode, String errorMsg) {
 
+                ACache aCache = ACache.get(CehuaActivity.this);
+                CehuaBean bean = (CehuaBean) aCache.getAsObject("CehuaBean");
+                list.addAll(bean.getInteractive());
+                Log.e("TAG",list.size()+"");
+                adapter.notifyDataSetChanged();
 
             }
         });

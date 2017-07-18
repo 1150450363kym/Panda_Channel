@@ -1,12 +1,13 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lenovo on 2017/7/14.
  */
 
-public class PandaBroadCastListBean {
+public class PandaBroadCastListBean implements Serializable {
 
 
     /**
@@ -33,7 +34,7 @@ public class PandaBroadCastListBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         /**
          * num : 1
          * datatype : video

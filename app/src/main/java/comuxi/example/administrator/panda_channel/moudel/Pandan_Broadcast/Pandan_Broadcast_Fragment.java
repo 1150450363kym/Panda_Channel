@@ -20,6 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
 import comuxi.example.administrator.panda_channel.WebActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
@@ -75,9 +76,15 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
         top_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                ACache aCache = ACache.get(getContext());
+                aCache.put("cache_url",url);
                 Intent intent = new Intent(getContext(), WebActivity.class);
                 intent.putExtra("url",url);
                 startActivity(intent);
+
+
             }
         });
 
@@ -135,6 +142,7 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
         top_title.setText(imgBeenlist.get(0).getTitle());
         Glide.with(getContext()).load(imgBeenlist.get(0).getImage()).into(top_img);
         url = imgBeenlist.get(0).getUrl();
+
     }
 
     @Override
@@ -145,10 +153,21 @@ public class Pandan_Broadcast_Fragment extends BaseFragment implements PullToRef
 
     }
 
+
     @Override
     public void showMsg(String msg) {
         Log.e("TAG",msg);
 
+        ACache aCache =ACache.get(getContext());
+        PandaBroadCastBean bean = (PandaBroadCastBean) aCache.getAsObject("PandaBroadCastBean");
+        imgBeenlist.addAll(bean.getData().getBigImg());
+        top_title.setText(imgBeenlist.get(0).getTitle());
+        Glide.with(getContext()).load(imgBeenlist.get(0).getImage()).into(top_img);
+        url = imgBeenlist.get(0).getUrl();
+
+        PandaBroadCastListBean listbean = (PandaBroadCastListBean) aCache.getAsObject("PandaBroadCastListBean");
+        mlist.addAll(listbean.getList());
+        adapter.notifyDataSetChanged();
     }
 
     @Override

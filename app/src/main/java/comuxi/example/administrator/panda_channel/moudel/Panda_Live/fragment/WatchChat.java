@@ -33,7 +33,7 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.Watc
  * http://newcomment.cntv.cn/comment/list?app=ipandaApp&itemid=zhiboye_chat&nature=1&page=1
  */
 
-public class WatchChat extends BaseFragment implements PullToRefreshListener {
+public class WatchChat extends BaseFragment implements PullToRefreshListener{
 
     private WatchChatBean watch;
     @BindView(R.id.watchchat_pulltorefresh)
@@ -120,7 +120,6 @@ public class WatchChat extends BaseFragment implements PullToRefreshListener {
 //                            dates.setDate(watch.getTime());
 //                            strings.add(dates);
                             list.addAll(watch.getList());
-
                             adapter.notifyDataSetChanged();
                         }
                     });

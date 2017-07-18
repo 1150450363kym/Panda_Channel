@@ -1,12 +1,13 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lenovo on 2017/7/15.
  */
 
-public class CehuaBean {
+public class CehuaBean implements Serializable{
 
 
     private List<InteractiveBean> interactive;
@@ -19,7 +20,7 @@ public class CehuaBean {
         this.interactive = interactive;
     }
 
-    public static class InteractiveBean {
+    public static class InteractiveBean implements Serializable{
         /**
          * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/6/5/1496626374961_922.jpg
          * title : 二十四节气——芒种

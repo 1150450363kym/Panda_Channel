@@ -11,6 +11,8 @@ import java.util.List;
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
+import comuxi.example.administrator.panda_channel.Utils.Log_Utils;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.MoreLiveAdapter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.contract.MoreLiveContract;
@@ -43,8 +45,6 @@ public class MoreLive extends BaseFragment implements MoreLiveContract.View, Mor
         moreliveRecyclerview.setLayoutManager(new GridLayoutManager(getContext(),3));
         moreliveRecyclerview.setAdapter(adapter);
 
-
-
     }
 
     @Override
@@ -64,7 +64,11 @@ public class MoreLive extends BaseFragment implements MoreLiveContract.View, Mor
 
     @Override
     public void showMsg(String msg) {
-
+        ACache aCache =ACache.get(getContext());
+        MoreLiveBean bean = (MoreLiveBean) aCache.getAsObject("MoreLiveBean");
+        Log_Utils.log_d("TAG",bean.getList().size()+"");
+        list.addAll(bean.getList());
+        adapter.notifyDataSetChanged();
     }
 
     @Override
