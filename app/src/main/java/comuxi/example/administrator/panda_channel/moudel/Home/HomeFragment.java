@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.VideoplayerActivity;
 import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_CCTV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_China_Movie_Text;
@@ -146,41 +147,65 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
         home_adapter.set_wonderful_Click(new Home_proRecycle_Adapter.x_Recy_Onclick() {
 
-//           轮播图的点击  事件
+            //           轮播图的点击  事件
             @Override
             public void get_Ratation_Click(View v, Home_Data_TextBean.DataBean.BigImgBean bigImgBean) {
-                if(bigImgBean.getTitle().equals("")) {
+                if (bigImgBean.getOrder().equals("1")) {
 
                     Intent web_intent = new Intent(App.content, Home_Web_View_.class);
-                    web_intent.putExtra("web_view_url",bigImgBean.getUrl());
-
+                    web_intent.putExtra("web_view_url", bigImgBean.getUrl());
                     startActivity(web_intent);
 
+                } else {
+
+                    Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
+                    Video_intent.putExtra("pid", bigImgBean.getPid());
+                    Video_intent.putExtra("video_title", bigImgBean.getTitle());
+                    Video_intent.putExtra("video_imag", bigImgBean.getImage());
+                    startActivity(Video_intent);
+
                 }
+
 
             }
 
             @Override
 //            精彩推荐的 点击事件
             public void get_wonderful_Click(Home_Data_TextBean.DataBean.AreaBean.ListscrollBean home_data) {
-                Toast.makeText(App.content, "" + home_data.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
+                Video_intent.putExtra("pid", home_data.getPid());
+                Video_intent.putExtra("video_title", home_data.getTitle());
+                Video_intent.putExtra("video_imag", home_data.getImage());
+                startActivity(Video_intent);
             }
 
             //        熊猫观察的点击
             @Override
             public void get_pandan_loog_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean itemsBean) {
-                Toast.makeText(App.content, "" + itemsBean.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
+                Video_intent.putExtra("pid", itemsBean.getPid());
+                Video_intent.putExtra("video_title", itemsBean.getTitle());
+                startActivity(Video_intent);
             }
 
             @Override
             public void get_pandan_loog_second_Click(View look_view, Home_Data_TextBean.DataBean.PandaeyeBean.ItemsBean second_itemsBean) {
-                Toast.makeText(App.content, "" + second_itemsBean.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
+                Video_intent.putExtra("pid", second_itemsBean.getPid());
+                Video_intent.putExtra("video_title", second_itemsBean.getTitle());
+                startActivity(Video_intent);
+
+
             }
 
             @Override
             public void get_pandan_look_down_Click(Look_Down_Text.ListBean look_down_text) {
+                Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
+                Video_intent.putExtra("pid", look_down_text.getPid());
+                Video_intent.putExtra("video_title", look_down_text.getTitle());
+                Video_intent.putExtra("video_imag", look_down_text.getImage());
+                startActivity(Video_intent);
 
-                Toast.makeText(App.content, "" + look_down_text.getDaytime(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -204,20 +229,28 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             @Override
             public void get_special_planning_Click(View v, Home_Data_TextBean.DataBean.InteractiveBean.InteractiveoneBean interactiveoneBean) {
 
-                Intent  special_intent = new Intent(App.content,Home_Web_View_.class);
-                special_intent.putExtra("special_url",interactiveoneBean.getUrl());
+                Intent special_intent = new Intent(App.content, Home_Web_View_.class);
+                special_intent.putExtra("special_url", interactiveoneBean.getUrl());
                 startActivity(special_intent);
 
             }
 
             @Override
             public void get_cctv_live_Click(Home_CCTV_TextBean.ListBean listBean) {
-                Toast.makeText(App.content, "" + listBean.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
+                Video_intent.putExtra("pid", listBean.getPid());
+                Video_intent.putExtra("video_title", listBean.getTitle());
+                Video_intent.putExtra("video_imag", listBean.getImage());
+                startActivity(Video_intent);
             }
 
             @Override
             public void get_movie_live_Click(Home_China_Movie_Text.ListBean listBean) {
-                Toast.makeText(App.content, "" + listBean.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
+                Video_intent.putExtra("pid", listBean.getPid());
+                Video_intent.putExtra("video_title", listBean.getTitle());
+                Video_intent.putExtra("video_imag", listBean.getImage());
+                startActivity(Video_intent);
             }
         });
 

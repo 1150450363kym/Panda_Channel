@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="comuxi.example.administrator.panda_channel.activity.VideoplayerActivity">
+    tools:context=".VideoplayerActivity">
 
 
-    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
-        android:id="@+id/my_videoplayer"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+
+   <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+       android:id="@+id/my_jiecao_video_play"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
 
 
 </RelativeLayout>
