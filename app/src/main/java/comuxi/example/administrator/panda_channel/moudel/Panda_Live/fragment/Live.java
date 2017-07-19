@@ -83,6 +83,7 @@ public class Live extends BaseFragment implements LiveContract.View {
         list.add(moreLive);
         list.add(watchChat);
 
+
         getContext().registerReceiver(receiver, new IntentFilter("video_title"));
         twoPageAdapter = new TwoPageAdapter(getFragmentManager(), list);
         liveBottomViewpager.setAdapter(twoPageAdapter);
