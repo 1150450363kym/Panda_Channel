@@ -9,6 +9,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.VideoplayerBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.XiquaimationBean;
 
@@ -50,4 +51,8 @@ public interface PandaMode extends BaseMode {
     //熊猫文化--第一个item点击跳转
     //http://api.cntv.cn/video/videolistById?n=6&vsid=VSET100311356635&p=1&serviceId=panda&em=1
     void getXiquanimation(String n,String vsid,String p,String serviceId,int em,MyHttpCallBack<XiquaimationBean> myHttpCallBack);
+
+    //播放视频路径
+    void getVideoplayer(String pid,MyHttpCallBack<VideoplayerBean> myHttpCallBack);
+
 }

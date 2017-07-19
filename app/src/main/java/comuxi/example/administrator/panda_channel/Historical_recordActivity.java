@@ -10,6 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
 
 //历史记录
 public class Historical_recordActivity extends BaseActivity {
@@ -26,6 +27,8 @@ public class Historical_recordActivity extends BaseActivity {
     RelativeLayout activityHistoricalRecord;
 
 
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_historical_record;
@@ -34,6 +37,9 @@ public class Historical_recordActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+
+        ACache aCache = ACache.get(this);
+        aCache.getAsJSONObject("shoucang");
     }
 
     @OnClick({R.id.historical_image, R.id.historical_edit})

@@ -197,7 +197,6 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                         }
                     });
 
-
                     more_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View Qview, int DOposition, long id) {

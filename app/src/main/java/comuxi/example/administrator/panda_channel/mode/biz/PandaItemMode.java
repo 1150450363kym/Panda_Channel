@@ -12,6 +12,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.VideoplayerBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.XiquaimationBean;
 import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
@@ -108,6 +109,14 @@ public class PandaItemMode implements PandaMode {
         map.put("serviceId",serviceId);
         map.put("em",em+"");
         I_HTTP.get(Url.XIQUANIMATION,map,myHttpCallBack);
+    }
+
+    @Override
+    public void getVideoplayer(String pid, MyHttpCallBack<VideoplayerBean> myHttpCallBack) {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("pid",pid);
+        I_HTTP.get(Url.TV_Url,map,myHttpCallBack);
     }
 
 }

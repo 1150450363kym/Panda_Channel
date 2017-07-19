@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
 import comuxi.example.administrator.panda_channel.VideoplayerActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.PandaThingsActivity;
@@ -39,6 +40,11 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
 
             @Override
             public void onClick(View v) {
+
+                //缓存
+                ACache aCache = ACache.get(context);
+                aCache.put("shoucang",listBean);
+
                 if(listBean.getOrder().equals("1")){
                     Intent intent = new Intent(context,PandaThingsActivity.class);
                     intent.putExtra("top_title",listBean.getTitle());
@@ -46,10 +52,8 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
                 }else{
 
                     Intent intent = new Intent(context,VideoplayerActivity.class);
-
                     context.startActivity(intent);
-
-            }
+                }
             }
         });
     }

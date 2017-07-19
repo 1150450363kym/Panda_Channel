@@ -1,6 +1,7 @@
 package comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.WebActivity;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
 
 /**
@@ -38,9 +40,9 @@ public class PulltoAdapter extends BaseAdapter<PandaBroadCastListBean.ListBean> 
             public void onClick(View v) {
 
                 Toast.makeText(context,listBean.getTitle(),Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(context, WebActivity.class);
-//                intent.putExtra("url",listBean.getUrl());
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("url",listBean.getUrl());
+                context.startActivity(intent);
 
             }
         });
