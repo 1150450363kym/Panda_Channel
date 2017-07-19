@@ -212,6 +212,9 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                         }
                     });
 
+
+
+
 //不可编辑
                 } else {
 
