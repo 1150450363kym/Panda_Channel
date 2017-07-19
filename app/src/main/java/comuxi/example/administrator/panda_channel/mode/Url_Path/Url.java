@@ -50,7 +50,7 @@ public class Url {
     public static final String XIQUANIMATION = "http://api.cntv.cn/video/videolistById";
 //    视频 地址
 
-    public static final String TV_Url = "http://115.182.9.189/api/getVideoInfoForCBox.do?";
+    public static final String TV_Url = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
 
 
 }

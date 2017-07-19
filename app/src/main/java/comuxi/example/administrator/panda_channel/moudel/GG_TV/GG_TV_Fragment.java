@@ -56,14 +56,10 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
             super.handleMessage(msg);
             switch (msg.what){
                 case 300:
-
                     pager.setCurrentItem(pager.getCurrentItem() + 1);
-
                     break;
                 case 400:
                     adapter.notifyDataSetChanged();
-
-
                     break;
                 case 555:
                     login_home_rotation();
@@ -104,9 +100,6 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
     protected void loadData() {
 
         presenter.start();
-
-
-// 调用轮播图的方法
 
     }
 

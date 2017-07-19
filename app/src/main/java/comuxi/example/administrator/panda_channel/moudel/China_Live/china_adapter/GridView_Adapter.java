@@ -1,7 +1,6 @@
 package comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapter;
 
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import comuxi.example.administrator.panda_channel.R;
-import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean.TablistBean;
 
 /**
  * Created by Administrator on 2017/7/17.
@@ -20,22 +19,10 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live
 
 public class GridView_Adapter extends BaseAdapter {
 
-    public interface Grid_Click {
-        void get_Grid_Click(View view, int grid_postion);
-
-    }
-
-    private Grid_Click grid_click;
-
-    public void set_Grid_Click(Grid_Click grid_click) {
-        this.grid_click = grid_click;
-    }
-
-
     FragmentActivity activity;
-    ArrayList<China_Live_Path_TextBean.TablistBean> tablistBeen_array;
+    ArrayList<TablistBean> tablistBeen_array;
 
-    public GridView_Adapter(FragmentActivity activity, ArrayList<China_Live_Path_TextBean.TablistBean> tablistBeen_array) {
+    public GridView_Adapter(FragmentActivity activity, ArrayList<TablistBean> tablistBeen_array) {
         this.activity = activity;
         this.tablistBeen_array = tablistBeen_array;
 
@@ -88,6 +75,18 @@ public class GridView_Adapter extends BaseAdapter {
 
 
         return convertView;
+    }
+    public void swap(int i, int j) {
+        if (j < i) {
+            TablistBean tablistBean = tablistBeen_array.get(i);
+
+            tablistBeen_array.add(j,tablistBean);
+            tablistBeen_array.remove(i + 1);
+        } else if (i < j) {
+            TablistBean tablistBean = tablistBeen_array.get(i);
+            tablistBeen_array.add(j + 1, tablistBean);
+            tablistBeen_array.remove(i);
+        }
     }
 
 
