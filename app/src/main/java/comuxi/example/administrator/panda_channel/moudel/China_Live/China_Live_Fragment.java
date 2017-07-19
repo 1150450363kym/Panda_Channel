@@ -39,7 +39,7 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeable
  * Created by Administrator on 2017/7/11.
  */
 
-public class China_Live_Fragment extends BaseFragment implements China_Live_Contract.View {
+public class China_Live_Fragment extends BaseFragment implements China_Live_Contract.View{
     @BindView(R.id.china_live_tablayout)
     TabLayout chinaLiveTablayout;
 
@@ -148,8 +148,9 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     private GridView_Adapter gridView_adapter;
     private More_GridView_Adapter more_gridView_adapter;
     private RelativeLayout popwindow_parent;
+    private int mMargin = 6;
     // 贝塞尔曲线中间过程点坐标
-    private float[] mCurrentPosition = new float[2];
+//    private float[] mCurrentPosition = new float[2];
 
     @OnClick(R.id.chian_live_add)
     public void onViewClicked() {
@@ -158,30 +159,29 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
         gridView = (GridView) layout.findViewById(R.id.Switch_the_section_gridview);
         more_gridView = (GridView) layout.findViewById(R.id.more_Switch_the_section_gridview);
         popwindow_parent = (RelativeLayout) layout.findViewById(R.id.popwindow_parent);
-
+        gridView.setEnabled(false);
         enit_text.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 for (int i = 0; i < tablistBeen_array.size(); i++) {
                     tablistBeen_array.get(i).setFlg(true);
                 }
                 handler.sendEmptyMessage(400);
+
                 if (enit_text.getText().equals("编辑")) {
                     enit_text.setText("完成");
 
+                    gridView.setEnabled(true);
 //                    切换内容的点击事件
                     gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                             if (tablistBeen_array.size() > 4) {
-//
                                 China_Live_Path_TextBean.AlllistBean down_array = new China_Live_Path_TextBean.AlllistBean();
                                 down_array.setTitle(tablistBeen_array.get(position).getTitle());
                                 down_array.setOrder(tablistBeen_array.get(position).getOrder());
                                 down_array.setType(tablistBeen_array.get(position).getType());
                                 down_array.setUrl(tablistBeen_array.get(position).getUrl());
-
                                 alllistBeen_aray.add(down_array);
                                 tablistBeen_array.remove(position);
 
@@ -193,7 +193,6 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
                         }
                     });
-
 
                     more_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -218,10 +217,11 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
                     enit_text.setText("编辑");
 
+                    gridView.setEnabled(false);
+
                     for (int i = 0; i < tablistBeen_array.size(); i++) {
                         tablistBeen_array.get(i).setFlg(false);
                     }
-
 //                        重新 NEW  Fragment
                     fargmet_array.clear();
                     for (int i = 0; i < tablistBeen_array.size(); i++) {
@@ -229,9 +229,7 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                         fargmet_array.add(path_fragment);
                     }
                     tablay_adapter.notifyDataSetChanged();
-
                     handler.sendEmptyMessage(400);
-
                 }
             }
         });
@@ -239,7 +237,6 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
         handler.sendEmptyMessage(400);
         gridView_adapter = new GridView_Adapter(getActivity(), tablistBeen_array);
         gridView.setAdapter(gridView_adapter);
-
 
         more_gridView_adapter = new More_GridView_Adapter(getActivity(), alllistBeen_aray);
         more_gridView.setAdapter(more_gridView_adapter);
@@ -258,27 +255,15 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
         dele_imag = (ImageView) layout.findViewById(R.id.live_china_delect);
 
+//        点击 X 号  Popwindow  消失
         dele_imag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < tablistBeen_array.size(); i++) {
-                    tablistBeen_array.get(i).setFlg(false);
-                }
-
-//                        重新 NEW  Fragment
-                fargmet_array.clear();
-                for (int i = 0; i < tablistBeen_array.size(); i++) {
-                    Path_Fragment path_fragment = new Path_Fragment(tablistBeen_array.get(i).getUrl());
-                    fargmet_array.add(path_fragment);
-                }
-                tablay_adapter.notifyDataSetChanged();
-
-                handler.sendEmptyMessage(400);
                 pop.dismiss();
-
             }
         });
 
     }
+
 
 }
