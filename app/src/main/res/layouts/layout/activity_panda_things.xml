@@ -118,6 +118,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp" />
         <ImageView
+            android:id="@+id/img_share"
             android:layout_gravity="center_vertical"
            android:layout_marginLeft="35dp"
             android:background="@mipmap/share"

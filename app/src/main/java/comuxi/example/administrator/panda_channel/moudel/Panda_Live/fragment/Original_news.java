@@ -57,8 +57,8 @@ public class Original_news extends BaseFragment implements PullToRefreshListener
     @Override
     protected void loadData() {
 
-        presenter.start();
         presenter.showData("VSET100219009515","7","panda","desc","time",i);
+        presenter.start();
     }
 
 
@@ -82,7 +82,6 @@ public class Original_news extends BaseFragment implements PullToRefreshListener
             public void run() {
                 i++;
                 loadData();
-
                 adapter.notifyDataSetChanged();
                 originalNewsPulltorefresh.setLoadMoreComplete();
 

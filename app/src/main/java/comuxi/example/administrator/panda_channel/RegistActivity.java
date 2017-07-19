@@ -48,9 +48,9 @@ public class RegistActivity extends BaseActivity {
         email_register_fragment = new Personal_email_register_Fragment();
         phone_register_fragment = new Personal_phone_register_Fragment();
         list = new ArrayList<>();
-        list.add(email_register_fragment);
-        list.add(phone_register_fragment);
 
+        list.add(phone_register_fragment);
+        list.add(email_register_fragment);
         RegistAdapter adapter = new RegistAdapter(getSupportFragmentManager(), list);
         framelayoutRegisterContent.setAdapter(adapter);
 
@@ -59,6 +59,7 @@ public class RegistActivity extends BaseActivity {
         linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
         linearLayout.setDividerDrawable(ContextCompat.getDrawable(this,
                 R.drawable.tablayout_fg));
+
         registTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.cctv_tab_sel));
         registTablayout.setTabTextColors(R.color.cctv_tab_sel,R.color.radio_black);
         registTablayout.setupWithViewPager(framelayoutRegisterContent);
@@ -68,14 +69,17 @@ public class RegistActivity extends BaseActivity {
     @OnClick({R.id.historical_image, R.id.toolbar, R.id.framelayout_register_content, R.id.activity_regist})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+
             case R.id.historical_image:
 
                 this.finish();
+
                 break;
             case R.id.toolbar:
                 break;
 
             case R.id.framelayout_register_content:
+
                 break;
             case R.id.activity_regist:
                 break;

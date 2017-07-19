@@ -83,7 +83,8 @@ public class Pandan_Live_Fragment extends BaseFragment {
         list.add(original_news);
         adapter = new PageAdapter(getFragmentManager(),list);
         liveFragmentViewpager.setAdapter(adapter);
-        liveFragmentViewpager.setCurrentItem(9);
+        liveFragmentViewpager.setCurrentItem(0);
+        liveFragmentViewpager.setOffscreenPageLimit(9);
         liveFragmentTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         liveFragmentTablayout.setTabTextColors(R.color.cctv_tab_sel,R.color.radio_black);
 

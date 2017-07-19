@@ -86,12 +86,12 @@ public class Live extends BaseFragment implements LiveContract.View {
         getContext().registerReceiver(receiver, new IntentFilter("video_title"));
         twoPageAdapter = new TwoPageAdapter(getFragmentManager(), list);
         liveBottomViewpager.setAdapter(twoPageAdapter);
-        liveBottomViewpager.setCurrentItem(2);
+        liveBottomViewpager.setCurrentItem(0);
+        liveBottomViewpager.setOffscreenPageLimit(2);
         liveCenterTablayout.setTabMode(TabLayout.MODE_FIXED);
         liveCenterTablayout.setTabTextColors(R.color.colorPrimaryDark, R.color.radio_black);
         liveCenterTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
         liveCenterTablayout.setupWithViewPager(liveBottomViewpager);
-
         new MoreLivePresenter(moreLive);
 
     }
