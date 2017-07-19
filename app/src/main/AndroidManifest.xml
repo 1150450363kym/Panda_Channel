@@ -65,11 +65,11 @@
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.UMDefault" />
-        <activity android:name=".web_view.Home_Web_View_"></activity>
+        <activity android:name=".web_view.Home_Web_View_" />
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="592e62609f06fd2fc300070a"></meta-data>
+            android:value="592e62609f06fd2fc300070a" />
 
         <activity android:name=".VideoplayerActivity" />
         <activity android:name=".LoginActivity" />
@@ -80,7 +80,9 @@
         <activity android:name=".RegistActivity" />
         <activity android:name=".moudel.GG_TV.PandaThingsActivity" />
         <activity android:name=".CehuaActivity" />
-        <activity android:name=".WebActivity"></activity>
+        <activity android:name=".WebActivity" />
+        <activity android:name=".PersonAboutActivity" />
+        <activity android:name=".PersonalFeedBackActivity"></activity>
     </application>
 
 </manifest>

@@ -131,7 +131,6 @@ public class WatchChat extends BaseFragment implements PullToRefreshListener{
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         };
         thread.start();

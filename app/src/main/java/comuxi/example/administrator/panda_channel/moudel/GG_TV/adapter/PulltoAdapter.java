@@ -52,6 +52,10 @@ public class PulltoAdapter extends BaseAdapter<GG_TV_TextBean.ListBean> {
                 }else{
 
                     Intent intent = new Intent(context,VideoplayerActivity.class);
+
+                    intent.putExtra("pid",listBean.getId());
+                    intent.putExtra("video_title",listBean.getTitle());
+                    intent.putExtra("video_img",listBean.getImage());
                     context.startActivity(intent);
                 }
             }

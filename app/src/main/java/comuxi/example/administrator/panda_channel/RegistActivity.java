@@ -48,9 +48,9 @@ public class RegistActivity extends BaseActivity {
         email_register_fragment = new Personal_email_register_Fragment();
         phone_register_fragment = new Personal_phone_register_Fragment();
         list = new ArrayList<>();
-        list.add(email_register_fragment);
-        list.add(phone_register_fragment);
 
+        list.add(phone_register_fragment);
+        list.add(email_register_fragment);
         RegistAdapter adapter = new RegistAdapter(getSupportFragmentManager(), list);
         framelayoutRegisterContent.setAdapter(adapter);
 
