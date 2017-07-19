@@ -59,6 +59,7 @@ public class RegistActivity extends BaseActivity {
         linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
         linearLayout.setDividerDrawable(ContextCompat.getDrawable(this,
                 R.drawable.tablayout_fg));
+
         registTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.cctv_tab_sel));
         registTablayout.setTabTextColors(R.color.cctv_tab_sel,R.color.radio_black);
         registTablayout.setupWithViewPager(framelayoutRegisterContent);
@@ -72,6 +73,7 @@ public class RegistActivity extends BaseActivity {
             case R.id.historical_image:
 
                 this.finish();
+
                 break;
             case R.id.toolbar:
                 break;
