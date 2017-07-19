@@ -74,6 +74,7 @@ public class PresonalSetActivity extends BaseActivity {
                 startActivity(new Intent(this,PersonalFeedBackActivity.class));
 
                 break;
+
             case R.id.personal_set_udpate_layout:
                 break;
             case R.id.personal_set_ping_layout:
