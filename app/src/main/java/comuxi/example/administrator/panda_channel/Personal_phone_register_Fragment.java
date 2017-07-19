@@ -108,6 +108,7 @@ public class Personal_phone_register_Fragment extends BaseFragment {
     @Override
     protected void init(View view) {
 
+
     }
 
     @Override
