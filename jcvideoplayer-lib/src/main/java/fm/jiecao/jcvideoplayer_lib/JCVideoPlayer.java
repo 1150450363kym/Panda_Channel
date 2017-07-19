@@ -32,6 +32,14 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import fm.jiecao.jcvideoplayer_lib.JCMediaManager;
+import fm.jiecao.jcvideoplayer_lib.JCResizeTextureView;
+import fm.jiecao.jcvideoplayer_lib.JCUserAction;
+import fm.jiecao.jcvideoplayer_lib.JCUserActionStandard;
+import fm.jiecao.jcvideoplayer_lib.JCUtils;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+
 /**
  * Created by Nathen on 16/7/30.
  */

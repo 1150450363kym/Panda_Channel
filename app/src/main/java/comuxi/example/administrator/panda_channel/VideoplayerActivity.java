@@ -1,10 +1,21 @@
 package comuxi.example.administrator.panda_channel;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.RelativeLayout;
+
+import com.bumptech.glide.Glide;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
+import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 public class VideoplayerActivity extends BaseActivity {
 
-    @BindView(R.id.my_jiecao_video_play)
+    @BindView(R.id.my_videoplayer)
     fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard myJiecaoVideoPlay;
     @BindView(R.id.activity_videoplayer)
     RelativeLayout activityVideoplayer;
@@ -22,6 +33,8 @@ public class VideoplayerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+        Intent intent = getIntent();
 
         String pid = intent.getStringExtra("pid");
         String video_title = intent.getStringExtra("video_title");
