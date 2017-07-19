@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/path_item_linerlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/china_live_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:background="@mipmap/umeng_socialize_share_pic" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@id/path_item_linerlay"
+        android:id="@+id/china_live_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="[正在直播]八达岭四楼"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/china_live_relati"
+        android:layout_below="@id/china_live_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/china_live_jianjie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:text="简介" />
+
+        <ImageView
+            android:id="@+id/china_live_detail_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/live_china_detail_down" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/china_live_detail_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/live_china_detail_up" />
+
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_below="@id/china_live_relati"
+        android:visibility="gone"
+        android:id="@+id/china_live_content"
+        android:layout_width="match_parent"
+        android:maxLines="4"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

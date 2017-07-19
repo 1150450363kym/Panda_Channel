@@ -27,15 +27,21 @@ public class Home_page_Rotation extends PagerAdapter{
         return view==object;
     }
 
+
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         int newPosition = position % rotation_array.size();
         container.addView(rotation_array.get(newPosition));
+
+
+
         return rotation_array.get(newPosition);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+
         container.removeView((View) object);
+
     }
 }

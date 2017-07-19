@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.China_Live_Fragment;
+import comuxi.example.administrator.panda_channel.moudel.China_Live.China_Live_Presenter;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.GG_TV_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.GG_TV_Presenter;
 import comuxi.example.administrator.panda_channel.moudel.Home.HomeFragment;
@@ -81,7 +83,7 @@ public class MainActivity extends BaseActivity {
             switch (msg.what) {
                 case 300:
                     loginImage.setVisibility(View.GONE);
-
+                    quitFullScreen();
                     startLinear.setVisibility(View.VISIBLE);
                     task.cancel();
 
@@ -104,12 +106,21 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+
+
+
         ButterKnife.bind(this);
         //设置一个初始的Fragment
         Setinitial();
 
         startLinear.setVisibility(View.GONE);
         loginHomeButton.setBackgroundColor(getResources().getColor(R.color.radio_hui));
+
+
+//        设置全屏方式
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
         timer = new Timer();
@@ -228,6 +239,10 @@ public class MainActivity extends BaseActivity {
                 china_live_fragment = (China_Live_Fragment) changeFragment(China_Live_Fragment.class, R.id.login_fragment, true, null, true);
 
 
+                new China_Live_Presenter(china_live_fragment);
+
+
+
                 break;
             case R.id.login_person_sign:
 
@@ -265,5 +280,13 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+
+    private void quitFullScreen(){
+        final WindowManager.LayoutParams attrs = getWindow().getAttributes();
+        attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setAttributes(attrs);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
 }

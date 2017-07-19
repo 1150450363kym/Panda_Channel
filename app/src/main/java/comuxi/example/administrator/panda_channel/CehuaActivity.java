@@ -32,6 +32,8 @@ public class CehuaActivity extends BaseActivity implements PullToRefreshListener
     @Override
     protected int getLayoutId() {
 
+
+
         return R.layout.activity_cehua;
     }
 

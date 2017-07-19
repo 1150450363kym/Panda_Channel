@@ -86,6 +86,8 @@ public class Home_China_Moive_Adapter extends RecyclerView.Adapter {
             title = (TextView) itemView.findViewById(R.id.look_down_title);
             data= (TextView) itemView.findViewById(R.id.look_down_data);
             time = (TextView) itemView.findViewById(R.id.movie_time);
+
+
         }
     }
 }
