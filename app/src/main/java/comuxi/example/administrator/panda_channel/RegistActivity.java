@@ -68,6 +68,7 @@ public class RegistActivity extends BaseActivity {
     @OnClick({R.id.historical_image, R.id.toolbar, R.id.framelayout_register_content, R.id.activity_regist})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+
             case R.id.historical_image:
 
                 this.finish();
