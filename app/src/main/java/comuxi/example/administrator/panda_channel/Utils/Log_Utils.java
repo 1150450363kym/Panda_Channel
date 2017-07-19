@@ -9,6 +9,7 @@ import android.util.Log;
 public class Log_Utils {
     static boolean flg = true;
 
+
     public static void log_d(String tag, String message) {
 
 

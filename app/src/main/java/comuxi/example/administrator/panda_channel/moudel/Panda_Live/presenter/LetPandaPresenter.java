@@ -35,7 +35,6 @@ public class LetPandaPresenter implements LetPandaContract.presenter {
 
                 oneView.showMsg(errorMsg);
 
-
             }
         });
     }

@@ -62,6 +62,7 @@ public class LetPanda extends BaseFragment implements PullToRefreshListener,LetP
 
         presenter.start();
         presenter.showData("VSET100332640004","7","panda","desc","time",i);
+
     }
 
 

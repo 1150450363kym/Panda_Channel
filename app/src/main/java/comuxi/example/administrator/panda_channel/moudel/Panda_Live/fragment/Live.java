@@ -91,7 +91,6 @@ public class Live extends BaseFragment implements LiveContract.View {
         liveCenterTablayout.setTabTextColors(R.color.colorPrimaryDark, R.color.radio_black);
         liveCenterTablayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
         liveCenterTablayout.setupWithViewPager(liveBottomViewpager);
-
         new MoreLivePresenter(moreLive);
 
     }
