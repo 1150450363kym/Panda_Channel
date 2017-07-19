@@ -76,6 +76,7 @@ public class RegistActivity extends BaseActivity {
                 break;
 
             case R.id.framelayout_register_content:
+
                 break;
             case R.id.activity_regist:
                 break;
