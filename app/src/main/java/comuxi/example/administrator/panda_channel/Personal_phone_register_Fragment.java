@@ -166,11 +166,6 @@ public class Personal_phone_register_Fragment extends BaseFragment {
         return false;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 
     @OnClick({R.id.hint_phone, R.id.personal_reg_imgcheck, R.id.hint_imagecheck, R.id.personal_reg_phonecheck, R.id.hint_phonecheck, R.id.hint_password, R.id.xieyi_check, R.id.personal_reg_xieyi_view, R.id.hint_xieyi, R.id.btn_register})
     public void onViewClicked(View view) {

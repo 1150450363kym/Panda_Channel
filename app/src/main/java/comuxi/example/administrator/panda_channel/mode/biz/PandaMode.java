@@ -55,4 +55,5 @@ public interface PandaMode extends BaseMode {
     //播放视频路径
     void getVideoplayer(String pid,MyHttpCallBack<VideoplayerBean> myHttpCallBack);
 
+
 }

@@ -46,7 +46,7 @@ public class WinderfulonePulltoAdapter extends BaseAdapter<WonderfulOneBean.Vide
                 Intent intent = new Intent(context, VideoplayerActivity.class);
                 intent.putExtra("pid",listBean.getVid());
                 intent.putExtra("video_title",listBean.getT());
-                intent.putExtra("video_img",listBean.getImg());
+                intent.putExtra("video_imag",listBean.getImg());
                 context.startActivity(intent);
             }
         });

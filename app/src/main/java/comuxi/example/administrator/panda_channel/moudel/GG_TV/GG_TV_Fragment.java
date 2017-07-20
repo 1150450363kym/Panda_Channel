@@ -35,31 +35,34 @@ import comuxi.example.administrator.panda_channel.moudel.Home.Adapter.Home_page_
  * Created by Administrator on 2017/7/11.
  */
 
-public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListener,GG_TV_Contract.View,ViewPager.OnPageChangeListener{
+public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListener, GG_TV_Contract.View, ViewPager.OnPageChangeListener {
 
     @BindView(R.id.login_culture_fragment_pulltorefresh)
     PullToRefreshRecyclerView loginCultureFragmentPulltorefresh;
-    private List<GG_TV_TextBean.ListBean>  list = new ArrayList<>();;
+    private List<GG_TV_TextBean.ListBean> list = new ArrayList<>();
+    ;
     private PulltoAdapter adapter;
     private ArrayList<GG_TV_TextBean.BigImgBean> bigbim_array = new ArrayList<>();
-    private ArrayList<View> rotation_array  = new ArrayList<>();
-    private   View topviewpager;
-    private LinearLayout point_ratio=null;
+    private ArrayList<View> rotation_array = new ArrayList<>();
+    private View topviewpager;
+    private LinearLayout point_ratio = null;
     private ImageView imag;
     private TextView textView;
     private Home_page_Rotation home_page_rotation;
-    private boolean time_flg  = false;
+    private boolean time_flg = false;
     private Timer timer;
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case 300:
                     pager.setCurrentItem(pager.getCurrentItem() + 1);
                     break;
                 case 400:
                     adapter.notifyDataSetChanged();
+
+
                     break;
                 case 555:
                     login_home_rotation();
@@ -71,6 +74,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
     GG_TV_Contract.presenter presenter;
     private ViewPager pager;
+
     @Override
     protected int getlayoutID() {
         return R.layout.login_culture_fragment;
@@ -80,8 +84,8 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
     protected void init(View view) {
 
 
-        Log_Utils.log_d("TAG",GG_TV_Fragment.class.getSimpleName());
-        adapter = new PulltoAdapter(getContext(),list);
+        Log_Utils.log_d("TAG", GG_TV_Fragment.class.getSimpleName());
+        adapter = new PulltoAdapter(getContext(), list);
         loginCultureFragmentPulltorefresh.setAdapter(adapter);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
         loginCultureFragmentPulltorefresh.setLayoutManager(manager);
@@ -89,10 +93,9 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
         loginCultureFragmentPulltorefresh.setLoadingMoreEnabled(true);
         loginCultureFragmentPulltorefresh.setPullRefreshEnabled(true);
         loginCultureFragmentPulltorefresh.setPullToRefreshListener(this);
-        topviewpager = LayoutInflater.from(getContext()).inflate(R.layout.top_viewpager,null);
+        topviewpager = LayoutInflater.from(getContext()).inflate(R.layout.top_viewpager, null);
+        pager = (ViewPager) topviewpager.findViewById(R.id.top_viewpager);
         loginCultureFragmentPulltorefresh.addHeaderView(topviewpager);
-
-
 
     }
 
@@ -114,10 +117,9 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
                     public void run() {
                         list.clear();
                         loadData();
-                        adapter.notifyDataSetChanged();
                         loginCultureFragmentPulltorefresh.setRefreshComplete();
                     }
-                },1000);
+                }, 1000);
             }
         });
 
@@ -133,7 +135,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
                 loadData();
                 adapter.notifyDataSetChanged();
             }
-        },1000);
+        }, 1000);
 
     }
 
@@ -153,9 +155,9 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
     @Override
     public void showMsg(String msg) {
 
-        ACache aCache =ACache.get(getContext());
+        ACache aCache = ACache.get(getContext());
         GG_TV_TextBean bean = (GG_TV_TextBean) aCache.getAsObject("GG_TV_TextBean");
-        Log_Utils.log_d("TAG",bean.getList().size()+"");
+        Log_Utils.log_d("TAG", bean.getList().size() + "");
         list.addAll(bean.getList());
         bigbim_array.addAll(bean.getBigImg());
         handler.sendEmptyMessage(400);
@@ -171,11 +173,12 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 //    轮播图的方法
 
     public void login_home_rotation() {
+//        四个点
         point_ratio = (LinearLayout) topviewpager.findViewById(R.id.top_login_home_rotation_point);
         rotation_array.clear();
         point_ratio.removeAllViews();
 
-        for (int i = 0; i <bigbim_array.size(); i++) {
+        for (int i = 0; i < bigbim_array.size(); i++) {
 
             View page_item = LayoutInflater.from(getActivity()).inflate(R.layout.login_home_rotation_item, null);
 //            轮播图的图片
@@ -199,15 +202,15 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
                 public void onClick(View v) {
 
                     ACache aCache = ACache.get(getContext());
-                    aCache.put("cache_url",bigbim_array.get(finalI).getUrl());
+                    aCache.put("cache_url", bigbim_array.get(finalI).getUrl());
                     Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra("url",bigbim_array.get(finalI).getUrl());
+                    intent.putExtra("url", bigbim_array.get(finalI).getUrl());
                     startActivity(intent);
                 }
             });
 
         }
-        pager= (ViewPager) topviewpager.findViewById(R.id.top_viewpager);
+
 
         point_ratio.getChildAt(0).setBackgroundResource(R.drawable.rotation_point_blue);
 
@@ -215,7 +218,7 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
         pager.setAdapter(home_page_rotation);
         pager.setOnPageChangeListener(this);
-        pager.setCurrentItem(10000);
+        pager.setCurrentItem(100);
 
         if (time_flg == false) {
 
@@ -227,7 +230,6 @@ public class GG_TV_Fragment extends BaseFragment implements PullToRefreshListene
 
 
     }
-
 
 
     private TimerTask task = new TimerTask() {

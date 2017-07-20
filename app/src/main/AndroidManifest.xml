@@ -75,6 +75,7 @@
 
         <activity
             android:name=".VideoplayerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="landscape" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".PersonalCenterActivity" />
