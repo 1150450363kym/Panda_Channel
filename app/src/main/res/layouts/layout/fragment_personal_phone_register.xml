@@ -25,12 +25,13 @@
             android:id="@+id/edit_phone"
             android:layout_width="match_parent"
             android:layout_height="120px"
+
            android:background="@color/radio_bai"
             android:hint="@string/regist_phone_account_hint"
             android:padding="15px"
             android:textSize="14sp"
             android:textColorHint="#c9c9c9"
-            android:textColor="@color/radio_hui"
+            android:textColor="#000"
             android:textCursorDrawable="@null" />
     </LinearLayout>
 
@@ -59,7 +60,7 @@
             android:padding="15px"
             android:textColorHint="#c9c9c9"
             android:textSize="14sp"
-            android:textColor="@color/radio_hui"
+            android:textColor="#000"
             android:textCursorDrawable="@null" />
 
         <ImageView
@@ -68,6 +69,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="30px"
             android:background="@color/radio_hui"
+            android:scaleType="fitXY"
             android:gravity="center"
             android:text="@string/forget_image_yanzhengma"
             android:layout_alignParentTop="true"
@@ -99,7 +101,7 @@
             android:padding="5dp"
             android:textColorHint="#c9c9c9"
             android:textSize="14sp"
-            android:textColor="@color/radio_hui"
+            android:textColor="#000"
             android:textCursorDrawable="@null" />
 
         <TextView
@@ -140,7 +142,7 @@
             android:textSize="14sp"
             android:textColorHint="#c9c9c9"
             android:password="true"
-            android:textColor="@color/radio_hui"
+            android:textColor="#000"
             android:textCursorDrawable="@null" />
     </LinearLayout>
 

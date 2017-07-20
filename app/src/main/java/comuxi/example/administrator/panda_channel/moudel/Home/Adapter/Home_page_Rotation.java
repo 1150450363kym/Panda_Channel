@@ -33,8 +33,6 @@ public class Home_page_Rotation extends PagerAdapter{
         int newPosition = position % rotation_array.size();
         container.addView(rotation_array.get(newPosition));
 
-
-
         return rotation_array.get(newPosition);
     }
 
