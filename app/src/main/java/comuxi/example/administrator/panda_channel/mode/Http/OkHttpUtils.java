@@ -3,13 +3,11 @@ package comuxi.example.administrator.panda_channel.mode.Http;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Set;
 
-import comuxi.example.administrator.panda_channel.Utils.ACache;
 import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import okhttp3.Call;
@@ -137,8 +135,8 @@ public class OkHttpUtils implements IHttp {
         Type type = actualTypeArguments[0];
         T t = gson.fromJson(jsonData, type);
 
-        ACache aCache = ACache.get(App.content);
-        aCache.put(t.getClass().getSimpleName(), (Serializable) t);
+//        ACache aCache = ACache.get(App.content);
+//        aCache.put(t.getClass().getSimpleName(), (Serializable) t);
         return t;
     }
 }
