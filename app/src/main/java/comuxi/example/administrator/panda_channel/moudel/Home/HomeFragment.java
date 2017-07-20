@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -239,6 +240,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             public void get_cctv_live_Click(Home_CCTV_TextBean.ListBean listBean) {
                 Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
                 Video_intent.putExtra("pid", listBean.getPid());
+                Log.e("TAG","首页pid"+listBean.getPid());
                 Video_intent.putExtra("video_title", listBean.getTitle());
                 Video_intent.putExtra("video_imag", listBean.getImage());
                 startActivity(Video_intent);
