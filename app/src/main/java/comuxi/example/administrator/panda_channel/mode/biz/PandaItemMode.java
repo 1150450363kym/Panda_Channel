@@ -115,8 +115,9 @@ public class PandaItemMode implements PandaMode {
     public void getVideoplayer(String pid, MyHttpCallBack<VideoplayerBean> myHttpCallBack) {
 
         Map<String,String> map = new HashMap<>();
-        map.put("pid",pid);
-        I_HTTP.get(Url.TV_Url,map,myHttpCallBack);
+
+        I_HTTP.get(Url.TV_Url+pid,map,myHttpCallBack);
+
     }
 
 }
