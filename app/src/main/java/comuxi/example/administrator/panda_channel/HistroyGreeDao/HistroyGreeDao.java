@@ -4,7 +4,7 @@ package comuxi.example.administrator.panda_channel.HistroyGreeDao;
 /**
  * Entity mapped to table "HISTROY_GREE_DAO".
  */
-public class HistroyGreeDao {
+public class HistroyGreeDao {//
 
     private Long id;
     private String imagpath;
