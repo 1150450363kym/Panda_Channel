@@ -208,13 +208,13 @@ public class Historical_recordActivity extends BaseActivity {
 
                             his_dp.delete(his_array.get(i));
 
-                            his_array.remove(his_array.get(i));
+
                         }
                     }
                     number = 0;
                     handler.sendEmptyMessage(300);
                     deleteHistorButton.setText("删除");
-
+//诶很烦i我和i偶
 
                     if (his_array.size() == 0) {
                         allDeleteLinear.setVisibility(View.GONE);
