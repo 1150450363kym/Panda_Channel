@@ -42,7 +42,7 @@ import comuxi.example.administrator.panda_channel.web_view.Home_Web_View_;
  */
 
 public class HomeFragment extends BaseFragment implements HomeContract.View {
-
+//
     HomeContract.presenter home_present;
     //    private ProgressDialog dialog;
     Unbinder unbinder;
