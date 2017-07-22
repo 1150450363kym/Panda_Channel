@@ -12,6 +12,10 @@ import android.view.TextureView;
  * <p>Referring Android system Video View of onMeasure method
  * <br>NOTE! Can not fullscreen relativelayout, to nest a linearlayout</p>
  * Created by Nathen
+ *
+ * shdfiohiduofhiuedfbhiuew
+ *
+ *
  * On 2016/06/02 00:01
  */
 public class JCResizeTextureView extends TextureView {
