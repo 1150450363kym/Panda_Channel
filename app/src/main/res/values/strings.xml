@@ -88,22 +88,4 @@
     <string name="regist_not_checked">未勾选《央视网网络服务使用协议》</string>
     <string name="regist_email_success">请到您的邮箱激活账号后登录，是否现在去邮箱激活</string>
 
-    <!-- 修改昵称、头像 -->
-    <string name="save">保存</string>
-    <string name="change_nickname">修改昵称</string>
-    <string name="photo_select">从手机相册选择</string>
-    <string name="photo_make">拍一张</string>
-    <string name="photo_cancle">取消</string>
-    <string name="editnickname_tips">用户昵称只能为汉字、字母、数字、下划线组成;长度为3-10个汉字(6-20个非汉字字符);不能为空;不能有禁词;敏感词;不能重复</string>
-    <string name="change_nickname_tips">您的昵称已提交审核\n\n请稍后回来确认吧</string>
-    <string name="change_photo_tips">您的头像已提交审核\n\n请稍后回来确认吧</string>
-    <string name="change_nickname_sure">我知道啦</string>
-    <string name="login_cookies">您的登录已过期，请重新登录</string>
-    <string name="whatch_photo">"熊猫频道"想访问您的相册</string>
-    <string name="whatch_camera">"熊猫频道"想访问您的相机</string>
-    <string name="watch_photo_ok">好</string>
-    <string name="watch_photo_no">不允许</string>
-    <string name="tip_null"></string>
-    <string name="login_faile">您的登录已过期，请重新登录</string>
-    <string name="request_faile_tips">服务器连接失败，请重试</string>
 </resources>

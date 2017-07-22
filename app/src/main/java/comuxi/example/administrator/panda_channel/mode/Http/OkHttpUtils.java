@@ -114,46 +114,7 @@ public class OkHttpUtils implements IHttp {
      */
 
     @Override
-    public <T> void post(String url, Map<String, String> map, final MyHttpCallBack<T> callBack) {
-
-        StringBuffer sb=new StringBuffer(url);
-        if (map !=null && map.size()>0){
-            sb.append("?");
-            Set<String> keySet = map.keySet();
-            for (String key : keySet) {
-                String value = map.get(key);
-                sb.append(key).append("=").append(value).append("&");
-            }
-            url=sb.deleteCharAt(sb.length()-1).toString();
-        }
-
-        Request request = new Request.Builder()
-                .url(url)
-                .addHeader("Referer","https://reg.cntv.cn/login/login.action")
-                .addHeader("User-Agent","CNTV_APP_CLIENT_CYNTV_MOBILE")
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, final IOException e) {
-                App.content.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        callBack.onError(404,e.getMessage());
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String jsonData = response.body().string();
-                App.content.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        callBack.onSuccess(getGeneric(jsonData,callBack));
-                    }
-                });
-            }
-        });
+    public <T> void post(String url, Map<String, String> map, MyHttpCallBack<T> callBack) {
 
     }
 

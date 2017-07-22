@@ -2,6 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:state_checked="false" android:drawable="@mipmap/collect_no" ></item>
-    <item android:state_checked="true" android:drawable="@mipmap/collect_yes"></item>
+    <item android:state_checked="false" android:drawable="@mipmap/play_fullsrcee_collect" ></item>
+    <item android:state_checked="true" android:drawable="@mipmap/play_fullsrcee_collect_true"></item>
 </selector>

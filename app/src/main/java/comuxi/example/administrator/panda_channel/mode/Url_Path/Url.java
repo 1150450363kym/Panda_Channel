@@ -52,7 +52,5 @@ public class Url {
 
     public static final String TV_Url = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
 
-    //登录
-    public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
 
 }

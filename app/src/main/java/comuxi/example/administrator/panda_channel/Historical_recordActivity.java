@@ -207,8 +207,8 @@ public class Historical_recordActivity extends BaseActivity {
 
 
                             his_dp.delete(his_array.get(i));
-                            his_array.remove(his_array.get(i));
 
+                            his_array.remove(his_array.get(i));
                         }
                     }
                     number = 0;

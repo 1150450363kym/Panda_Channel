@@ -3,7 +3,6 @@ package fm.jiecao.jcvideoplayer_lib;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.text.TextUtils;
@@ -49,18 +48,14 @@ public class PandaVedioPlayer extends JCVideoPlayer {
 
     private boolean isCollect = false;
     private static int currentPosition;
-    private Back myCallback;
 
     public PandaVedioPlayer(Context context) {
         super(context);
-
     }
 
     public PandaVedioPlayer(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-
-
 
     @Override
     public int getLayoutId() {
@@ -223,19 +218,10 @@ public class PandaVedioPlayer extends JCVideoPlayer {
                 btn_collect.setBackgroundResource(R.drawable.collect_yes);
                 //dosomething to collect
             }
-//            myCallback.setShoucang();
+
         } else if (i == R.id.btn_share) {
-
-
             //分享
             Toast.makeText(getContext(), "点击了分享", Toast.LENGTH_SHORT).show();
-
-//            myCallback.setShare();
-            Intent intent = new Intent();
-            intent.setAction("sn");
-            getContext().sendBroadcast(intent);
-
-
         } else if (i == R.id.btn_clarity) {
             CheckClarity();
         } else if (i == R.id.btn_volume) {
@@ -260,17 +246,7 @@ public class PandaVedioPlayer extends JCVideoPlayer {
         }
     }
 
-
-
-
-   public interface Back{
-        void setShoucang();
-        void setShare();
-    }
-
-    public void setCall(Back myCallback){
-        this.myCallback = myCallback;
-    }
+//
 //    private void share() {
 //
 //        UMImage image = new UMImage(VideoplayerActivity.this,video_imag);
@@ -351,7 +327,7 @@ public class PandaVedioPlayer extends JCVideoPlayer {
     }
 
     private void changeUiToNormal() {
-        Log.d(TAG, "正常状态");
+        Log.d(TAG, "正常状态正常状态正常状态正常状态正常状态正常状态正常状态正常状态正常状态");
         llTopContainer.setVisibility(View.VISIBLE);//顶部布局
         llBottomContainer.setVisibility(View.VISIBLE);//底部布局
         ivStart.setVisibility(View.VISIBLE);//播放按钮
@@ -361,7 +337,7 @@ public class PandaVedioPlayer extends JCVideoPlayer {
     }
 
     private void changeUiToShowUiPrepareing() {
-        Log.d(TAG, "准备状态");
+        Log.d(TAG, "准备状态准备状态准备状态准备状态准备状态准备状态准备状态准备状态准备状态");
         llTopContainer.setVisibility(View.VISIBLE);
         llBottomContainer.setVisibility(View.VISIBLE);
         ivStart.setVisibility(View.VISIBLE);
@@ -370,7 +346,7 @@ public class PandaVedioPlayer extends JCVideoPlayer {
     }
 
     private void changeUiToShowUiPlaying() {
-        Log.d(TAG, "播放状态");
+        Log.d(TAG, "播放状态播放状态播放状态播放状态播放状态播放状态播放状态播放状态播放状态");
         llTopContainer.setVisibility(View.VISIBLE);
         llBottomContainer.setVisibility(View.VISIBLE);
         ivStart.setVisibility(View.VISIBLE);
@@ -380,7 +356,7 @@ public class PandaVedioPlayer extends JCVideoPlayer {
     }
 
     private void changeUiToShowUiPause() {
-        Log.d(TAG, "暂停状态");
+        Log.d(TAG, "暂停状态暂停状态暂停状态暂停状态暂停状态暂停状态暂停状态暂停状态暂停状态");
         llTopContainer.setVisibility(View.VISIBLE);
         llBottomContainer.setVisibility(View.VISIBLE);
         ivStart.setVisibility(View.VISIBLE);
@@ -390,7 +366,7 @@ public class PandaVedioPlayer extends JCVideoPlayer {
     }
 
     private void changeUiToClear() {
-        Log.d(TAG, "清理ui");
+        Log.d(TAG, "清理ui清理ui清理ui清理ui清理ui清理ui清理ui清理ui清理ui清理ui清理ui");
         llTopContainer.setVisibility(View.INVISIBLE);
         llBottomContainer.setVisibility(View.INVISIBLE);
         ivStart.setVisibility(View.VISIBLE);
@@ -399,7 +375,7 @@ public class PandaVedioPlayer extends JCVideoPlayer {
     }
 
     private void changeUiToError() {
-        Log.d(TAG, "异常状态");
+        Log.d(TAG, "异常状态异常状态异常状态异常状态异常状态异常状态异常状态异常状态异常状态");
         llTopContainer.setVisibility(View.INVISIBLE);
         llBottomContainer.setVisibility(View.INVISIBLE);
         ivStart.setVisibility(View.INVISIBLE);
@@ -508,11 +484,10 @@ public class PandaVedioPlayer extends JCVideoPlayer {
                 0 - vieWidth * 1 / 8, (int) (0 - vieheight * 2.5));
     }
 
-
     public void setQHListener(QHlistener qhListener){
         this.qHlistener = qhListener;
     }
-    public interface QHlistener{
+    interface QHlistener{
         void OnQH();
     }
     private QHlistener qHlistener ;

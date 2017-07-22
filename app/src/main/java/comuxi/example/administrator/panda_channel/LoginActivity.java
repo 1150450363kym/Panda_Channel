@@ -20,19 +20,10 @@ import com.umeng.socialize.utils.SocializeUtils;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import comuxi.example.administrator.panda_channel.Utils.ACache;
-import comuxi.example.administrator.panda_channel.Utils.Log_Utils;
-import comuxi.example.administrator.panda_channel.activity.WJMMActivity;
-import comuxi.example.administrator.panda_channel.app.App;
-import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
-import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.LoginBean;
-import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
-import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 
 /**
  * Created by lenovo on 2017/7/14.
@@ -69,7 +60,6 @@ public class LoginActivity extends Activity {
     public ArrayList<SnsPlatform> platforms = new ArrayList<SnsPlatform>();
     private SHARE_MEDIA[] list = {SHARE_MEDIA.QQ, SHARE_MEDIA.SINA};
     private ProgressDialog dialog;
-    private String userName,psw,msg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +67,6 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         initPlatforms();
-
     }
 
     @OnClick({R.id.tv_toRegist, R.id.llweixinlogin, R.id.llqqlogin, R.id.llsinalogin, R.id.edit_account, R.id.hint_account, R.id.edit_password, R.id.hint_password, R.id.personal_login_forget_pwd, R.id.loding_btn, R.id.login_in_layout,R.id.personal_image})
@@ -106,52 +95,8 @@ public class LoginActivity extends Activity {
             case R.id.hint_password:
                 break;
             case R.id.personal_login_forget_pwd:
-
-                startActivity(new Intent(LoginActivity.this, WJMMActivity.class));
-
                 break;
             case R.id.loding_btn:
-
-                userName = editAccount.getText().toString().trim();
-                psw = editPassword.getText().toString().trim();
-                checkEmpty(editAccount);
-                checkEmpty(editPassword);
-
-                PandaMode mode = new PandaItemMode();
-                mode.getLogin(userName, psw, new MyHttpCallBack<LoginBean>() {
-                    @Override
-                    public void onSuccess(LoginBean loginBean) {
-
-                        ACache aCache = ACache.get(App.content);
-                        aCache.put("loginBean",loginBean);
-
-//                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                        msg = loginBean.getErrMsg();
-                        if (msg.equals("成功")) {
-
-                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-
-
-                            Intent intent = getIntent();
-
-                            intent.putExtra("userid",loginBean.getUser_seq_id());
-                            setResult(1000,intent);
-                            finish();
-//                            LoginActivity.this.finish();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    @Override
-                    public void onError(int errorCode, String errorMsg) {
-
-                        Toast.makeText(LoginActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-
-
                 break;
             case R.id.login_in_layout:
                 break;
@@ -180,13 +125,7 @@ public class LoginActivity extends Activity {
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
             SocializeUtils.safeCloseDialog(dialog);
-
-
             Toast.makeText(LoginActivity.this, "成功了", Toast.LENGTH_LONG).show();
-
-            Set<String> strings = data.keySet();
-            Log_Utils.log_d("TAG",strings.toString());
-
         }
 
         /**
@@ -220,7 +159,14 @@ public class LoginActivity extends Activity {
             }
         }
     }
+    //需回调此方法
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        UMShareAPI.get(LoginActivity.this).onActivityResult(requestCode, resultCode, data);
+    }
 
     private void denglu() {
 
@@ -241,16 +187,6 @@ public class LoginActivity extends Activity {
                 Log.e("TAG", uid + "---" + name + "---" + gender + "---" + iconurl);
 
                 Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-
-//                Intent in =new Intent(LoginActivity.this,PersonalCenterActivity.class);
-                Intent intent = getIntent();
-                intent.putExtra("name",name);
-                setResult(2000,intent);
-                finish();
-
-
-//                startActivity(in);
-
             }
 
             @Override
@@ -266,27 +202,4 @@ public class LoginActivity extends Activity {
             }
         });
     }
-
-    //需回调此方法
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        UMShareAPI.get(LoginActivity.this).onActivityResult(requestCode, resultCode, data);
-    }
-    /**
-     * 检查是否为空
-     *
-     * @param editText
-     * @return
-     */
-    private boolean checkEmpty(EditText editText) {
-        String testTxt = editText.getText().toString();
-        if (testTxt == null || "".equals(testTxt)) {
-            return false;
-        }
-        return true;
-    }
-
 }
