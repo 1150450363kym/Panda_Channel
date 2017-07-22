@@ -33,6 +33,7 @@ public class HomePresenter implements HomeContract.presenter {
 
             homeview.setResult(home_data_textBean);
 
+
             }
 
             @Override

@@ -162,6 +162,7 @@ public class VideoplayerActivity extends BaseActivity  {
 
     private void shoucang() {
 
+        
 
     }
 
@@ -183,7 +184,6 @@ public class VideoplayerActivity extends BaseActivity  {
 
                         Log.e("TAG", "onResult");
                     }
-
 
                     @Override
                     public void onError(SHARE_MEDIA share_media, Throwable throwable) {

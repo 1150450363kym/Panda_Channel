@@ -56,7 +56,6 @@ public class PersonInfoActivity extends BaseActivity {
     // 裁剪后图片的宽(X)和高(Y),480 X 480的正方形。
     private static int output_X = 480;
     private static int output_Y = 480;
-     Intent in;
 
     @Override
     protected int getLayoutId() {
@@ -67,7 +66,6 @@ public class PersonInfoActivity extends BaseActivity {
     protected void initView() {
 
         Intent intent = getIntent();
-        in = getIntent();
         String username = intent.getStringExtra("username");
         tvInfoUsername.setText(username);
     }
@@ -104,7 +102,7 @@ public class PersonInfoActivity extends BaseActivity {
 
                 ACache acache= ACache.get(App.content);
                 acache.clear();
-
+                Intent in = getIntent();
                 setResult(3000,in);
                 finish();
 

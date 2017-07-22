@@ -1,5 +1,10 @@
 package comuxi.example.administrator.panda_channel.moudel.Home.Adapter;
 
+//我认为自己是外向的人   大惊小怪  话多 要求多的人  勤劳  慷慨  小心谨慎  令人愉快 不受传统 亲和力 效力
+// 2 3 7 11 5
+//
+//
+//
 
 import android.os.Handler;
 import android.os.Message;
@@ -251,7 +256,10 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         switch (getItemViewType(position)) {
             case ratation_type:
                 Ration_viewHolder ration_view = (Ration_viewHolder) holder;
+
+
                 Home_Data_TextBean.DataBean.BigImgBean bigImgBean = (Home_Data_TextBean.DataBean.BigImgBean) o;
+
                 login_home_rotation(ration_view);
 
                 break;
@@ -260,7 +268,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 Home_Data_TextBean.DataBean.AreaBean areaBean = (Home_Data_TextBean.DataBean.AreaBean) o;
 
                 Wondelful_viewHolder wonde_holder = (Wondelful_viewHolder) holder;
-
                 LinearLayoutManager linmanage = new LinearLayoutManager(activity);
                 linmanage.setOrientation(LinearLayoutManager.HORIZONTAL);
                 wonde_holder.wonderful_recycel.setLayoutManager(linmanage);
@@ -324,7 +331,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                     @Override
                     public void get_look_dow_Onclick(View view, int lok_down_postion) {
 
-                        recy_onclick.get_pandan_look_down_Click(Look_Down_Array.get(lok_down_postion));
+                        recy_onclick.get_pandan_look_down_Click(Look_Down_Array.get(position));
                     }
                 });
 
@@ -381,7 +388,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 wall_adapter.set_China_live_click(new Home_China_Live_Adapter.China_live_Onclick() {
                     @Override
                     public void get_china_live(View view, int great_postion) {
-
                         recy_onclick.get_china_live_Click(chinaliveBean.getList().get(great_postion));
                     }
                 });
@@ -461,13 +467,18 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                                 chian_viewholder.china_movie_recyclee.setLayoutManager(china_movie_mange);
                                 Home_China_Moive_Adapter moive_adapter = new Home_China_Moive_Adapter(activity, movie_Array);
                                 chian_viewholder.china_movie_recyclee.setAdapter(moive_adapter);
+
+
                                 moive_adapter.set_China_movie_click(new Home_China_Moive_Adapter.Movie_live_Onclick() {
                                     @Override
                                     public void get_movie_live(View view, int movie_postion) {
+
                                        recy_onclick.get_movie_live_Click(movie_Array.get(movie_postion));
 
                                     }
                                 });
+
+
 
                             }
                         });

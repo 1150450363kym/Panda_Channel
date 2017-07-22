@@ -95,7 +95,6 @@ public class PersonalCenterActivity extends Activity {
 
             case R.id.user_headimg:
 
-
 //                startActivity(new Intent(PersonalCenterActivity.this,PersonInfoActivity.class));
                 break;
         }
@@ -125,7 +124,6 @@ public class PersonalCenterActivity extends Activity {
                 dianjilogin.setText(name);
                 break;
             case 3000:
-
                 dianjilogin.setText("点击登录");
                 break;
         }

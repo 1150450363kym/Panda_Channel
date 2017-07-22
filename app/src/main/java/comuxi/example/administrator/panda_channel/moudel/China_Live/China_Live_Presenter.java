@@ -33,6 +33,7 @@ public class China_Live_Presenter implements China_Live_Contract.presenter {
 
                 chian_view.getNetData(china_live_path_textBean);
 
+
             }
 
             @Override

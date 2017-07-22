@@ -1,13 +1,12 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/7/17.
  */
 
-public class Chian_item_Path_TextBean implements Serializable {
+public class Chian_item_Path_TextBean {
 
     private List<LiveBean> live;
 
@@ -19,7 +18,7 @@ public class Chian_item_Path_TextBean implements Serializable {
         this.live = live;
     }
 
-    public static class LiveBean implements Serializable{
+    public static class LiveBean {
         /**
          * title : 迷魂台
          * brief : 张家界风景区位于湖南省张家界市，武陵源风景名胜区南部，这里的异峰巧石、山泉飞瀑、深林奇树及珍禽异兽共同组成了一幅幅相映成趣、妩媚动人的自然绝景。
