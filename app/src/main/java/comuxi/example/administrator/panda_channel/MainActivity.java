@@ -253,6 +253,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(App.content,CehuaActivity.class));
                 break;
 
+
         }
 
     }
