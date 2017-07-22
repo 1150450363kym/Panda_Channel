@@ -6,6 +6,7 @@ import de.greenrobot.daogenerator.Schema;
 
 /**
  * Created by Administrator on 2017/7/21.
+ * 饿了；福美来；分明泊客网
  */
 
 public class HistroyGreeDao {
