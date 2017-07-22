@@ -53,8 +53,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 //                添加到FragmentragmentMange中
                 transaction.add(layoutId, currentFragment, simpleName);
 
-
-
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -89,6 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         transaction.commit();
 
         return lastFragment;
+
 
     }
 

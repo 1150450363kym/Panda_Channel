@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -19,6 +20,8 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
+import comuxi.example.administrator.panda_channel.Utils.ACache;
+import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Http.HttpFactroy;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Chian_item_Path_TextBean;
@@ -32,6 +35,8 @@ public class Path_Fragment extends BaseFragment {
     @BindView(R.id.Chian_live_path_xrecycle)
     XRecyclerView ChianLivePathXrecycle;
     Unbinder unbinder;
+    @BindView(R.id.progress_bar_id)
+    RelativeLayout progressBarId;
     private String url;
     ArrayList<Chian_item_Path_TextBean.LiveBean> list_array = new ArrayList<>();
     China_Live_Xrecycle live_xrecycle;
@@ -62,10 +67,8 @@ public class Path_Fragment extends BaseFragment {
     @Override
     protected void init(View view) {
 
-
-
+        progressBarId.setVisibility(View.VISIBLE);
     }
-
 
 
     @Override
@@ -80,12 +83,24 @@ public class Path_Fragment extends BaseFragment {
                 List<Chian_item_Path_TextBean.LiveBean> live = chian_item_path_textBean.getLive();
                 list_array.addAll(live);
 
+
                 handler.sendEmptyMessage(300);
 
+                progressBarId.setVisibility(View.GONE);
             }
 
             @Override
             public void onError(int errorCode, String errorMsg) {
+
+                ACache aCache = ACache.get(App.content);
+                Chian_item_Path_TextBean china_live_path_textBean = (Chian_item_Path_TextBean) aCache.getAsObject("Chian_item_Path_TextBean");
+
+                if (china_live_path_textBean != null) {
+                    list_array.addAll(china_live_path_textBean.getLive());
+
+                    handler.sendEmptyMessage(300);
+
+                }
 
             }
 
@@ -94,19 +109,43 @@ public class Path_Fragment extends BaseFragment {
 
     }
 
-    private void  setAdapter(){
+    private void setAdapter() {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         ChianLivePathXrecycle.setLayoutManager(layoutManager);
-
-
-        live_xrecycle= new China_Live_Xrecycle(getActivity(),list_array);
+        live_xrecycle = new China_Live_Xrecycle(getActivity(), list_array);
         ChianLivePathXrecycle.setAdapter(live_xrecycle);
+
+        ChianLivePathXrecycle.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+
+
+
+                live_xrecycle.notifyDataSetChanged();
+                ChianLivePathXrecycle.refreshComplete();
+
+
+
+
+
+
+            }
+
+            @Override
+            public void onLoadMore() {
+
+
+            }
+        });
+        ChianLivePathXrecycle.setLoadingMoreEnabled(false);
+
+
+
 
 
     }
-
 
 
     @Override
