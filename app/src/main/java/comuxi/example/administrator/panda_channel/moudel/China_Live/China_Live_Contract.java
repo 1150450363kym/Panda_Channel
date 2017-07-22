@@ -10,7 +10,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live
  *  将 Viow 是图中 能改变的 东西 全部 抽调成为 接口
 
  */
-
+//
 public interface China_Live_Contract {
     interface View extends BaseView<presenter> {
 

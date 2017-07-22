@@ -19,7 +19,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Look_Down_
  * Created by Administrator on 2017/7/13.
  * 熊猫观察 的Adapter
  */
-
+//
 public class Look_Down_Adapter extends RecyclerView.Adapter {
     public interface Look_dow_Onclick {
 

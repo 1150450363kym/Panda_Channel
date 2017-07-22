@@ -19,7 +19,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
  * Created by Administrator on 2017/7/13.
  *
  */
-
+//
 public class Home_Great_Wall_Adapter extends RecyclerView.Adapter {
 
     public interface Great_live_Onclick{

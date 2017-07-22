@@ -80,7 +80,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         }
     };
 
-
+//
     @Override
     protected int getlayoutID() {
         return R.layout.login_home_fragment;

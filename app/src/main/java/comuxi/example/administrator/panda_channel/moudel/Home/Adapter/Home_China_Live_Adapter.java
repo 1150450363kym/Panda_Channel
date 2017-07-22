@@ -18,7 +18,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
 /**
  * Created by Administrator on 2017/7/13.
  */
-
+//
 public class Home_China_Live_Adapter extends RecyclerView.Adapter {
 
     public interface China_live_Onclick{

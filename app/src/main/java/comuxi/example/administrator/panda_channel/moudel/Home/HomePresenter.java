@@ -8,7 +8,7 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 /**
  * Created by Administrator on 2017/7/11.
  */
-
+//
 public class HomePresenter implements HomeContract.presenter {
     private HomeContract.View homeview;
     private PandaMode pandaMode; //网络请求的顶层接口

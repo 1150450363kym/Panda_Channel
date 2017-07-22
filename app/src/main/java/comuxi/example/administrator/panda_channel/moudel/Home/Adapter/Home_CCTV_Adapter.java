@@ -18,7 +18,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_CCTV_
 /**
  * Created by Administrator on 2017/7/13.
  */
-
+//
 public class Home_CCTV_Adapter extends RecyclerView.Adapter {
 
     public interface CCTV_live_Onclick{

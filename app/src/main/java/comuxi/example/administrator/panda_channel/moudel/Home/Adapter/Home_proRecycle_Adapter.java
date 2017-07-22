@@ -41,7 +41,7 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
  * Created by Administrator on 2017/7/12.
  * 首页适配器
  */
-
+//
 public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements ViewPager.OnPageChangeListener {
 
     public interface x_Recy_Onclick {

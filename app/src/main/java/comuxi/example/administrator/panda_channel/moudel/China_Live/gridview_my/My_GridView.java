@@ -20,7 +20,7 @@ import comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapte
 /**
  * Created by Administrator on 2017/7/18.\
  */
-
+//
 public class My_GridView extends GridView {
     private String TAG = "DragGridView";
     private WindowManager windowManager;

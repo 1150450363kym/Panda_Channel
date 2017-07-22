@@ -14,7 +14,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
  * Created by Administrator on 2017/7/11.
  * 将 Viow 是图中 能改变的 东西 全部 抽调成为 接口额额
  */
-//
+////
 public interface HomeContract {
     interface View extends BaseView<presenter> {
         void shouProgress();//展示 进度条

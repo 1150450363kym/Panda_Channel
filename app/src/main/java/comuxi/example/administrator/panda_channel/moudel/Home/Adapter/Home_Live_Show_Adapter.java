@@ -20,7 +20,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
  * <p>
  * 熊猫观察的Adapter
  */
-
+//
 public class Home_Live_Show_Adapter extends RecyclerView.Adapter {
 
     public interface panda_live_Onclick{

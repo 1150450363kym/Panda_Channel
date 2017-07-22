@@ -19,7 +19,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
  * Created by Administrator on 2017/7/13.
  * 精彩推荐的Adapter
  */
-
+//
 public class Home_Wonderful_Adapter extends RecyclerView.Adapter {
 
     //     精彩推荐的  监听接口
