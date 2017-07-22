@@ -115,10 +115,6 @@ public class VideoplayerActivity extends BaseActivity {
                             Toast.makeText(VideoplayerActivity.this, "已取消至收藏", Toast.LENGTH_SHORT).show();
                         }
 
-
-
-
-
                     }
 
                     @Override

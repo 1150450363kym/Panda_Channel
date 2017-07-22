@@ -1,7 +1,6 @@
 package comuxi.example.administrator.panda_channel;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
@@ -20,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
+import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.China_Live_Fragment;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.China_Live_Presenter;
 import comuxi.example.administrator.panda_channel.moudel.GG_TV.GG_TV_Fragment;
@@ -241,18 +241,18 @@ public class MainActivity extends BaseActivity {
 
                 new China_Live_Presenter(china_live_fragment);
 
-
-
                 break;
             case R.id.login_person_sign:
 
-                startActivity(new Intent(this,PersonalCenterActivity.class));
+                startActivity(new Intent(App.content,PersonalCenterActivity.class));
                 break;
 
             case R.id.login_hudong_sign:
 
 
-                startActivity(new Intent(this,CehuaActivity.class));
+                startActivity(new Intent(App.content,CehuaActivity.class));
+                break;
+
         }
 
     }
@@ -275,12 +275,12 @@ public class MainActivity extends BaseActivity {
         return super.onKeyUp(keyCode, event);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        // TODO: add setContentView(...) invocation
+//        ButterKnife.bind(this);
+//    }
 
 
     private void quitFullScreen(){
