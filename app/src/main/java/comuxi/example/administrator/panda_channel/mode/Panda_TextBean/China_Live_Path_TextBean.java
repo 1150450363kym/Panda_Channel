@@ -1,12 +1,13 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/7/17.
  */
 
-public class China_Live_Path_TextBean  {
+public class China_Live_Path_TextBean implements Serializable {
 
     private List<TablistBean> tablist;
     private List<AlllistBean> alllist;
@@ -31,7 +32,7 @@ public class China_Live_Path_TextBean  {
 
 
 
-    public static class TablistBean {
+    public static class TablistBean  implements Serializable{
         /**
          * title : 八达岭
          * url : http://www.ipanda.com/kehuduan/liebiao/badaling/index.json
@@ -88,7 +89,7 @@ public class China_Live_Path_TextBean  {
         }
     }
 
-    public static class AlllistBean {
+    public static class AlllistBean  implements Serializable{
         /**
          * title : 凤凰古城
          * url : http://www.ipanda.com/kehuduan/liebiao/fenghuanggucheng/index.json

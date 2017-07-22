@@ -46,4 +46,23 @@
 
     </comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
 
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/progress_bar_id"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/diglog_progress">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminateDrawable="@drawable/progressbar_" />
+
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

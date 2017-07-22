@@ -20,6 +20,10 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
 import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 
+/**
+ * 原创互动 页面
+ */
+
 public class CehuaActivity extends BaseActivity implements PullToRefreshListener {
 
     @BindView(R.id.historical_image)
@@ -31,8 +35,6 @@ public class CehuaActivity extends BaseActivity implements PullToRefreshListener
 
     @Override
     protected int getLayoutId() {
-
-
 
         return R.layout.activity_cehua;
     }

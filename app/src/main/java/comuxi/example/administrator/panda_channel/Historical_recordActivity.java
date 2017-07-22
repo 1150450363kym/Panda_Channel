@@ -205,9 +205,8 @@ public class Historical_recordActivity extends BaseActivity {
                     for (int i = his_array.size() - 1; i >= 0; i--) {
                         if (his_array.get(i).isFlg_bulen()) {
 
-
                             his_dp.delete(his_array.get(i));
-                            his_array.remove(his_array.get(i));
+                            his_array.remove(i);
 
                         }
                     }
@@ -215,12 +214,12 @@ public class Historical_recordActivity extends BaseActivity {
                     handler.sendEmptyMessage(300);
                     deleteHistorButton.setText("删除");
 
-
                     if (his_array.size() == 0) {
                         allDeleteLinear.setVisibility(View.GONE);
                         historicalEdit.setText("编辑");
                         historicalEdit.setVisibility(View.GONE);
                         hisImageWu.setVisibility(View.VISIBLE);
+
                     }
                 }
 

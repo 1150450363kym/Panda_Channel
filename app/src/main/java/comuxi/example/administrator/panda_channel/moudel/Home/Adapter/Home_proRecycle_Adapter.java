@@ -331,7 +331,7 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                     @Override
                     public void get_look_dow_Onclick(View view, int lok_down_postion) {
 
-                        recy_onclick.get_pandan_look_down_Click(Look_Down_Array.get(position));
+                        recy_onclick.get_pandan_look_down_Click(Look_Down_Array.get(lok_down_postion));
                     }
                 });
 
