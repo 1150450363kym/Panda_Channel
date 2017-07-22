@@ -27,7 +27,6 @@ import butterknife.OnClick;
 
 /**
  * Created by lenovo on 2017/7/14.
- * 登录页面
  */
 
 public class LoginActivity extends Activity {

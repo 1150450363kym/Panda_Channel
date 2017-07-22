@@ -158,6 +158,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                             Log.e("TAG", "已经添加");
 
                             break;
+
                         } else {
                             histroTextBean.setData("");
                             histroTextBean.setImagpath(bigImgBean.getImage());
@@ -184,24 +185,29 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                 Video_intent.putExtra("video_imag", home_data.getImage());
                 startActivity(Video_intent);
 
-                //                    精彩推荐 存入 历史记录的数据库
-//                for (int i = 0; i < histroTextBeen_list.size(); i++) {
-//
-//                    if (home_data.getTitle().equals(histroTextBeen_list.get(i).getName())) {
-//                        Log.e("TAG", "已经添加");
-//
-//                    } else {
-                        histroTextBean.setData("000");
+                //
+                for (int i = 0; i < histroTextBeen_list.size(); i++) {
+
+                    String name = histroTextBeen_list.get(i).getName();
+                    String title = home_data.getTitle();
+
+                    Log.e("TAG","------------------------------"+title);
+                    Log.e("TAG","------------------------------"+name);
+                    if (title.equals(name)) {
+                        Log.e("TAG","++++++++++++++++++++++++++"+title);
+                        Log.e("TAG","++++++++++++++++++++++++++"+name);
+
+                    } else {
+//                        histroTextBean.setData("000");
                         histroTextBean.setImagpath(home_data.getImage());
                         histroTextBean.setMoviepath(home_data.getPid());
                         histroTextBean.setName(home_data.getTitle());
-
                         getdp.insert(histroTextBean);
+                        Log.e("TAG","===============================");
 
-//
-//                    }
-//
-//                }
+                    }
+
+                }
 
 
             }

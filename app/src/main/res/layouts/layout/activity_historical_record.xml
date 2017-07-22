@@ -33,6 +33,7 @@
                 android:textSize="18dp" />
 
             <TextView
+
                 android:id="@+id/historical_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
+    <ListView
 
 
     <LinearLayout
@@ -98,7 +100,5 @@
         android:layout_centerInParent="true"
         android:background="@mipmap/no_his"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
+        android:layout_height="match_parent"></ListView>
 </RelativeLayout>

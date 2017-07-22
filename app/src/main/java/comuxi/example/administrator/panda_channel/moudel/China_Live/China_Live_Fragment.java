@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +28,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
-import comuxi.example.administrator.panda_channel.Utils.ACache;
-import comuxi.example.administrator.panda_channel.app.App;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapter.China_Tablayout_PageAdapter;
 import comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapter.GridView_Adapter;
@@ -42,7 +39,7 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeable
  * Created by Administrator on 2017/7/11.
  */
 
-public class China_Live_Fragment extends BaseFragment implements China_Live_Contract.View {
+public class China_Live_Fragment extends BaseFragment implements China_Live_Contract.View{
     @BindView(R.id.china_live_tablayout)
     TabLayout chinaLiveTablayout;
 
@@ -57,9 +54,6 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     RelativeLayout loginChinaLiveRelation;
     @BindView(R.id.china_live_tablayoutlin)
     LinearLayout chinaLiveTablayoutlin;
-    @BindView(R.id.progress_bar_id)
-    RelativeLayout progressBarId;
-    Unbinder unbinder1;
 
     private ArrayList<Fragment> fargmet_array = new ArrayList<>();
     private ArrayList<China_Live_Path_TextBean.TablistBean> tablistBeen_array = new ArrayList<>();
@@ -92,14 +86,11 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
     @Override
     protected void init(View view) {
-        progressBarId.setVisibility(View.VISIBLE);
-
     }
 
     @Override
     protected void loadData() {
         presenter.start();
-
         tablay_adapter = new China_Tablayout_PageAdapter(getActivity().getSupportFragmentManager(), fargmet_array, tablistBeen_array);
         chinaLiveViewpage.setAdapter(tablay_adapter);
         chinaLiveTablayout.setupWithViewPager(chinaLiveViewpage);
@@ -107,31 +98,21 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 
     @Override
     public void getMessage(String message) {
-
-        ACache aCache = ACache.get(App.content);
-        China_Live_Path_TextBean china_live_path_textBean = (China_Live_Path_TextBean) aCache.getAsObject("China_Live_Path_TextBean");
-
-        if (china_live_path_textBean != null) {
-
-            tablistBeen_array.addAll(china_live_path_textBean.getTablist());
-
-            alllistBeen_aray.addAll(china_live_path_textBean.getAlllist());
-
-            for (int i = 0; i < tablistBeen_array.size(); i++) {
-                Path_Fragment path_fragment = new Path_Fragment(china_live_path_textBean.getTablist().get(i).getUrl());
-                fargmet_array.add(path_fragment);
-            }
-
-            handler.sendEmptyMessage(300);
-
-        } else {
-            Toast.makeText(App.content, "缓存直播中国", Toast.LENGTH_SHORT).show();
-        }
-
-
     }
 
     @Override
@@ -153,8 +134,6 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
         handler.sendEmptyMessage(300);
 
-        progressBarId.setVisibility(View.GONE);
-
     }
 
     @Override
@@ -170,7 +149,8 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     private More_GridView_Adapter more_gridView_adapter;
     private RelativeLayout popwindow_parent;
     private int mMargin = 6;
-
+    // 贝塞尔曲线中间过程点坐标
+//    private float[] mCurrentPosition = new float[2];
 
     @OnClick(R.id.chian_live_add)
     public void onViewClicked() {
@@ -233,6 +213,8 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
                     });
 
 
+
+
 //不可编辑
                 } else {
 
@@ -287,17 +269,4 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder1 = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder1.unbind();
-    }
 }
