@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-<com.jcodecraeer.xrecyclerview.XRecyclerView
-    android:layout_marginTop="7dp"
-    android:id="@+id/my_xrecycle_home"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-
-</com.jcodecraeer.xrecyclerview.XRecyclerView>
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/my_xrecycle_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="7dp"></com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/progress_bar_id"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/diglog_progress">
 
-</LinearLayout>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminateDrawable="@drawable/progressbar_" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

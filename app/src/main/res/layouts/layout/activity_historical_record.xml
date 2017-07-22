@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-
     tools:context="comuxi.example.administrator.panda_channel.Historical_recordActivity">
 
     <android.support.v7.widget.Toolbar
@@ -51,37 +50,55 @@
 
     <ListView
 
-        android:id="@+id/historical_listview"
-        android:layout_below="@id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
 
     <LinearLayout
-        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:id="@+id/all_delete_linear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2">
 
         <TextView
-            android:textColor="@color/colorPrimaryDark"
-            android:text="全选"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
-        <TextView
-            android:text="|"
+            android:id="@+id/all_histor_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textColor="@color/colorPrimaryDark"
-            android:text="删除"
-            android:textSize="20dp"
-            android:gravity="center"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
+            android:gravity="center"
+            android:text="全选"
+            android:textSize="25dp" />
+
+
+        <TextView
+            android:id="@+id/delete_histor_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="删除"
+            android:textSize="25dp" />
+
     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_above="@id/all_delete_linear"
+        android:id="@+id/historical_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp">
+
+    </android.support.v7.widget.RecyclerView>
 
 
+
+    <ImageView
+        android:id="@+id/his_image_wu"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/no_his"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
 </RelativeLayout>

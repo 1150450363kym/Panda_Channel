@@ -36,6 +36,7 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 
 /**
  * Created by lenovo on 2017/7/14.
+ * 登录页面
  */
 
 public class LoginActivity extends Activity {
