@@ -13,7 +13,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-
+    <!-- 读取 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 写入权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 创建与删除权限 -->
+    <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS" />
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -87,7 +92,10 @@
         <activity android:name=".CehuaActivity" />
         <activity android:name=".WebActivity" />
         <activity android:name=".PersonAboutActivity" />
-        <activity android:name=".PersonalFeedBackActivity"></activity>
+        <activity android:name=".activity.PersonalNickNameActivity"/>
+        <activity android:name=".activity.WJMMActivity"/>
+        <activity android:name=".PersonalFeedBackActivity" />
+        <activity android:name=".activity.PersonInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -9,10 +9,5 @@
     tools:context="VideoplayerActivity">
 
 
-    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
-        android:id="@+id/my_videoplayer"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
 
 </RelativeLayout>

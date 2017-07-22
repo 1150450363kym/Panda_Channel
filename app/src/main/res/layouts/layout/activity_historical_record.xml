@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+
     tools:context="comuxi.example.administrator.panda_channel.Historical_recordActivity">
 
     <android.support.v7.widget.Toolbar
@@ -54,4 +55,33 @@
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/colorPrimaryDark"
+            android:text="全选"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+        <TextView
+            android:text="|"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/colorPrimaryDark"
+            android:text="删除"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+    </LinearLayout>
+
+
 </RelativeLayout>

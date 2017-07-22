@@ -1,6 +1,9 @@
 package comuxi.example.administrator.panda_channel;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -27,7 +30,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class VideoplayerActivity extends BaseActivity {
+public class VideoplayerActivity extends BaseActivity  {
 
 //    @BindView(R.id.my_videoplayer)
 //    JCVideoPlayerStandard myJiecaoVideoPlay;
@@ -40,6 +43,16 @@ public class VideoplayerActivity extends BaseActivity {
     String video_title,pid,video_imag,url;
 
     private List<VideoplayerBean.VideoBean.ChaptersBean> list;
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+//            Toast.makeText(VideoplayerActivity.this, "aaa", Toast.LENGTH_SHORT).show();
+
+            Log_Utils.log_d("TAG","aaaaaaaaaaaaaaaaa");
+            share();
+        }
+    };
 
     /**
      * 视频播放的 类
@@ -57,6 +70,8 @@ public class VideoplayerActivity extends BaseActivity {
         list = new ArrayList<>();
         Intent intent = getIntent();
 
+
+        this.registerReceiver(receiver,new IntentFilter("sn"));
         pid = intent.getStringExtra("pid");
         video_title = intent.getStringExtra("video_title");
         video_imag = intent.getStringExtra("video_imag");
@@ -87,10 +102,12 @@ public class VideoplayerActivity extends BaseActivity {
                         url,null,
                         PandaVedioPlayer.class, "...");
 
+
             }
         });
 
-
+//        PandaVedioPlayer player = new PandaVedioPlayer(this);
+//        player.setCall(this);
 
         if (video_imag == null) {
             video_imag = "http://img4.jiecaojingxuan.com/2016/11/23/00b026e7-b830-4994-bc87-38f4033806a6.jpg@!640_360";
@@ -101,11 +118,6 @@ public class VideoplayerActivity extends BaseActivity {
 //        Glide.with(this)
 //                .load(list.get(0).getImage())
 //                .into(myJiecaoVideoPlay.ivThumb);
-        String s = "http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095_h264418000nero_aac32.mp4";
-
-
-
-
     }
 
     @Override
@@ -115,13 +127,13 @@ public class VideoplayerActivity extends BaseActivity {
 
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        unregisterReceiver(receiver);
 //        myJiecaoVideoPlay.clearSavedProgress(this, "");
     }
-
 
 //    @OnClick({R.id.videoplayer_share, R.id.videoplayer_shoucang})
 //    public void onViewClicked(View view) {
@@ -150,6 +162,7 @@ public class VideoplayerActivity extends BaseActivity {
 
     private void shoucang() {
 
+        
 
     }
 
@@ -194,6 +207,20 @@ public class VideoplayerActivity extends BaseActivity {
         UMShareAPI.get(VideoplayerActivity.this).onActivityResult(requestCode, resultCode, data);
 
     }
+
+//    @Override
+//    public void setShoucang() {
+//
+//    }
+//
+//    @Override
+//    public void setShare() {
+//
+////        share();
+//
+//        Toast.makeText(VideoplayerActivity.this, "aaaaaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
+//    }
+
 
 //    @Override
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {

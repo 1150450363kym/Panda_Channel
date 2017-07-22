@@ -18,7 +18,7 @@ import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JCFullScreenActivity extends Activity implements PandaVedioPlayer.QHlistener{
+public class JCFullScreenActivity extends Activity implements PandaVedioPlayer.QHlistener {
   /**
    * 刚启动全屏时的播放状态
    */
