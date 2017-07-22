@@ -17,4 +17,5 @@
             android:type="sweep"
             android:useLevel="false" />
     </shape>
+    <!---->
 </animated-rotate>
