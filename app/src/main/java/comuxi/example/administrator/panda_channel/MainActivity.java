@@ -238,7 +238,7 @@ public class MainActivity extends BaseActivity {
 
                 china_live_fragment = (China_Live_Fragment) changeFragment(China_Live_Fragment.class, R.id.login_fragment, true, null, true);
 
-//我靠 全部上传
+//我靠 全部上传 再次上传
                 new China_Live_Presenter(china_live_fragment);
 
                 break;
