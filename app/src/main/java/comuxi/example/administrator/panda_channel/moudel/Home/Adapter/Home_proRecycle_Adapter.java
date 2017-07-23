@@ -198,13 +198,11 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             case 1:
 
                 View raio_view = LayoutInflater.from(activity).inflate(R.layout.login_home_rotation, null);
-
                 return new Ration_viewHolder(raio_view);
             //            精彩推荐
             case 2:
 
                 View wonder_view = LayoutInflater.from(activity).inflate(R.layout.home_wonderful_recommenda, null);
-
                 return new Wondelful_viewHolder(wonder_view);
             //            熊猫观察
             case 3:
@@ -226,12 +224,10 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             //            直播中国
             case 6:
                 View live_china_view = LayoutInflater.from(activity).inflate(R.layout.home_live_china_recy, null);
-
                 return new Live_china_viewHolder(live_china_view);
             //            特别策划
             case 7:
                 View special_planning_view = LayoutInflater.from(activity).inflate(R.layout.home_special_planning, null);
-
                 return new Simping_viewHolder(special_planning_view);
             //            CCTV
             case 8:
@@ -241,25 +237,18 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
             //            公映中国
             case 9:
                 View movie_china_view = LayoutInflater.from(activity).inflate(R.layout.home_movie_china, null);
-
                 return new Movie_china_viewHolder(movie_china_view);
         }
-
         return null;
 
     }
-
-
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Object o = datas.get(position);
         switch (getItemViewType(position)) {
             case ratation_type:
                 Ration_viewHolder ration_view = (Ration_viewHolder) holder;
-
-
                 Home_Data_TextBean.DataBean.BigImgBean bigImgBean = (Home_Data_TextBean.DataBean.BigImgBean) o;
-
                 login_home_rotation(ration_view);
 
                 break;
@@ -335,7 +324,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                     }
                 });
 
-
                 break;
             case panda_live_type:
                 final Home_Data_TextBean.DataBean.PandaliveBean pandaliveBean = (Home_Data_TextBean.DataBean.PandaliveBean) o;
@@ -345,9 +333,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 Home_Live_Show_Adapter show_adapter = new Home_Live_Show_Adapter(activity, pandaliveBean.getList());
                 live_holder.live_show_recy.setAdapter(show_adapter);
                 show_adapter.notifyDataSetChanged();
-
-
-
                 show_adapter.set_panda_live_click(new Home_Live_Show_Adapter.panda_live_Onclick() {
                     @Override
                     public void get_panda_live(View view, int panda_postion) {
@@ -364,8 +349,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 wall_viewHolder.Great_Wall_recycle.setLayoutManager(manager_great);
                 Home_Great_Wall_Adapter great_wall_adapter = new Home_Great_Wall_Adapter(activity, wallliveBean.getList());
                 wall_viewHolder.Great_Wall_recycle.setAdapter(great_wall_adapter);
-
-
                 great_wall_adapter.set_Great_live_click(new Home_Great_Wall_Adapter.Great_live_Onclick() {
                     @Override
                     public void get_Great_live(View view, int great_postion) {
@@ -373,8 +356,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                         recy_onclick.get_great_live_Click(wallliveBean.getList().get(great_postion));
                     }
                 });
-
-
 
                 break;
             case lice_china_type:
@@ -392,14 +373,12 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                     }
                 });
 
-
                 break;
             case special_planning_type:
                 final Home_Data_TextBean.DataBean.InteractiveBean interactiveBean = (Home_Data_TextBean.DataBean.InteractiveBean) o;
                 Simping_viewHolder sim_viewHolder = (Simping_viewHolder) holder;
                 sim_viewHolder.Special_planning_title.setText(interactiveBean.getInteractiveone().get(0).getTitle());
                 Glide.with(activity).load(interactiveBean.getInteractiveone().get(0).getImage()).placeholder(R.mipmap.umeng_socialize_share_pic).into(sim_viewHolder.Special_planning_Imagee);
-
                 sim_viewHolder.Special_planning_Imagee.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -443,9 +422,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                     }
                 });
 
-
-
-
                 break;
             case movie_china_type:
                 final Movie_china_viewHolder chian_viewholder = (Movie_china_viewHolder) holder;
@@ -467,8 +443,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                                 chian_viewholder.china_movie_recyclee.setLayoutManager(china_movie_mange);
                                 Home_China_Moive_Adapter moive_adapter = new Home_China_Moive_Adapter(activity, movie_Array);
                                 chian_viewholder.china_movie_recyclee.setAdapter(moive_adapter);
-
-
                                 moive_adapter.set_China_movie_click(new Home_China_Moive_Adapter.Movie_live_Onclick() {
                                     @Override
                                     public void get_movie_live(View view, int movie_postion) {
@@ -477,8 +451,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
 
                                     }
                                 });
-
-
 
                             }
                         });
@@ -492,10 +464,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
                 break;
 
         }
-
-
-
-
     }
 
 
@@ -547,8 +515,6 @@ public class Home_proRecycle_Adapter extends RecyclerView.Adapter implements Vie
         public Panda_live_viewHolder(View itemView) {
             super(itemView);
             live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_live_show_recycle);
-
-
         }
     }
     class Great_wall_viewHolder extends RecyclerView.ViewHolder {

@@ -75,7 +75,13 @@
         <activity
             android:name=".VideoplayerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape" >
+
+
+
+
+
+        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".PersonalCenterActivity" />
         <activity android:name=".Historical_recordActivity" />
