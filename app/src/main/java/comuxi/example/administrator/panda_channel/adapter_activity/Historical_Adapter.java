@@ -72,7 +72,7 @@ public class Historical_Adapter extends RecyclerView.Adapter {
 
         if (his_array.get(position).isFlg_bulen() ) {
             my_view.radioButton.setChecked(true);
-
+//
         }else{
             my_view.radioButton.setChecked(false);
         }
