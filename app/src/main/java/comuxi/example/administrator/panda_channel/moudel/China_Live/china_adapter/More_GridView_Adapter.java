@@ -15,7 +15,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live
 /**
  * Created by Administrator on 2017/7/17.
  */
-////
+/////
 public class More_GridView_Adapter extends BaseAdapter {
     FragmentActivity activity;
     ArrayList<China_Live_Path_TextBean.AlllistBean> alllistBeen_aray;

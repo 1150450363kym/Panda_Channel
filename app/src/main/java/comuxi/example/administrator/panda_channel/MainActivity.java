@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.login_image)
     ImageView loginImage;
 
-    @BindView(R.id.start_linear)
+    @BindView(R.id.start_linear)//
     RelativeLayout startLinear;
 
     //    熊猫频道的图片

@@ -12,7 +12,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live
 /**
  * Created by Administrator on 2017/7/17.
  */
-////
+//////
 public class China_Tablayout_PageAdapter extends FragmentPagerAdapter {
     ArrayList<Fragment> fargmet_array;
     ArrayList<China_Live_Path_TextBean.TablistBean> tablistBeen_array;

@@ -41,7 +41,7 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeable
 /**
  * Created by Administrator on 2017/7/11.
  */
-////
+//////
 public class China_Live_Fragment extends BaseFragment implements China_Live_Contract.View {
     @BindView(R.id.china_live_tablayout)
     TabLayout chinaLiveTablayout;

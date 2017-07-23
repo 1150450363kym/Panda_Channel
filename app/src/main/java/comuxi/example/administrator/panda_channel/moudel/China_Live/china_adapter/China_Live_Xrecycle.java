@@ -18,7 +18,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Chian_item
 /**
  * Created by Administrator on 2017/7/17.
  */
-////
+//////
 public class China_Live_Xrecycle extends RecyclerView.Adapter {
     FragmentActivity activity;
     ArrayList<Chian_item_Path_TextBean.LiveBean> list_array;
