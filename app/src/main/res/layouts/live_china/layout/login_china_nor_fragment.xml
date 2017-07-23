@@ -47,7 +47,7 @@
     </comuxi.example.administrator.panda_channel.moudel.Panda_Live.NonSwipeableViewPager>
 
 
-
+<!---->
     <RelativeLayout
         android:visibility="gone"
         android:id="@+id/progress_bar_id"
