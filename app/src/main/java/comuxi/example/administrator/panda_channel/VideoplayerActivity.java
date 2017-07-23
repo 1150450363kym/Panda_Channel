@@ -76,7 +76,7 @@ public class VideoplayerActivity extends BaseActivity {
                     public void run() {
                         Log.e("TAG", "我点击 播放视频的地址是" + biaoqing_array.get(0).getUrl());
 
-                        jcVideo.setUp(biaoqing_array.get(0).getUrl()
+                        jcVideo.setUp("http://202.108.17.101/v.cctv.com/flash/mp4video60/TMS/2017/06/12/d2a828ca5cd0400f82c2adee5581fc17_h2642000000nero_aac16.mp4"
                                 , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
 
                         Glide.with(VideoplayerActivity.this)
