@@ -16,7 +16,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live
 /**
  * Created by Administrator on 2017/7/17.
  */
-////////
+///////////
 public class GridView_Adapter extends BaseAdapter {
 
     FragmentActivity activity;

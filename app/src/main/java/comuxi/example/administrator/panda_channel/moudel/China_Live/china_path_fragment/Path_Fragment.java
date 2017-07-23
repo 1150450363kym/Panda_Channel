@@ -30,7 +30,7 @@ import comuxi.example.administrator.panda_channel.moudel.China_Live.china_adapte
 /**
  * Created by Administrator on 2017/7/17.
  */
-///////
+//////////
 public class Path_Fragment extends BaseFragment {
     @BindView(R.id.Chian_live_path_xrecycle)
     XRecyclerView ChianLivePathXrecycle;
