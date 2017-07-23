@@ -201,7 +201,7 @@ public class VideoplayerActivity extends BaseActivity {
                     public void onResult(SHARE_MEDIA share_media) {
 
                         Log.e("TAG", "onResult");
-///
+/////
                     }
 
                     @Override
