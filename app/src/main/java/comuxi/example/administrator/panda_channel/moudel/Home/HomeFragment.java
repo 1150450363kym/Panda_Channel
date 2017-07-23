@@ -59,7 +59,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     //     历史记录 数据库
     private HistroyGreeDaoDao getdp;
     //     数据库的实体类
-    HistroyGreeDao histroTextBean;
+
     //    查询数据库 里面的  集合
     private List<HistroyGreeDao> histroTextBeen_list;
 
@@ -81,6 +81,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     };
 
 /////////
+    private boolean flag = false;
     @Override
     protected int getlayoutID() {
         return R.layout.login_home_fragment;
@@ -105,7 +106,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         histroTextBeen_list = selectHieGreedao();
 
 //历史记录 的  实体类
-        histroTextBean = new HistroyGreeDao();
+
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -151,24 +152,33 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                     startActivity(Video_intent);
 
 //                    轮播图视频 存入 历史记录的数据库
-//                    for (int i = 0; i < histroTextBeen_list.size(); i++) {
+                    if (histroTextBeen_list.size() == 0) {
+                        HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                        histroTextBean.setName(bigImgBean.getTitle());
+                        histroTextBean.setData("00");
+                        histroTextBean.setImagpath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
+                        histroTextBean.setMoviepath(bigImgBean.getImage());
+                        getdp.insert(histroTextBean);
+                    } else {
+                        for (int i = 0; i < histroTextBeen_list.size(); i++) {
+                            if (bigImgBean.getTitle().equals(getdp.queryBuilder().build().list().get(i).getName())) {
+                                flag = true;
+                                return;
+                            }
+                        }
+                        if (flag == true) {
+                            flag = false;
+                        } else {
+                            HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                            histroTextBean.setName(bigImgBean.getTitle());
+                            histroTextBean.setData("00");
+                            histroTextBean.setImagpath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
+                            histroTextBean.setMoviepath(bigImgBean.getImage());
+                            getdp.insert(histroTextBean);
+                        }
+                    }
+
 //
-//                        if (bigImgBean.getTitle().equals(histroTextBeen_list.get(i).getName())) {
-//
-//                            Log.e("TAG", "已经添加");
-//
-//                            break;
-//                        } else {
-//                            histroTextBean.setData("");
-//                            histroTextBean.setImagpath(bigImgBean.getImage());
-//                            histroTextBean.setMoviepath(bigImgBean.getPid());
-//                            histroTextBean.setName(bigImgBean.getTitle());
-//                            getdp.insert(histroTextBean);
-//
-//
-//                        }
-//
-//                    }
 
                 }
 
@@ -185,23 +195,31 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                 startActivity(Video_intent);
 
                 //                    精彩推荐 存入 历史记录的数据库
-//                for (int i = 0; i < histroTextBeen_list.size(); i++) {
-//
-//                    if (home_data.getTitle().equals(histroTextBeen_list.get(i).getName())) {
-//                        Log.e("TAG", "已经添加");
-//
-//                    } else {
-//                        histroTextBean.setData("000");
-//                        histroTextBean.setImagpath(home_data.getImage());
-//                        histroTextBean.setMoviepath(home_data.getPid());
-//                        histroTextBean.setName(home_data.getTitle());
-//
-//                        getdp.insert(histroTextBean);
-
-//
-//                    }
-//
-//                }
+                if (histroTextBeen_list.size() == 0) {
+                    HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                    histroTextBean.setName(home_data.getTitle());
+                    histroTextBean.setData("00");
+                    histroTextBean.setImagpath(home_data.getUrl() + "?pid=" + home_data.getPid());
+                    histroTextBean.setMoviepath(home_data.getImage());
+                    getdp.insert(histroTextBean);
+                } else {
+                    for (int i = 0; i < histroTextBeen_list.size(); i++) {
+                        if (home_data.getTitle().equals(getdp.queryBuilder().build().list().get(i).getName())) {
+                            flag = true;
+                            return;
+                        }
+                    }
+                    if (flag == true) {
+                        flag = false;
+                    } else {
+                        HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                        histroTextBean.setName(home_data.getTitle());
+                        histroTextBean.setData("00");
+                        histroTextBean.setImagpath(home_data.getUrl() + "?pid=" + home_data.getPid());
+                        histroTextBean.setMoviepath(home_data.getImage());
+                        getdp.insert(histroTextBean);
+                    }
+                }
 
 
             }
