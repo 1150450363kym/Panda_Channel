@@ -36,8 +36,6 @@ public class VideoplayerActivity extends BaseActivity {
     JCVideoPlayerStandard jcVideo;
 
 
-
-
     /**
      * 视频播放的 类
      *
@@ -84,9 +82,9 @@ public class VideoplayerActivity extends BaseActivity {
                         jcVideo.setUp(biaoqing_array.get(0).getUrl()
                                 , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
 
-                        Glide.with(VideoplayerActivity.this)
-                                .load(biaoqing_array.get(0).getImage())
-                                .into(jcVideo.thumbImageView);
+//                        Glide.with(VideoplayerActivity.this)
+//                                .load(biaoqing_array.get(0).getImage())
+//                                .into(jcVideo.thumbImageView);
 
                     }
                 });

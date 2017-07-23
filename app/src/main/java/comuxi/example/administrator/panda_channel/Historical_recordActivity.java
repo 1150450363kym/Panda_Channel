@@ -86,7 +86,7 @@ public class Historical_recordActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-//
+////
         his_dp = getHis_dp();
 
         list = his_dp.queryBuilder().list();
