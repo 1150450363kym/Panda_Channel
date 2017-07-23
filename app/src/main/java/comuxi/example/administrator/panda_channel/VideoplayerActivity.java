@@ -146,6 +146,8 @@ public class VideoplayerActivity extends BaseActivity {
             @Override
             public void onError(int errorCode, String errorMsg) {
 
+            Log.e("TAG","视屏请求失败");
+
             }
         });
 
