@@ -58,13 +58,11 @@ public class VideoplayerActivity extends BaseActivity {
 
 //        跳转   接受  数值
         pid = intent.getStringExtra("pid");
-        Log.e("TAG", "++++++++++++" + pid);
         video_title = intent.getStringExtra("video_title");
         video_imag = intent.getStringExtra("video_imag");
 
 
         PandaMode pandaMode = new PandaItemMode();
-
 
         pandaMode.getVideoplayer(pid, new MyHttpCallBack<VideoplayerBean>() {
             @Override
@@ -82,9 +80,9 @@ public class VideoplayerActivity extends BaseActivity {
                         jcVideo.setUp(biaoqing_array.get(0).getUrl()
                                 , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
 
-//                        Glide.with(VideoplayerActivity.this)
-//                                .load(biaoqing_array.get(0).getImage())
-//                                .into(jcVideo.thumbImageView);
+                        Glide.with(VideoplayerActivity.this)
+                                .load(biaoqing_array.get(0).getImage())
+                                .into(jcVideo.thumbImageView);
 
                     }
                 });

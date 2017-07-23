@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     tools:context="comuxi.example.administrator.panda_channel.Historical_recordActivity">
-
+<!---->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
