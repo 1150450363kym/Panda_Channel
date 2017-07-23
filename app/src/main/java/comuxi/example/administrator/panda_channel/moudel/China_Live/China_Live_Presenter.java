@@ -8,7 +8,7 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 /**
  * Created by Administrator on 2017/7/11.
  */
-/////
+////////
 public class China_Live_Presenter implements China_Live_Contract.presenter {
 
     private China_Live_Contract.View chian_view;
