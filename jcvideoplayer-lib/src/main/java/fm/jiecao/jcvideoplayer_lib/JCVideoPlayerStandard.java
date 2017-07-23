@@ -1,18 +1,33 @@
 package fm.jiecao.jcvideoplayer_lib;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,17 +37,18 @@ import java.util.TimerTask;
  */
 public class JCVideoPlayerStandard extends JCVideoPlayer {
 
-    public ImageView ivBack;//顶部返回按钮
-    public ProgressBar pbBottom;//底部播放进度条
-    public ProgressBar pbLoading;
-    public TextView tvTitle;//顶部标题
-    public ImageView ivThumb;//全屏背景
-    public ImageView ivCover;//覆盖的图片(不确定)
+    protected static Timer DISMISS_CONTROL_VIEW_TIMER;
 
-    protected static Timer mDismissControlViewTimer;//  1.5秒的消失计时器
-    protected static JCBuriedPointStandard jc_BuriedPointStandard;//节操隐藏标准
+    public ImageView backButton;
+    public ProgressBar bottomProgressBar, loadingProgressBar;
+    public TextView titleTextView;
+    public ImageView thumbImageView;
+    public ImageView tinyBackImageView;
 
-    //两种构造方法
+
+    protected DismissControlViewTimerTask mDismissControlViewTimerTask;
+
+
     public JCVideoPlayerStandard(Context context) {
         super(context);
     }
@@ -41,129 +57,235 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         super(context, attrs);
     }
 
-    //获取布局id
+    public interface Video_Click {
+        void Shar_Video(View view);
+
+        void add_cang_Video(CompoundButton compoundButton, boolean b);
+
+        void WatchthelistMonitor(View view);
+
+        void setgq();
+
+        void setbq();
+    }
+
+    private Video_Click Clickon;
+
+    public void set_Viewo_Click(Video_Click Clickon) {
+        this.Clickon = Clickon;
+    }
+
+    private CheckBox Collection, zt_bf;
+    private ImageView shareit, Watchthelist;
+    private Button lx;
+
+    @Override
+    public void init(final Context context) {
+        super.init(context);
+        bottomProgressBar = (ProgressBar) findViewById(R.id.bottom_progress);
+        titleTextView = (TextView) findViewById(R.id.title);
+        backButton = (ImageView) findViewById(R.id.back);
+        thumbImageView = (ImageView) findViewById(R.id.thumb);
+        loadingProgressBar = (ProgressBar) findViewById(R.id.loading);
+        tinyBackImageView = (ImageView) findViewById(R.id.back_tiny);
+
+        thumbImageView.setOnClickListener(this);
+        backButton.setOnClickListener(this);
+        tinyBackImageView.setOnClickListener(this);
+
+//            自己定义的  按钮
+//        收藏 开始
+        Collection = (CheckBox) findViewById(R.id.Collection);
+        Collection.setChecked(false);
+//        暂停播放
+        zt_bf = (CheckBox) findViewById(R.id.zt_bf);
+//        分享
+        shareit = (ImageView) findViewById(R.id.shareit);
+//        列表
+        Watchthelist = (ImageView) findViewById(R.id.Watchthelist);
+//    高清按钮
+        lx = (Button) findViewById(R.id.lx);
+
+
+        Collection.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Clickon.add_cang_Video(compoundButton, b);
+            }
+        });
+        shareit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Clickon.Shar_Video(view);
+            }
+        });
+        Watchthelist.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Clickon.WatchthelistMonitor(view);
+            }
+        });
+
+//暂停  播放 的 监听
+        zt_bf.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    JCMediaManager.instance().mediaPlayer.pause();
+                } else {
+                    JCMediaManager.instance().mediaPlayer.start();
+                }
+            }
+        });
+
+        lx.setOnClickListener(new OnClickListener() {
+            private RadioGroup radio;
+            private RadioButton bq;
+            private RadioButton gq;
+
+            @Override
+            public void onClick(View view) {
+                View inflate = View.inflate(context, R.layout.pupoym, null);
+                final PopupWindow popupWindow = new PopupWindow(inflate, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
+                gq = (RadioButton) inflate.findViewById(R.id.gq);
+                bq = (RadioButton) inflate.findViewById(R.id.bq);
+                radio = (RadioGroup) inflate.findViewById(R.id.radio);
+
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(200, 200, 200, 200)));
+                popupWindow.showAtLocation(inflate, Gravity.BOTTOM, 300, 120);
+                radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        if (i == R.id.bq) {
+                            Clickon.setbq();
+                            popupWindow.dismiss();
+                        } else if (i == R.id.gq) {
+                            Clickon.setgq();
+                            popupWindow.dismiss();
+                        }
+                    }
+                });
+
+            }
+
+
+        });
+
+    }
+
+    @Override
+    public void setUp(String url, int screen, Object... objects) {
+        super.setUp(url, screen, objects);
+        if (objects.length == 0) return;
+        titleTextView.setText(objects[0].toString());
+        if (currentScreen == SCREEN_WINDOW_FULLSCREEN) {
+            fullscreenButton.setImageResource(R.drawable.jc_shrink);
+            backButton.setVisibility(View.VISIBLE);
+            tinyBackImageView.setVisibility(View.INVISIBLE);
+            changeStartButtonSize((int) getResources().getDimension(R.dimen.jc_start_button_w_h_fullscreen));
+        } else if (currentScreen == SCREEN_LAYOUT_NORMAL
+                || currentScreen == SCREEN_LAYOUT_LIST) {
+            fullscreenButton.setImageResource(R.drawable.jc_enlarge);
+            backButton.setVisibility(View.GONE);
+            tinyBackImageView.setVisibility(View.INVISIBLE);
+            changeStartButtonSize((int) getResources().getDimension(R.dimen.jc_start_button_w_h_normal));
+        } else if (currentScreen == SCREEN_WINDOW_TINY) {
+            tinyBackImageView.setVisibility(View.VISIBLE);
+            setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
+                    View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+        }
+    }
+
+    public void changeStartButtonSize(int size) {
+        ViewGroup.LayoutParams lp = startButton.getLayoutParams();
+        lp.height = size;
+        lp.width = size;
+        lp = loadingProgressBar.getLayoutParams();
+        lp.height = size;
+        lp.width = size;
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.jc_layout_standard;
     }
 
-
-    //初始化布局id中的控件
     @Override
-    protected void init(Context context) {
-        super.init(context);
-        pbBottom = (ProgressBar) findViewById(R.id.bottom_progressbar);
-        tvTitle = (TextView) findViewById(R.id.title);
-        ivBack = (ImageView) findViewById(R.id.back);
-        ivThumb = (ImageView) findViewById(R.id.thumb);
-        ivCover = (ImageView) findViewById(R.id.cover);
-        pbLoading = (ProgressBar) findViewById(R.id.loading);
-
-        //为背景图片设置点击
-        ivThumb.setOnClickListener(this);
-
-        //为返回按钮设置点击
-        ivBack.setOnClickListener(this);
-
+    public void onStateNormal() {
+        super.onStateNormal();
+        changeUiToNormal();
     }
 
-
-    //开始准备
     @Override
-    public void setUrlAndObject(String url, Map<String, String> mapHeadData, Object... objects) {
-        if (objects.length == 0) return;
-        //这里调用了父类的
-        super.setUrlAndObject(url, mapHeadData,objects);
-        //设置标题
-        tvTitle.setText(objects[0].toString());
-        if (IF_CURRENT_IS_FULLSCREEN) {
-            //如果进入这个判断代表当前状态为全屏状态
-            //设置进入全屏的图片为关闭全屏
-            ivFullScreen.setImageResource(R.drawable.jc_shrink);
-        } else {
-            //如果进入这个判断代表当前状态为非全屏状态
-            //设置进入全屏的图片为开启全屏
-            ivFullScreen.setImageResource(R.drawable.jc_enlarge);
-            //设置返回按钮为隐藏
-            ivBack.setVisibility(View.GONE);
-        }
-
+    public void onStatePreparing() {
+        super.onStatePreparing();
+        changeUiToPreparingShow();
+        startDismissControlViewTimer();
     }
 
-
-    //设置状态改变ui
     @Override
-    public void setStateAndUi(int state) {
-        //调用父类的设置ui状态的方法
-        super.setStateAndUi(state);
-
-        switch (CURRENT_STATE) {
-            case CURRENT_STATE_NORMAL:
-                //在正常状态时
-                changeUiToNormal();
-                break;
-            case CURRENT_STATE_PREPAREING:
-                //在准备状态时
-                changeUiToShowUiPrepareing();
-                startDismissControlViewTimer();
-                break;
-            case CURRENT_STATE_PLAYING:
-                //在播放状态时
-                changeUiToShowUiPlaying();
-                startDismissControlViewTimer();
-                break;
-            case CURRENT_STATE_PAUSE:
-                //在暂停状态时
-                changeUiToShowUiPause();
-                startDismissControlViewTimer();
-                break;
-            case CURRENT_STATE_ERROR:
-                //在异常状态时
-                changeUiToError();
-                break;
-        }
+    public void onStatePlaying() {
+        super.onStatePlaying();
+        changeUiToPlayingShow();
+        startDismissControlViewTimer();
     }
 
-    //屏幕触摸事件监听
+    @Override
+    public void onStatePause() {
+        super.onStatePause();
+        changeUiToPauseShow();
+        cancelDismissControlViewTimer();
+    }
+
+    @Override
+    public void onStatePlaybackBufferingStart() {
+        super.onStatePlaybackBufferingStart();
+        changeUiToPlayingBufferingShow();
+    }
+
+    @Override
+    public void onStateError() {
+        super.onStateError();
+        changeUiToError();
+    }
+
+    @Override
+    public void onStateAutoComplete() {
+        super.onStateAutoComplete();
+        changeUiToCompleteShow();
+        cancelDismissControlViewTimer();
+        bottomProgressBar.setProgress(100);
+    }
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         int id = v.getId();
         if (id == R.id.surface_container) {
-            //当触摸最外层布局时
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    Log.d(TAG, "按下了最外层布局");
-                    //按下的时候如果计时器存在就取消
-                    cancelDismissControlViewTimer();
+                    break;
+                case MotionEvent.ACTION_MOVE:
                     break;
                 case MotionEvent.ACTION_UP:
-                    Log.d(TAG, "抬起了最外层布局");
-                    //抬起时开启计时器
                     startDismissControlViewTimer();
-                    //如果改变了进度就更新底部进度条
-                    if (changePosition) {
-                        int duration = JCMediaManager.intance().mediaPlayer.getDuration();
-                        int progress = resultTimePosition * 100 / (duration == 0 ? 1 : duration);
-                        pbBottom.setProgress(progress);
+                    if (mChangePosition) {
+                        int duration = getDuration();
+                        int progress = mSeekTimePosition * 100 / (duration == 0 ? 1 : duration);
+                        bottomProgressBar.setProgress(progress);
                     }
-                    //如果没有改变进度就更新ui的状态
-                    if (!changePosition && !changeVolume) {
+                    if (!mChangePosition && !mChangeVolume) {
+                        onEvent(JCUserActionStandard.ON_CLICK_BLANK);
                         onClickUiToggle();
                     }
                     break;
             }
-        } else if (id == R.id.progress) {
-            //当触摸进度条时
-
+        } else if (id == R.id.bottom_seek_progress) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    Log.d(TAG, "按下了进度条");
-                    //按下的时候如果计时器存在就取消
                     cancelDismissControlViewTimer();
                     break;
                 case MotionEvent.ACTION_UP:
-                    Log.d(TAG, "抬起了进度条");
-                    //抬起时开启计时器
                     startDismissControlViewTimer();
                     break;
             }
@@ -175,227 +297,585 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     public void onClick(View v) {
         super.onClick(v);
         int i = v.getId();
-
-        //点击背景图i == R.id.thumb播放改为点击播放按钮播放i == R.id.start
-        if (i == R.id.start) {
-            Log.d(TAG, "点击了播放按钮");
+        if (i == R.id.thumb) {
             if (TextUtils.isEmpty(url)) {
-                Toast.makeText(getContext(), "No url", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getResources().getString(R.string.no_url), Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (CURRENT_STATE == CURRENT_STATE_NORMAL) {
-                if (jc_BuriedPointStandard != null) {
-                    jc_BuriedPointStandard.onClickStartThumb(url, objects);
+            if (currentState == CURRENT_STATE_NORMAL) {
+                if (!url.startsWith("file") && !url.startsWith("/") &&
+                        !JCUtils.isWifiConnected(getContext()) && !WIFI_TIP_DIALOG_SHOWED) {
+                    showWifiDialog(JCUserActionStandard.ON_CLICK_START_THUMB);
+                    return;
                 }
-                prepareVideo();
-                startDismissControlViewTimer();
+                onEvent(JCUserActionStandard.ON_CLICK_START_THUMB);
+                startVideo();
+            } else if (currentState == CURRENT_STATE_AUTO_COMPLETE) {
+                onClickUiToggle();
             }
-        } else /*if (i == R.id.surface_container) {
-            Log.d(TAG, "点击了最外层布局");
-            //当点击最外层时
-            if (jc_BuriedPointStandard != null && JCMediaManager.intance().listener == this) {
-                if (IF_CURRENT_IS_FULLSCREEN) {
-                    jc_BuriedPointStandard.onClickBlankFullscreen(url, objects);
-                } else {
-                    jc_BuriedPointStandard.onClickBlank(url, objects);
-                }
-            }
+        } else if (i == R.id.surface_container) {
             startDismissControlViewTimer();
-        } else*/ if (i == R.id.back) {
-
-            Log.d(TAG, "点击了返回键");
-            //当点击返回键时
-            backFullscreen();
+        } else if (i == R.id.back) {
+            backPress();
+        } else if (i == R.id.back_tiny) {
+            backPress();
         }
     }
 
-
-    //点击  ui  切换
-    private void onClickUiToggle() {
-        if (CURRENT_STATE == CURRENT_STATE_PREPAREING) {
-              if (llBottomContainer.getVisibility() == View.VISIBLE) {
-                changeUiToClearUiPrepareing();
-                Log.d(TAG, "在      准备状态下      隐藏了播放器两边");
-            } else {
-                changeUiToShowUiPrepareing();
-                  Log.d(TAG, "在      准备状态下      显示了播放器两边");
-            }
-        } else if (CURRENT_STATE == CURRENT_STATE_PLAYING) {
-
-            if (llBottomContainer.getVisibility() == View.VISIBLE) {
-                changeUiToClearUiPlaying();
-                Log.d(TAG, "在      播放状态下      隐藏了播放器两边");
-            } else {
-                changeUiToShowUiPlaying();
-                Log.d(TAG, "在      播放状态下      显示了播放器两边");
-            }
-        } else if (CURRENT_STATE == CURRENT_STATE_PAUSE) {
-
-            if (llBottomContainer.getVisibility() == View.VISIBLE) {
-                changeUiToClearUiPause();
-                Log.d(TAG, "在      暂停状态下      隐藏了播放器两边");
-            } else {
-                changeUiToShowUiPause();
-                Log.d(TAG, "在      暂停状态下      显示了播放器两边");
-            }
-        }
-    }
-
-    //调用父类方法设置进度条时间
-    @Override
-    protected void setProgressAndTime(int progress, int secProgress, int currentTime, int totalTime) {
-        Log.d(TAG, "设置了进度条时间");
-        super.setProgressAndTime(progress, secProgress, currentTime, totalTime);
-        if (progress != 0) pbBottom.setProgress(progress);
-        if (secProgress != 0) pbBottom.setSecondaryProgress(secProgress);
-    }
 
     @Override
-    protected void resetProgressAndTime() {
-        Log.d(TAG, "重置了进度条时间");
-        super.resetProgressAndTime();
-        pbBottom.setProgress(0);
-        pbBottom.setSecondaryProgress(0);
-    }
-
-    
-    
-    //Unified management Ui
-    private void changeUiToNormal() {
-        llTopContainer.setVisibility(View.VISIBLE);
-        llBottomContainer.setVisibility(View.INVISIBLE);
-        ivStart.setVisibility(View.VISIBLE);
-        pbLoading.setVisibility(View.INVISIBLE);
-        ivThumb.setVisibility(View.VISIBLE);
-        ivCover.setVisibility(View.VISIBLE);
-        pbBottom.setVisibility(View.INVISIBLE);
-        updateIvStartState();
-    }
-
-    private void changeUiToShowUiPrepareing() {
-        llTopContainer.setVisibility(View.VISIBLE);
-        llBottomContainer.setVisibility(View.VISIBLE);
-        ivStart.setVisibility(View.INVISIBLE);
-        pbLoading.setVisibility(View.VISIBLE);
-        ivThumb.setVisibility(View.INVISIBLE);
-        ivCover.setVisibility(View.VISIBLE);
-        pbBottom.setVisibility(View.INVISIBLE);
-    }
-
-    private void changeUiToClearUiPrepareing() {
-//        changeUiToClearUi();
-        llTopContainer.setVisibility(View.INVISIBLE);
-        llBottomContainer.setVisibility(View.INVISIBLE);
-        ivStart.setVisibility(View.INVISIBLE);
-        ivThumb.setVisibility(View.INVISIBLE);
-        pbBottom.setVisibility(View.INVISIBLE);
-//        pbLoading.setVisibility(View.VISIBLE);
-        ivCover.setVisibility(View.VISIBLE);
-    }
-
-    private void changeUiToShowUiPlaying() {
-        llTopContainer.setVisibility(View.VISIBLE);
-        llBottomContainer.setVisibility(View.VISIBLE);
-        ivStart.setVisibility(View.VISIBLE);
-        pbLoading.setVisibility(View.INVISIBLE);
-        ivThumb.setVisibility(View.INVISIBLE);
-        ivCover.setVisibility(View.INVISIBLE);
-        pbBottom.setVisibility(View.INVISIBLE);
-        updateIvStartState();
-    }
-
-    private void changeUiToClearUiPlaying() {
-        changeUiToClearUi();
-        pbBottom.setVisibility(View.VISIBLE);
-    }
-
-    private void changeUiToShowUiPause() {
-        llTopContainer.setVisibility(View.VISIBLE);
-        llBottomContainer.setVisibility(View.VISIBLE);
-        ivStart.setVisibility(View.VISIBLE);
-        pbLoading.setVisibility(View.INVISIBLE);
-        ivThumb.setVisibility(View.INVISIBLE);
-        ivCover.setVisibility(View.INVISIBLE);
-        pbBottom.setVisibility(View.INVISIBLE);
-        updateIvStartState();
-    }
-
-    private void changeUiToClearUiPause() {
-        changeUiToClearUi();
-        pbBottom.setVisibility(View.VISIBLE);
-    }
-
-    private void changeUiToClearUi() {
-        llTopContainer.setVisibility(View.INVISIBLE);
-        llBottomContainer.setVisibility(View.INVISIBLE);
-        ivStart.setVisibility(View.INVISIBLE);
-        pbLoading.setVisibility(View.INVISIBLE);
-        ivThumb.setVisibility(View.INVISIBLE);
-        ivCover.setVisibility(View.INVISIBLE);
-        pbBottom.setVisibility(View.INVISIBLE);
-    }
-
-    private void changeUiToError() {
-        llTopContainer.setVisibility(View.INVISIBLE);
-        llBottomContainer.setVisibility(View.INVISIBLE);
-        ivStart.setVisibility(View.VISIBLE);
-        pbLoading.setVisibility(View.INVISIBLE);
-        ivThumb.setVisibility(View.INVISIBLE);
-        ivCover.setVisibility(View.VISIBLE);
-        pbBottom.setVisibility(View.INVISIBLE);
-        updateIvStartState();
-    }
-
-
-    //更新开始播放的按钮
-    private void updateIvStartState() {
-        Log.d(TAG, "开始更新播放按钮状态");
-        if (CURRENT_STATE == CURRENT_STATE_PLAYING) {
-            ivStart.setImageResource(R.drawable.jc_click_pause_selector);
-        } else if (CURRENT_STATE == CURRENT_STATE_ERROR) {
-            ivStart.setImageResource(R.drawable.jc_click_error_selector);
-        } else {
-            ivStart.setImageResource(R.drawable.jc_click_play_selector);
-        }
-    }
-
-    private void startDismissControlViewTimer() {
-        cancelDismissControlViewTimer();
-        mDismissControlViewTimer = new Timer();
-        mDismissControlViewTimer.schedule(new TimerTask() {
+    public void showWifiDialog(int action) {
+        super.showWifiDialog(action);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage(getResources().getString(R.string.tips_not_wifi));
+        builder.setPositiveButton(getResources().getString(R.string.tips_not_wifi_confirm), new DialogInterface.OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                onEvent(JCUserActionStandard.ON_CLICK_START_THUMB);
+                startVideo();
+                WIFI_TIP_DIALOG_SHOWED = true;
+            }
+        });
+        builder.setNegativeButton(getResources().getString(R.string.tips_not_wifi_cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                if (currentScreen == SCREEN_WINDOW_FULLSCREEN) {
+                    dialog.dismiss();
+                    clearFullscreenLayout();
+                }
+            }
+        });
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                dialog.dismiss();
+                if (currentScreen == SCREEN_WINDOW_FULLSCREEN) {
+                    dialog.dismiss();
+                    clearFullscreenLayout();
+                }
+            }
+        });
+        builder.create().show();
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        super.onStartTrackingTouch(seekBar);
+        cancelDismissControlViewTimer();
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        super.onStopTrackingTouch(seekBar);
+        startDismissControlViewTimer();
+    }
+
+    public void onClickUiToggle() {
+        if (currentState == CURRENT_STATE_PREPARING) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPreparingClear();
+            } else {
+                changeUiToPreparingShow();
+            }
+        } else if (currentState == CURRENT_STATE_PLAYING) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPlayingClear();
+            } else {
+                changeUiToPlayingShow();
+            }
+        } else if (currentState == CURRENT_STATE_PAUSE) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPauseClear();
+            } else {
+                changeUiToPauseShow();
+            }
+        } else if (currentState == CURRENT_STATE_AUTO_COMPLETE) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToCompleteClear();
+            } else {
+                changeUiToCompleteShow();
+            }
+        } else if (currentState == CURRENT_STATE_PLAYING_BUFFERING_START) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPlayingBufferingClear();
+            } else {
+                changeUiToPlayingBufferingShow();
+            }
+        }
+    }
+
+    public void onCLickUiToggleToClear() {
+        if (currentState == CURRENT_STATE_PREPARING) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPreparingClear();
+            } else {
+            }
+        } else if (currentState == CURRENT_STATE_PLAYING) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPlayingClear();
+            } else {
+            }
+        } else if (currentState == CURRENT_STATE_PAUSE) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPauseClear();
+            } else {
+            }
+        } else if (currentState == CURRENT_STATE_AUTO_COMPLETE) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToCompleteClear();
+            } else {
+            }
+        } else if (currentState == CURRENT_STATE_PLAYING_BUFFERING_START) {
+            if (bottomContainer.getVisibility() == View.VISIBLE) {
+                changeUiToPlayingBufferingClear();
+            } else {
+            }
+        }
+    }
+
+    @Override
+    public void setProgressAndText(int progress, int position, int duration) {
+        super.setProgressAndText(progress, position, duration);
+        if (progress != 0) bottomProgressBar.setProgress(progress);
+    }
+
+    @Override
+    public void setBufferProgress(int bufferProgress) {
+        super.setBufferProgress(bufferProgress);
+        if (bufferProgress != 0) bottomProgressBar.setSecondaryProgress(bufferProgress);
+    }
+
+    @Override
+    public void resetProgressAndTime() {
+        super.resetProgressAndTime();
+        bottomProgressBar.setProgress(0);
+        bottomProgressBar.setSecondaryProgress(0);
+    }
+
+    //Unified management Ui
+    public void changeUiToNormal() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.VISIBLE, View.INVISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.VISIBLE, View.VISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.VISIBLE, View.INVISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.VISIBLE, View.VISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+    }
+
+    public void changeUiToPreparingShow() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.VISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.VISIBLE, View.VISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.VISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.VISIBLE, View.VISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToPreparingClear() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.VISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.VISIBLE, View.VISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.VISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.VISIBLE, View.VISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    //JustPreparedUi
+    @Override
+    public void onPrepared() {
+        super.onPrepared();
+        setAllControlsVisible(View.VISIBLE, View.INVISIBLE, View.INVISIBLE,
+                View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
+        startDismissControlViewTimer();
+    }
+
+    public void changeUiToPlayingShow() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToPlayingClear() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToPauseShow() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToPauseClear() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToPlayingBufferingShow() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToPlayingBufferingClear() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE,
+                        View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToCompleteShow() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.VISIBLE, View.VISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToCompleteClear() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.VISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.VISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void changeUiToError() {
+        switch (currentScreen) {
+            case SCREEN_LAYOUT_NORMAL:
+            case SCREEN_LAYOUT_LIST:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.VISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_FULLSCREEN:
+                setAllControlsVisible(View.INVISIBLE, View.INVISIBLE, View.VISIBLE,
+                        View.INVISIBLE, View.INVISIBLE, View.VISIBLE, View.INVISIBLE);
+                updateStartImage();
+                break;
+            case SCREEN_WINDOW_TINY:
+                break;
+        }
+
+    }
+
+    public void setAllControlsVisible(int topCon, int bottomCon, int startBtn, int loadingPro,
+                                      int thumbImg, int coverImg, int bottomPro) {
+        topContainer.setVisibility(topCon);
+        bottomContainer.setVisibility(bottomCon);
+        startButton.setVisibility(startBtn);
+        loadingProgressBar.setVisibility(loadingPro);
+        thumbImageView.setVisibility(thumbImg);
+        bottomProgressBar.setVisibility(bottomPro);
+    }
+
+    public void updateStartImage() {
+        if (currentState == CURRENT_STATE_PLAYING) {
+            startButton.setImageResource(R.drawable.jc_click_pause_selector);
+        } else if (currentState == CURRENT_STATE_ERROR) {
+            startButton.setImageResource(R.drawable.jc_click_error_selector);
+        } else {
+            startButton.setImageResource(R.drawable.jc_click_play_selector);
+        }
+    }
+
+
+    protected Dialog mProgressDialog;
+    protected ProgressBar mDialogProgressBar;
+    protected TextView mDialogSeekTime;
+    protected TextView mDialogTotalTime;
+    protected ImageView mDialogIcon;
+
+    @Override
+    public void showProgressDialog(float deltaX, String seekTime, int seekTimePosition, String totalTime, int totalTimeDuration) {
+        super.showProgressDialog(deltaX, seekTime, seekTimePosition, totalTime, totalTimeDuration);
+        if (mProgressDialog == null) {
+            View localView = LayoutInflater.from(getContext()).inflate(R.layout.jc_dialog_progress, null);
+            mDialogProgressBar = ((ProgressBar) localView.findViewById(R.id.duration_progressbar));
+            mDialogSeekTime = ((TextView) localView.findViewById(R.id.tv_current));
+            mDialogTotalTime = ((TextView) localView.findViewById(R.id.tv_duration));
+            mDialogIcon = ((ImageView) localView.findViewById(R.id.duration_image_tip));
+            mProgressDialog = createDialogWithView(localView);
+        }
+        if (!mProgressDialog.isShowing()) {
+            mProgressDialog.show();
+        }
+
+        mDialogSeekTime.setText(seekTime);
+        mDialogTotalTime.setText(" / " + totalTime);
+        mDialogProgressBar.setProgress(totalTimeDuration <= 0 ? 0 : (seekTimePosition * 100 / totalTimeDuration));
+        if (deltaX > 0) {
+            mDialogIcon.setBackgroundResource(R.drawable.jc_forward_icon);
+        } else {
+            mDialogIcon.setBackgroundResource(R.drawable.jc_backward_icon);
+        }
+        onCLickUiToggleToClear();
+    }
+
+    @Override
+    public void dismissProgressDialog() {
+        super.dismissProgressDialog();
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    protected Dialog mVolumeDialog;
+    protected ProgressBar mDialogVolumeProgressBar;
+    protected TextView mDialogVolumeTextView;
+    protected ImageView mDialogVolumeImageView;
+
+    @Override
+    public void showVolumeDialog(float deltaY, int volumePercent) {
+        super.showVolumeDialog(deltaY, volumePercent);
+        if (mVolumeDialog == null) {
+            View localView = LayoutInflater.from(getContext()).inflate(R.layout.jc_dialog_volume, null);
+            mDialogVolumeImageView = ((ImageView) localView.findViewById(R.id.volume_image_tip));
+            mDialogVolumeTextView = ((TextView) localView.findViewById(R.id.tv_volume));
+            mDialogVolumeProgressBar = ((ProgressBar) localView.findViewById(R.id.volume_progressbar));
+            mVolumeDialog = createDialogWithView(localView);
+        }
+        if (!mVolumeDialog.isShowing()) {
+            mVolumeDialog.show();
+        }
+        if (volumePercent <= 0) {
+            mDialogVolumeImageView.setBackgroundResource(R.drawable.jc_close_volume);
+        } else {
+            mDialogVolumeImageView.setBackgroundResource(R.drawable.jc_add_volume);
+        }
+        if (volumePercent > 100) {
+            volumePercent = 100;
+        } else if (volumePercent < 0) {
+            volumePercent = 0;
+        }
+        mDialogVolumeTextView.setText(volumePercent + "%");
+        mDialogVolumeProgressBar.setProgress(volumePercent);
+        onCLickUiToggleToClear();
+    }
+
+    @Override
+    public void dismissVolumeDialog() {
+        super.dismissVolumeDialog();
+        if (mVolumeDialog != null) {
+            mVolumeDialog.dismiss();
+        }
+    }
+
+    protected Dialog mBrightnessDialog;
+    protected ProgressBar mDialogBrightnessProgressBar;
+    protected TextView mDialogBrightnessTextView;
+
+    @Override
+    public void showBrightnessDialog(int brightnessPercent) {
+        super.showBrightnessDialog(brightnessPercent);
+        if (mBrightnessDialog == null) {
+            View localView = LayoutInflater.from(getContext()).inflate(R.layout.jc_dialog_brightness, null);
+            mDialogBrightnessTextView = ((TextView) localView.findViewById(R.id.tv_brightness));
+            mDialogBrightnessProgressBar = ((ProgressBar) localView.findViewById(R.id.brightness_progressbar));
+            mBrightnessDialog = createDialogWithView(localView);
+        }
+        if (!mBrightnessDialog.isShowing()) {
+            mBrightnessDialog.show();
+        }
+        if (brightnessPercent > 100) {
+            brightnessPercent = 100;
+        } else if (brightnessPercent < 0) {
+            brightnessPercent = 0;
+        }
+        mDialogBrightnessTextView.setText(brightnessPercent + "%");
+        mDialogBrightnessProgressBar.setProgress(brightnessPercent);
+        onCLickUiToggleToClear();
+    }
+
+    @Override
+    public void dismissBrightnessDialog() {
+        super.dismissBrightnessDialog();
+        if (mBrightnessDialog != null) {
+            mBrightnessDialog.dismiss();
+        }
+    }
+
+    public Dialog createDialogWithView(View localView) {
+        Dialog dialog = new Dialog(getContext(), R.style.jc_style_dialog_progress);
+        dialog.setContentView(localView);
+        Window window = dialog.getWindow();
+        window.addFlags(Window.FEATURE_ACTION_BAR);
+        window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
+        window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        window.setLayout(-2, -2);
+        WindowManager.LayoutParams localLayoutParams = window.getAttributes();
+        localLayoutParams.gravity = Gravity.CENTER;
+        window.setAttributes(localLayoutParams);
+        return dialog;
+    }
+
+    public void startDismissControlViewTimer() {
+        cancelDismissControlViewTimer();
+        DISMISS_CONTROL_VIEW_TIMER = new Timer();
+        mDismissControlViewTimerTask = new DismissControlViewTimerTask();
+        DISMISS_CONTROL_VIEW_TIMER.schedule(mDismissControlViewTimerTask, 2500);
+    }
+
+    public void cancelDismissControlViewTimer() {
+        if (DISMISS_CONTROL_VIEW_TIMER != null) {
+            DISMISS_CONTROL_VIEW_TIMER.cancel();
+        }
+        if (mDismissControlViewTimerTask != null) {
+            mDismissControlViewTimerTask.cancel();
+        }
+
+    }
+
+    public class DismissControlViewTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+            if (currentState != CURRENT_STATE_NORMAL
+                    && currentState != CURRENT_STATE_ERROR
+                    && currentState != CURRENT_STATE_AUTO_COMPLETE) {
                 if (getContext() != null && getContext() instanceof Activity) {
                     ((Activity) getContext()).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if (CURRENT_STATE != CURRENT_STATE_NORMAL
-                                    && CURRENT_STATE != CURRENT_STATE_ERROR) {
-                                //当前状态不在正常并且不在异常状态时
-
-                                llBottomContainer.setVisibility(View.INVISIBLE);
-                                llTopContainer.setVisibility(View.INVISIBLE);
-                                pbBottom.setVisibility(View.VISIBLE);
-                                ivStart.setVisibility(View.INVISIBLE);
+                            bottomContainer.setVisibility(View.INVISIBLE);
+                            topContainer.setVisibility(View.INVISIBLE);
+                            startButton.setVisibility(View.INVISIBLE);
+                            if (currentScreen != SCREEN_WINDOW_TINY) {
+                                bottomProgressBar.setVisibility(View.VISIBLE);
                             }
                         }
                     });
                 }
             }
-        }, 1500);
-    }
-
-    private void cancelDismissControlViewTimer() {
-        Log.d(TAG, "计时器结束");
-        if (mDismissControlViewTimer != null) {
-            mDismissControlViewTimer.cancel();
-            mDismissControlViewTimer = null;
         }
     }
 
-    public static void setJcBuriedPointStandard(JCBuriedPointStandard jcBuriedPointStandard) {
-        jc_BuriedPointStandard = jcBuriedPointStandard;
-        JCVideoPlayer.setJcBuriedPoint(jcBuriedPointStandard);
+    @Override
+    public void onAutoCompletion() {
+        super.onAutoCompletion();
+        cancelDismissControlViewTimer();
     }
 
     @Override

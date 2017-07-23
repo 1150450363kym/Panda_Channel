@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context="VideoplayerActivity">
 
-    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/jc_video">
+   <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+       android:id="@+id/jiecao_tv"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
 
-    </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
+   </fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
 
 
 

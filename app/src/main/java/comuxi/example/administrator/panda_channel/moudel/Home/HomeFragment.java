@@ -2,14 +2,11 @@ package comuxi.example.administrator.panda_channel.moudel.Home;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -19,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.HistroyGreeDao.DaoMaster;
@@ -189,10 +185,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 //            精彩推荐的 点击事件
             public void get_wonderful_Click(Home_Data_TextBean.DataBean.AreaBean.ListscrollBean home_data) {
                 Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
-                Video_intent.putExtra("pid", home_data.getPid());
-                Video_intent.putExtra("video_title", home_data.getTitle());
-                Video_intent.putExtra("video_imag", home_data.getImage());
+//                Video_intent.putExtra("pid", home_data.getPid());
+//                Video_intent.putExtra("video_title", home_data.getTitle());
+//                Video_intent.putExtra("video_imag", home_data.getImage());
                 startActivity(Video_intent);
+
 
                 //                    精彩推荐 存入 历史记录的数据库
                 if (histroTextBeen_list.size() == 0) {
@@ -414,17 +411,17 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         this.home_present = presenter;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        // TODO: inflate a fragment view
+//        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+//        unbinder = ButterKnife.bind(this, rootView);
+//        return rootView;
+//    }
+//
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        unbinder.unbind();
+//    }
 }

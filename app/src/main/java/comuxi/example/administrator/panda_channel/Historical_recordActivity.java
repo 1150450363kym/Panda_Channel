@@ -1,7 +1,6 @@
 package comuxi.example.administrator.panda_channel;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
 import comuxi.example.administrator.panda_channel.HistroyGreeDao.DaoMaster;
@@ -201,12 +199,14 @@ public class Historical_recordActivity extends BaseActivity {
             case R.id.delete_histor_button:
 
                 if (historicalEdit.getText().equals("取消")) {
-                    Log.e("tag===list.size", his_array.size() + "");
+
                     for (int i = his_array.size() - 1; i >= 0; i--) {
                         if (his_array.get(i).isFlg_bulen()) {
 
                             his_dp.delete(his_array.get(i));
                             his_array.remove(i);
+
+                            Log.e("tag===list.size", his_array.size() + "");
 
                         }
                     }
@@ -238,10 +238,10 @@ public class Historical_recordActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        // TODO: add setContentView(...) invocation
+//        ButterKnife.bind(this);
+//    }
 }

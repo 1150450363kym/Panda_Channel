@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.widget.RelativeLayout;
 
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
@@ -23,8 +24,12 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 public class VideoplayerActivity extends BaseActivity {
 
     String video_title, pid, video_imag;
-    @BindView(R.id.jc_video)
-    JCVideoPlayerStandard jcVideo;
+    @BindView(R.id.jiecao_tv)
+    fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard jcVideo;
+    @BindView(R.id.activity_videoplayer)
+    RelativeLayout activityVideoplayer;
+//    @BindView(R.id.jc_video)
+//    JCVideoPlayerStandard jcVideo;
 
 
     /**
@@ -44,17 +49,17 @@ public class VideoplayerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
-
-//        JCVideoPlayerStandard.startFullscreen(
-//                VideoplayerActivity.this,JCVideoPlayerStandard.class,
-//               "http://202.108.17.101/v.cctv.com/flash/mp4video60/TMS/2017/06/12/d2a828ca5cd0400f82c2adee5581fc17_h2642000000nero_aac16.mp4"
-//                ,"我靠");
-
-
-//        jcVideo.setUp("http://202.108.17.101/v.cctv.com/flash/mp4video60/TMS/2017/06/12/d2a828ca5cd0400f82c2adee5581fc17_h2642000000nero_aac16.mp4"
-//                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"就只为了测试");
-
+//
+//
+////        JCVideoPlayerStandard.startFullscreen(
+////                VideoplayerActivity.this,JCVideoPlayerStandard.class,
+////               "http://202.108.17.101/v.cctv.com/flash/mp4video60/TMS/2017/06/12/d2a828ca5cd0400f82c2adee5581fc17_h2642000000nero_aac16.mp4"
+////                ,"我靠");
+//
+//
+        jcVideo.setUp("http://202.108.17.101/v.cctv.com/flash/mp4video60/TMS/2017/06/12/d2a828ca5cd0400f82c2adee5581fc17_h2642000000nero_aac16.mp4"
+                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"就只为了测试");
+//
 //        Intent intent = getIntent();
 //
 ////        跳转   接受  数值
@@ -107,6 +112,8 @@ public class VideoplayerActivity extends BaseActivity {
 //
 //                        if(checked == true) {
 //                            Toast.makeText(VideoplayerActivity.this, "已添加至收藏", Toast.LENGTH_SHORT).show();
+//
+//
 //                        }else{
 //                            Toast.makeText(VideoplayerActivity.this, "已取消至收藏", Toast.LENGTH_SHORT).show();
 //                        }
@@ -135,11 +142,8 @@ public class VideoplayerActivity extends BaseActivity {
 //                        Glide.with(VideoplayerActivity.this)
 //                                .load(biaoqing_array.get(0).getImage())
 //                                .into(jcVideo.thumbImageView);
-//
-//
 //                    }
 //                });
-//
 //
 //            }
 //
@@ -222,12 +226,12 @@ public class VideoplayerActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        // TODO: add setContentView(...) invocation
+//        ButterKnife.bind(this);
+//    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -238,4 +242,10 @@ public class VideoplayerActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }
