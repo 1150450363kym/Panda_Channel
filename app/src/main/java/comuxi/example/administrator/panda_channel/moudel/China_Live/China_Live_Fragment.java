@@ -1,15 +1,12 @@
 package comuxi.example.administrator.panda_channel.moudel.China_Live;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -24,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
@@ -73,7 +69,9 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
             super.handleMessage(msg);
             switch (msg.what) {
                 case 300:
+
                     tablay_adapter.notifyDataSetChanged();
+
                     break;
                 case 400:
 
@@ -102,6 +100,7 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
 
         tablay_adapter = new China_Tablayout_PageAdapter(getActivity().getSupportFragmentManager(), fargmet_array, tablistBeen_array);
         chinaLiveViewpage.setAdapter(tablay_adapter);
+
         chinaLiveTablayout.setupWithViewPager(chinaLiveViewpage);
         chinaLiveTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
@@ -287,17 +286,17 @@ public class China_Live_Fragment extends BaseFragment implements China_Live_Cont
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder1 = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        // TODO: inflate a fragment view
+//        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+//        unbinder1 = ButterKnife.bind(this, rootView);
+//        return rootView;
+//    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder1.unbind();
-    }
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        unbinder1.unbind();
+//    }
 }
