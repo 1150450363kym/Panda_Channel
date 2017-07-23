@@ -31,7 +31,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 public class VideoplayerActivity extends BaseActivity {
 
-    String video_title, pid, video_imag, url;
+    String video_title, pid, video_imag;
     @BindView(R.id.jc_video)
     JCVideoPlayerStandard jcVideo;
 
@@ -60,7 +60,6 @@ public class VideoplayerActivity extends BaseActivity {
         pid = intent.getStringExtra("pid");
         video_title = intent.getStringExtra("video_title");
         video_imag = intent.getStringExtra("video_imag");
-
 
         PandaMode pandaMode = new PandaItemMode();
 
@@ -146,7 +145,7 @@ public class VideoplayerActivity extends BaseActivity {
             @Override
             public void onError(int errorCode, String errorMsg) {
 
-            Log.e("TAG","视屏请求失败");
+            Log.e("TAG","");
 
             }
         });

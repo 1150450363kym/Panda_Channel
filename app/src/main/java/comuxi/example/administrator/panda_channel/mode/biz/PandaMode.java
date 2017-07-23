@@ -53,7 +53,7 @@ public interface PandaMode extends BaseMode {
     void getXiquanimation(String n,String vsid,String p,String serviceId,int em,MyHttpCallBack<XiquaimationBean> myHttpCallBack);
 
     //播放视频路径
-    void getVideoplayer(String pid,MyHttpCallBack<VideoplayerBean> myHttpCallBack);
+    void getVideoplayer(String url,MyHttpCallBack<VideoplayerBean> myHttpCallBack);
 
 
 }

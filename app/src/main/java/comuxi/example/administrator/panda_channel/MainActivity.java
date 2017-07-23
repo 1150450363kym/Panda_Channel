@@ -33,7 +33,7 @@ import comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast.Pandan
 /**
  * Activity界面
  */
-
+//
 public class MainActivity extends BaseActivity {
     @BindView(R.id.login_home_button)
     RadioButton loginHomeButton;
