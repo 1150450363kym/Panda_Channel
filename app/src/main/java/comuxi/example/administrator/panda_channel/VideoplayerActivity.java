@@ -1,36 +1,10 @@
 package comuxi.example.administrator.panda_channel;
 
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.umeng.socialize.ShareAction;
-import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.UMShareListener;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.media.UMImage;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.BindView;
-import comuxi.example.administrator.panda_channel.Base.BaseActivity;
-import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
-import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.VideoplayerBean;
-import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
-import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
-import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
-
-public class VideoplayerActivity extends BaseActivity {
+public class VideoplayerActivity {
     /**
      * 视频播放的 类
      * @return
-     */
+     *//*
     String video_title, pid, video_imag;
     @BindView(R.id.jiecao_tv)
     fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard jcVideo;
@@ -207,6 +181,6 @@ public class VideoplayerActivity extends BaseActivity {
 
     }
 
-
+*/
 
 }
