@@ -16,6 +16,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 
 /**
  * Created by lenovo on 2017/7/15.
+ * /
  */
 
 public class CehuaAdapter extends BaseAdapter<CehuaBean.InteractiveBean> {
