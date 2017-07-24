@@ -6,7 +6,7 @@ import android.webkit.WebView;
 import butterknife.BindView;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
 import comuxi.example.administrator.panda_channel.Utils.ACache;
-
+//
 public class WebActivity extends BaseActivity {
 
     private WebSettings settings;
