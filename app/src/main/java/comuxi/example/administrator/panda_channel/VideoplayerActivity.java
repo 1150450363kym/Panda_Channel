@@ -123,6 +123,8 @@ public class VideoplayerActivity extends BaseActivity {
                         Glide.with(VideoplayerActivity.this)
                                 .load(biaoqing_array.get(0).getImage())
                                 .into(jcVideo.thumbImageView);
+
+
                     }
                 });
 

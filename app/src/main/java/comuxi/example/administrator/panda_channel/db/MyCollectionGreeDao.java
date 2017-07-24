@@ -12,7 +12,7 @@ public class MyCollectionGreeDao {
     public static void main(String [] arg){
 
         Schema schema = new Schema(1,"comuxi.example.administrator.panda_channel.MyCollectGreeDao");
-        Entity entity= schema.addEntity("HistroyGreeDao");
+        Entity entity= schema.addEntity("CollectionGreeDao");
         entity.addIdProperty();
 
         entity.addStringProperty("imagpath");
