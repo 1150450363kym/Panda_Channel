@@ -13,6 +13,7 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_
 ////
 public interface HomeContract {
     interface View extends BaseView<presenter> {
+
         void shouProgress();//展示 进度条
 ////
         void dissProgress();//结束 进度条
