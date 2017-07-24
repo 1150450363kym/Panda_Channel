@@ -1,6 +1,7 @@
 package comuxi.example.administrator.panda_channel.adapter_activity;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +78,7 @@ public class Historical_Adapter extends RecyclerView.Adapter {
             my_view.radioButton.setChecked(false);
         }
 
-
+        Log.d("TAG", "onBindViewHolder: ."+his_array.get(position).getImagpath());
         Glide.with(content).load(his_array.get(position).getImagpath()).into(my_view.imageView);
 
 

@@ -7,7 +7,7 @@
 
     tools:context="comuxi.example.administrator.panda_channel.MyCollectionActivity">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/shoutoolbar"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@color/colorPrimary">
@@ -31,7 +31,25 @@
                 android:textColor="#fff"
                 android:textSize="18dp" />
 
+            <TextView
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:id="@+id/shoucang_bianji"
+                android:text="编辑"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
+
+
+
+
+
+
+
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout

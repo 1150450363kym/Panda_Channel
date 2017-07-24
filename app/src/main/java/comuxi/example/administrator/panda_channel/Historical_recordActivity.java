@@ -90,6 +90,14 @@ public class Historical_recordActivity extends BaseActivity {
         list = his_dp.queryBuilder().list();
 
         his_array.addAll(list);
+        
+        
+        if(his_array.size()==0) {
+            hisImageWu.setVisibility(View.VISIBLE);
+        }else{
+            hisImageWu.setVisibility(View.GONE);
+        }
+        
 
         Log.e("TAG", "GreeDao 数据  查选到的" + his_array.size());
 
@@ -206,7 +214,7 @@ public class Historical_recordActivity extends BaseActivity {
                             his_dp.delete(his_array.get(i));
                             his_array.remove(i);
 
-                            Log.e("tag===list.size", his_array.size() + "");
+
 
                         }
                     }
@@ -216,7 +224,7 @@ public class Historical_recordActivity extends BaseActivity {
 
                     if (his_array.size() == 0) {
                         allDeleteLinear.setVisibility(View.GONE);
-                        historicalEdit.setText("编辑");
+
                         historicalEdit.setVisibility(View.GONE);
                         hisImageWu.setVisibility(View.VISIBLE);
 

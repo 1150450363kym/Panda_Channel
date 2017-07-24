@@ -1,12 +1,8 @@
 package comuxi.example.administrator.panda_channel.moudel.Home;
 
-import java.util.List;
-
 import comuxi.example.administrator.panda_channel.Base.BasePresenter;
 import comuxi.example.administrator.panda_channel.Base.BaseView;
-import comuxi.example.administrator.panda_channel.HistroyGreeDao.HistroyGreeDao;
 import comuxi.example.administrator.panda_channel.HistroyGreeDao.HistroyGreeDaoDao;
-
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
 
 /**
@@ -33,7 +29,7 @@ public interface HomeContract {
 
         HistroyGreeDaoDao getdp();//添加到历史观看数据库中
 
-        List<HistroyGreeDao> selectHieGreedao();// 查询 历史观看数据库 中数据
+//        List<HistroyGreeDao> selectHieGreedao();// 查询 历史观看数据库 中数据
 
 
     }

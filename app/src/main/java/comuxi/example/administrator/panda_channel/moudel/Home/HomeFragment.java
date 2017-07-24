@@ -38,7 +38,7 @@ import comuxi.example.administrator.panda_channel.web_view.Home_Web_View_;
  */
 
 public class HomeFragment extends BaseFragment implements HomeContract.View {
-//
+    //
     HomeContract.presenter home_present;
     //    private ProgressDialog dialog;
     Unbinder unbinder;
@@ -50,14 +50,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     private ArrayList<Object> home_data_object = new ArrayList<>();
     private ArrayList<Home_Data_TextBean.DataBean> home_data = new ArrayList<>();
 
-
+    private boolean flag = false;
     private Home_proRecycle_Adapter home_adapter;
     //     历史记录 数据库
     private HistroyGreeDaoDao getdp;
     //     数据库的实体类
 
     //    查询数据库 里面的  集合
-    private List<HistroyGreeDao> histroTextBeen_list;
+    List<HistroyGreeDao>    histroTextBeen_list;
 
     private Handler handler = new Handler() {
         @Override
@@ -66,9 +66,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             switch (msg.what) {
                 case 300:
 
-
                     home_adapter.notifyDataSetChanged();
-
 
                     break;
             }
@@ -76,8 +74,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         }
     };
 
-/////////
-    private boolean flag = false;
     @Override
     protected int getlayoutID() {
         return R.layout.login_home_fragment;
@@ -89,19 +85,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         shouProgress();
     }
 
-
     @Override
     protected void loadData() {
         home_present.start();
 
 //历史记录的 数据库
         getdp = getdp();
-//        数据库扫除
-//        getdp.deleteAll();
-// 查询 数据库 中的 内容
-        histroTextBeen_list = selectHieGreedao();
 
-//历史记录 的  实体类
+// 查询 数据库 中的 内容
 
 
 
@@ -148,38 +139,47 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                     startActivity(Video_intent);
 
 //                    轮播图视频 存入 历史记录的数据库
+                    histroTextBeen_list = getdp.queryBuilder().list();
                     if (histroTextBeen_list.size() == 0) {
-                        HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                        HistroyGreeDao histroTextBean = new HistroyGreeDao();
                         histroTextBean.setName(bigImgBean.getTitle());
-                        histroTextBean.setData("00");
-                        histroTextBean.setImagpath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
-                        histroTextBean.setMoviepath(bigImgBean.getImage());
+                        histroTextBean.setData("05:34");
+                        histroTextBean.setImagpath(bigImgBean.getImage());
+                        Log.e("TAG", "bigImgBean.getImage()" + bigImgBean.getImage());
+                        histroTextBean.setMoviepath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
                         getdp.insert(histroTextBean);
+
                     } else {
                         for (int i = 0; i < histroTextBeen_list.size(); i++) {
-                            if (bigImgBean.getTitle().equals(getdp.queryBuilder().build().list().get(i).getName())) {
+                            if (bigImgBean.getTitle().equals(histroTextBeen_list.get(i).getName())) {
+                                histroTextBeen_list.set(0, histroTextBeen_list.get(i));
                                 flag = true;
                                 return;
                             }
                         }
                         if (flag == true) {
+
+                            getdp.deleteAll();
+                            for (int i = 0; i <histroTextBeen_list.size(); i++) {
+                                getdp.insert(histroTextBeen_list.get(i));
+                            }
+
                             flag = false;
                         } else {
-                            HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                            HistroyGreeDao histroTextBean = new HistroyGreeDao();
                             histroTextBean.setName(bigImgBean.getTitle());
-                            histroTextBean.setData("00");
-                            histroTextBean.setImagpath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
-                            histroTextBean.setMoviepath(bigImgBean.getImage());
+                            histroTextBean.setData("03:32");
+                            histroTextBean.setImagpath(bigImgBean.getImage());
+                            histroTextBean.setMoviepath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
                             getdp.insert(histroTextBean);
+
+
                         }
                     }
-
-//
 
                 }
 
             }
-
 
             @Override
 //            精彩推荐的 点击事件
@@ -190,31 +190,38 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                 Video_intent.putExtra("video_imag", home_data.getImage());
                 startActivity(Video_intent);
 
-
                 //                    精彩推荐 存入 历史记录的数据库
+                histroTextBeen_list = getdp.queryBuilder().list();
                 if (histroTextBeen_list.size() == 0) {
-                    HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                    HistroyGreeDao histroTextBean = new HistroyGreeDao();
                     histroTextBean.setName(home_data.getTitle());
-                    histroTextBean.setData("00");
-                    histroTextBean.setImagpath(home_data.getUrl() + "?pid=" + home_data.getPid());
-                    histroTextBean.setMoviepath(home_data.getImage());
+                    histroTextBean.setData("02:46");
+                    histroTextBean.setImagpath(home_data.getImage());
+                    histroTextBean.setMoviepath(home_data.getUrl() + "?pid=" + home_data.getPid());
                     getdp.insert(histroTextBean);
                 } else {
                     for (int i = 0; i < histroTextBeen_list.size(); i++) {
-                        if (home_data.getTitle().equals(getdp.queryBuilder().build().list().get(i).getName())) {
+                        if (home_data.getTitle().equals(histroTextBeen_list.get(i).getName())) {
+                            histroTextBeen_list.set(0, histroTextBeen_list.get(i));
                             flag = true;
                             return;
                         }
+
                     }
                     if (flag == true) {
+                        getdp.deleteAll();
+                        for (int i = 0; i < histroTextBeen_list.size(); i++) {
+                            getdp.insert(histroTextBeen_list.get(i));
+                        }
                         flag = false;
                     } else {
-                        HistroyGreeDao      histroTextBean = new HistroyGreeDao();
+                        HistroyGreeDao histroTextBean = new HistroyGreeDao();
                         histroTextBean.setName(home_data.getTitle());
-                        histroTextBean.setData("00");
-                        histroTextBean.setImagpath(home_data.getUrl() + "?pid=" + home_data.getPid());
-                        histroTextBean.setMoviepath(home_data.getImage());
+                        histroTextBean.setData("03:44");
+                        histroTextBean.setImagpath(home_data.getImage());
+                        histroTextBean.setMoviepath(home_data.getUrl() + "?pid=" + home_data.getPid());
                         getdp.insert(histroTextBean);
+
                     }
                 }
 
@@ -391,19 +398,19 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     }
 
-    //    查询数据库 中数据
-    @Override
-    public List<HistroyGreeDao> selectHieGreedao() {
-
-        HistroyGreeDaoDao getdp = getdp();
-
-        List<HistroyGreeDao> list = getdp.queryBuilder().list();
-
-        Log.e("TAG", "刚开始进去看看" + list.size());
-
-        return list;
-
-    }
+//    //    查询数据库 中数据
+//    @Override
+//    public List<HistroyGreeDao> selectHieGreedao() {
+//
+//        HistroyGreeDaoDao getdp = getdp();
+//
+//        List<HistroyGreeDao> list = getdp.queryBuilder().list();
+//
+//        Log.e("TAG", "刚开始进去看看" + list.size());
+//
+//        return list;
+//
+//    }
 
 
     @Override
