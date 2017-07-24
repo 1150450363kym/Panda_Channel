@@ -20,7 +20,7 @@ import android.view.TextureView;
  */
 public class JCResizeTextureView extends TextureView {
     protected static final String TAG = "JCResizeTextureView";
-
+//
     // x as width, y as height
     protected Point mVideoSize;
 
