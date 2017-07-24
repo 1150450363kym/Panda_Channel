@@ -148,7 +148,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                         Log.e("TAG", "bigImgBean.getImage()" + bigImgBean.getImage());
                         histroTextBean.setMoviepath(bigImgBean.getPid());
                         getdp.insert(histroTextBean);
-
+//////
                     } else {
                         for (int i = 0; i < histroTextBeen_list.size(); i++) {
                             if (bigImgBean.getTitle().equals(histroTextBeen_list.get(i).getName())) {
