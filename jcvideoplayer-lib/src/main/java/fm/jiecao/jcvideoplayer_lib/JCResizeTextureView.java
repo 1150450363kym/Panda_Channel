@@ -62,7 +62,7 @@ public class JCResizeTextureView extends TextureView {
         int videoHeight = mVideoSize.y;
         Log.i(TAG, "videoWidth = " + videoWidth + ", " + "videoHeight = " + videoHeight);
         Log.i(TAG, "viewRotation = " + viewRotation);
-
+////
         // 如果判断成立，则说明显示的TextureView和本身的位置是有90度的旋转的，所以需要交换宽高参数。
         if (viewRotation == 90 || viewRotation == 270) {
             int tempMeasureSpec = widthMeasureSpec;
