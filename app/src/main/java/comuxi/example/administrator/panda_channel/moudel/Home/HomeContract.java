@@ -16,6 +16,7 @@ public interface HomeContract {
 
         void shouProgress();//展示 进度条
 ////
+
         void dissProgress();//结束 进度条
 
         void showCarousel(Home_Data_TextBean data_textBean);// 展示轮播图
