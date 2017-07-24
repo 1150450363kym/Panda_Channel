@@ -185,9 +185,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 //            精彩推荐的 点击事件
             public void get_wonderful_Click(Home_Data_TextBean.DataBean.AreaBean.ListscrollBean home_data) {
                 Intent Video_intent = new Intent(App.content, VideoplayerActivity.class);
-//                Video_intent.putExtra("pid", home_data.getPid());
-//                Video_intent.putExtra("video_title", home_data.getTitle());
-//                Video_intent.putExtra("video_imag", home_data.getImage());
+                Video_intent.putExtra("pid", home_data.getPid());
+                Video_intent.putExtra("video_title", home_data.getTitle());
+                Video_intent.putExtra("video_imag", home_data.getImage());
                 startActivity(Video_intent);
 
 

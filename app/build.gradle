@@ -79,5 +79,5 @@ dependencies {
     compile files('libs/umeng_social_tool.jar')
     compile 'de.greenrobot:greendao:2.1.0'
     compile 'de.greenrobot:greendao-generator:2.1.0'
-    compile project(path: ':jcvideoplayer-lib')
+    compile project(':jcvideoplayer-lib')
 }

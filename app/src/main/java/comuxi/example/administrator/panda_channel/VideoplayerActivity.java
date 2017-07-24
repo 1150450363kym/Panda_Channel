@@ -1,15 +1,9 @@
 package comuxi.example.administrator.panda_channel;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -17,17 +11,11 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
-import comuxi.example.administrator.panda_channel.app.App;
-import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.VideoplayerBean;
 import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
-import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
-import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 public class VideoplayerActivity extends BaseActivity {
@@ -53,6 +41,9 @@ public class VideoplayerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+        jcVideo.setUp("http://video.jiecao.fm/11/23/xin/%E5%81%87%E4%BA%BA.mp4"
+                        , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "嫂子不信");
 //
 //
 ////        JCVideoPlayerStandard.startFullscreen(
@@ -71,92 +62,92 @@ public class VideoplayerActivity extends BaseActivity {
         video_title = intent.getStringExtra("video_title");
         video_imag = intent.getStringExtra("video_imag");
 
-        PandaMode pandaMode = new PandaItemMode();
+//        PandaMode pandaMode = new PandaItemMode();
+//
+//
+//
+//        pandaMode.getVideoplayer(pid, new MyHttpCallBack<VideoplayerBean>() {
+//            @Override
+//            public void onSuccess(final VideoplayerBean videoplayerBean) {
+//
+////            标清   地址
+//                final List<VideoplayerBean.VideoBean.Chapters4Bean> chapters4 = videoplayerBean.getVideo().getChapters4();
+//                biaoqing_array.addAll(chapters4);
+//
+//                Log.e("TAG", "我点击 播放视频的地址是" + biaoqing_array.get(0).getUrl());
+//
+//                jcVideo.setUp("http://video.jiecao.fm/11/23/xin/%E5%81%87%E4%BA%BA.mp4"
+//                        , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "嫂子不信");
 
-        pandaMode.getVideoplayer(pid, new MyHttpCallBack<VideoplayerBean>() {
-            @Override
-            public void onSuccess(final VideoplayerBean videoplayerBean) {
-
-//            标清   地址
-                final List<VideoplayerBean.VideoBean.Chapters4Bean> chapters4 = videoplayerBean.getVideo().getChapters4();
-                biaoqing_array.addAll(chapters4);
-
-                App.content.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.e("TAG", "我点击 播放视频的地址是" + biaoqing_array.get(0).getUrl());
-
-                        jcVideo.setUp( biaoqing_array.get(0).getUrl()
-                                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
-
-                        Glide.with(VideoplayerActivity.this)
-                                .load(biaoqing_array.get(0).getImage())
-                                .into(jcVideo.thumbImageView);
-                    }
-                });
+//
+//
+//
+//                        Glide.with(VideoplayerActivity.this)
+//                                .load(biaoqing_array.get(0).getImage())
+//                                .into(jcVideo.thumbImageView);
 
 //             高清地址
-                List<VideoplayerBean.VideoBean.ChaptersBean> chapters = videoplayerBean.getVideo().getChapters();
-                gaoqing_array.addAll(chapters);
+//                List<VideoplayerBean.VideoBean.ChaptersBean> chapters = videoplayerBean.getVideo().getChapters();
+//                gaoqing_array.addAll(chapters);
 
 //                各种 按钮
 
 //                分享监听
-                jcVideo.set_Viewo_Click(new JCVideoPlayerStandard.Video_Click() {
-                    @Override
-                    public void Shar_Video(View view) {
-                        share();
-                    }
+//                jcVideo.set_Viewo_Click(new JCVideoPlayerStandard.Video_Click() {
+//                    @Override
+//                    public void Shar_Video(View view) {
+//                        share();
+//                    }
+//
+//                    @Override
+//                    public void add_cang_Video(CompoundButton compoundButton, boolean b) {
+//
+//                        boolean checked = compoundButton.isChecked();
+//
+//                        if(checked == true) {
+//                            Toast.makeText(VideoplayerActivity.this, "已添加至收藏", Toast.LENGTH_SHORT).show();
+//
+//
+//                        }else{
+//                            Toast.makeText(VideoplayerActivity.this, "已取消至收藏", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void WatchthelistMonitor(View view) {
+//                        Toast.makeText(VideoplayerActivity.this, "列表", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void setgq() {
+//                        jcVideo.setUp(gaoqing_array.get(0).getUrl()
+//                                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
+//                        Glide.with(VideoplayerActivity.this)
+//                                .load(gaoqing_array.get(0).getImage())
+//                                .into(jcVideo.thumbImageView);
+//                    }
+//
+//                    @Override
+//                    public void setbq() {
+//
+//                        jcVideo.setUp(biaoqing_array.get(0).getUrl()
+//                                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
+//                        Glide.with(VideoplayerActivity.this)
+//                                .load(biaoqing_array.get(0).getImage())
+//                                .into(jcVideo.thumbImageView);
+//                    }
+//                });
 
-                    @Override
-                    public void add_cang_Video(CompoundButton compoundButton, boolean b) {
-
-                        boolean checked = compoundButton.isChecked();
-
-                        if(checked == true) {
-                            Toast.makeText(VideoplayerActivity.this, "已添加至收藏", Toast.LENGTH_SHORT).show();
-
-
-                        }else{
-                            Toast.makeText(VideoplayerActivity.this, "已取消至收藏", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-
-                    @Override
-                    public void WatchthelistMonitor(View view) {
-                        Toast.makeText(VideoplayerActivity.this, "列表", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void setgq() {
-                        jcVideo.setUp(gaoqing_array.get(0).getUrl()
-                                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
-                        Glide.with(VideoplayerActivity.this)
-                                .load(gaoqing_array.get(0).getImage())
-                                .into(jcVideo.thumbImageView);
-                    }
-
-                    @Override
-                    public void setbq() {
-
-                        jcVideo.setUp(biaoqing_array.get(0).getUrl()
-                                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoplayerBean.getTitle());
-                        Glide.with(VideoplayerActivity.this)
-                                .load(biaoqing_array.get(0).getImage())
-                                .into(jcVideo.thumbImageView);
-                    }
-                });
-
-            }
-
-            @Override
-            public void onError(int errorCode, String errorMsg) {
-
-            Log.e("TAG","....................................");
-
-            }
-        });
+//            }
+//
+//            @Override
+//            public void onError(int errorCode, String errorMsg) {
+//
+//            Log.e("TAG","....................................");
+//
+//            }
+//        });
 
     }
 
@@ -227,27 +218,6 @@ public class VideoplayerActivity extends BaseActivity {
 
     }
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        // TODO: add setContentView(...) invocation
-//        ButterKnife.bind(this);
-//    }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        VideoplayerActivity.this.finish();
-        return super.onKeyDown(keyCode, event);
-
-    }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
 }

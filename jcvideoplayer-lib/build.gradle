@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 60
-        versionName "5.6"
+        versionCode 61
+        versionName "5.7"
     }
     buildTypes {
         release {
@@ -27,3 +27,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
 }
 
+apply from: '../gradle/maven_push.gradle'
