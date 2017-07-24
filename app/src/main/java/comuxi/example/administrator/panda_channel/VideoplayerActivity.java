@@ -62,8 +62,8 @@ public class VideoplayerActivity extends BaseActivity {
             public void onSuccess(final VideoplayerBean videoplayerBean) {
 
 //            标清   地址
-                final List<VideoplayerBean.VideoBean.Chapters4Bean> chapters4 = videoplayerBean.getVideo().getChapters4();
-                biaoqing_array.addAll(chapters4);
+  final List<VideoplayerBean.VideoBean.Chapters4Bean> chapters4 = videoplayerBean.getVideo().getChapters4();
+  biaoqing_array.addAll(chapters4);
 
                 Log.e("TAG", "我点击 播放视频的地址是" + biaoqing_array.get(0).getUrl());
 
@@ -71,7 +71,7 @@ public class VideoplayerActivity extends BaseActivity {
                         , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, video_title);
 
                         Glide.with(VideoplayerActivity.this)
-                                .load(biaoqing_array.get(0).getImage())
+                                .load(video_title)
                                 .into(jcVideo.thumbImageView);
 
 //             高清地址

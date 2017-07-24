@@ -83,14 +83,14 @@ public class Historical_Adapter extends RecyclerView.Adapter {
 
 
 
-        my_view.radioButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                my_view.radioButton.setChecked(true);
-
-            }
-        });
+//        my_view.radioButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                my_view.radioButton.setChecked(true);
+//
+//            }
+//        });
 
 
         my_view.itemView.setOnClickListener(new View.OnClickListener() {

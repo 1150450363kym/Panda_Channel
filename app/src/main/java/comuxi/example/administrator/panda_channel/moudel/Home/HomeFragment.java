@@ -146,7 +146,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                         histroTextBean.setData("05:34");
                         histroTextBean.setImagpath(bigImgBean.getImage());
                         Log.e("TAG", "bigImgBean.getImage()" + bigImgBean.getImage());
-                        histroTextBean.setMoviepath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
+                        histroTextBean.setMoviepath(bigImgBean.getPid());
                         getdp.insert(histroTextBean);
 
                     } else {
@@ -170,7 +170,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                             histroTextBean.setName(bigImgBean.getTitle());
                             histroTextBean.setData("03:32");
                             histroTextBean.setImagpath(bigImgBean.getImage());
-                            histroTextBean.setMoviepath(bigImgBean.getUrl() + "?pid=" + bigImgBean.getPid());
+                            histroTextBean.setMoviepath(bigImgBean.getPid());
                             getdp.insert(histroTextBean);
 
 
@@ -197,7 +197,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                     histroTextBean.setName(home_data.getTitle());
                     histroTextBean.setData("02:46");
                     histroTextBean.setImagpath(home_data.getImage());
-                    histroTextBean.setMoviepath(home_data.getUrl() + "?pid=" + home_data.getPid());
+                    histroTextBean.setMoviepath(home_data.getPid());
                     getdp.insert(histroTextBean);
                 } else {
                     for (int i = 0; i < histroTextBeen_list.size(); i++) {
@@ -219,7 +219,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                         histroTextBean.setName(home_data.getTitle());
                         histroTextBean.setData("03:44");
                         histroTextBean.setImagpath(home_data.getImage());
-                        histroTextBean.setMoviepath(home_data.getUrl() + "?pid=" + home_data.getPid());
+                        histroTextBean.setMoviepath(home_data.getPid());
                         getdp.insert(histroTextBean);
 
                     }

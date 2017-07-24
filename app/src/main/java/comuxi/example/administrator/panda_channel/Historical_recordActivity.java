@@ -1,5 +1,6 @@
 package comuxi.example.administrator.panda_channel;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
@@ -130,6 +131,19 @@ public class Historical_recordActivity extends BaseActivity {
                     if (number == 0) {
                         deleteHistorButton.setText("删除");
                     }
+                }else{
+
+//                   Toast.makeText(Historical_recordActivity.this, "额滴亲娘啊", Toast.LENGTH_SHORT).show();
+
+                    Intent inten = new Intent(Historical_recordActivity.this,VideoplayerActivity.class);
+
+                            Log.e("TAG","+++++"+his_array.get(postion).getMoviepath());
+                    inten.putExtra("pid", his_array.get(postion).getMoviepath());
+                    inten.putExtra("video_title", his_array.get(postion).getName());
+                    inten.putExtra("video_imag", his_array.get(postion).getImagpath());
+
+                    startActivity(inten);
+
                 }
                 handler.sendEmptyMessage(300);
 
@@ -213,7 +227,6 @@ public class Historical_recordActivity extends BaseActivity {
 
                             his_dp.delete(his_array.get(i));
                             his_array.remove(i);
-
 
 
                         }
