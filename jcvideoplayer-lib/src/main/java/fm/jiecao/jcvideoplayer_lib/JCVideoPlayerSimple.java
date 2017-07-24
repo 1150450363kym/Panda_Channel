@@ -9,6 +9,7 @@ import android.widget.Toast;
 /**
  * Manage UI
  * Created by Nathen
+ * oo
  * On 2016/04/10 15:45
  */
 public class JCVideoPlayerSimple extends JCVideoPlayer {

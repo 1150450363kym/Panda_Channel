@@ -33,6 +33,7 @@ import java.util.TimerTask;
 
 /**
  * Created by Nathen
+ * oo
  * On 2016/04/18 16:15
  */
 public class JCVideoPlayerStandard extends JCVideoPlayer {

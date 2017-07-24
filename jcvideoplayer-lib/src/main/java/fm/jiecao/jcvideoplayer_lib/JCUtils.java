@@ -14,7 +14,7 @@ import java.util.Formatter;
 import java.util.Locale;
 
 /**
- * Created by Nathen
+ * Created by Nathen99
  * On 2016/02/21 12:25
  */
 public class JCUtils {

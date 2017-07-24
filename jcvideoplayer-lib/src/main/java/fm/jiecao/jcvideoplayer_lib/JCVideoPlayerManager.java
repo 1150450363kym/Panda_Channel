@@ -4,6 +4,7 @@ package fm.jiecao.jcvideoplayer_lib;
  * Put JCVideoPlayer into layout
  * From a JCVideoPlayer to another JCVideoPlayer
  * Created by Nathen on 16/7/26.
+ * oo
  */
 public class JCVideoPlayerManager {
 

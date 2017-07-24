@@ -33,6 +33,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * oo
  * Created by Nathen on 16/7/30.
  */
 public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, View.OnTouchListener {

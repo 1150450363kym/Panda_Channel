@@ -15,7 +15,7 @@ import android.view.TextureView;
  *
  * shdfiohiduofhiuedfbhiuew
  *
- *
+ *999
  * On 2016/06/02 00:01
  */
 public class JCResizeTextureView extends TextureView {

@@ -2,7 +2,7 @@ package fm.jiecao.jcvideoplayer_lib;
 
 /**
  * Created by Nathen
- * On 2016/04/26 20:53
+ * On 2016/04/26 20:5399
  */
 public interface JCUserActionStandard extends JCUserAction {
 
