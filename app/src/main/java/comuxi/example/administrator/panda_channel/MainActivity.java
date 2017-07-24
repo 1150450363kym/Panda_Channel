@@ -32,6 +32,7 @@ import comuxi.example.administrator.panda_channel.moudel.Pandan_Broadcast.Pandan
 
 /**
  * Activity界面
+ * qqq
  */
 //
 public class MainActivity extends BaseActivity {

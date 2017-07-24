@@ -22,7 +22,7 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 
 /**
  * 原创互动 页面
- * /
+ * /qqqq
  */
 
 public class CehuaActivity extends BaseActivity implements PullToRefreshListener {
