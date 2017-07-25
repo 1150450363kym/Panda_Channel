@@ -15,6 +15,7 @@ public class OriginalnewsPresenter implements OriginalnewsContract.presenter {
     private OriginalnewsContract.View oneView;
     private PandaMode pandaMode;
 
+
     public OriginalnewsPresenter(OriginalnewsContract.View oneView){
         this.oneView = oneView;
         pandaMode = new PandaItemMode();
