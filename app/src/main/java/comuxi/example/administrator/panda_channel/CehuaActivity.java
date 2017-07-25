@@ -22,12 +22,11 @@ import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 
 /**
  * 原创互动 页面
- * /qqqq
  */
 
 public class CehuaActivity extends BaseActivity implements PullToRefreshListener {
 
-    @BindView(R.id.historical_image)
+    @BindView(R.id.yuanchuan_image)
     ImageView historicalImage;
     @BindView(R.id.cehua_pullto)
     PullToRefreshRecyclerView cehuaPullto;
@@ -83,7 +82,7 @@ public class CehuaActivity extends BaseActivity implements PullToRefreshListener
         });
     }
 
-    @OnClick(R.id.historical_image)
+    @OnClick(R.id.yuanchuan_image)
     public void onViewClicked() {
         this.finish();
     }

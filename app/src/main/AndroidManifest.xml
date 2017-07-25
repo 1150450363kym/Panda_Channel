@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="comuxi.example.administrator.panda_channel">
+    package="comuxi.example.administrator.panda_channel"
+    android:versionCode="307"
+    android:versionName="3.0.7">
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="21" />
 
+    <!-- Required -->
+    <permission
+        android:name="comuxi.example.administrator.panda_channel.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,6 +19,39 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 读取 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 写入权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 创建与删除权限 -->
+    <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS" />
+
+
+
+    <!-- Required  一些系统要求的权限，如访问网络等-->
+    <uses-permission android:name="comuxi.example.administrator.panda_channel.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:name=".app.App"
@@ -72,16 +112,6 @@
             android:name="UMENG_APPKEY"
             android:value="592e62609f06fd2fc300070a" />
 
-        <activity
-            android:name=".VideoplayerActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="landscape" >
-
-
-
-
-
-        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".PersonalCenterActivity" />
         <activity android:name=".Historical_recordActivity" />
@@ -91,8 +121,24 @@
         <activity android:name=".moudel.GG_TV.PandaThingsActivity" />
         <activity android:name=".CehuaActivity" />
         <activity android:name=".WebActivity" />
+        <activity android:name=".activity.PersonInfoActivity"/>
         <activity android:name=".PersonAboutActivity" />
-        <activity android:name=".PersonalFeedBackActivity"></activity>
+        <activity android:name=".activity.PersonalNickNameActivity"/>
+        <activity android:name=".activity.WJMMActivity"/>
+        <activity android:name=".PersonalFeedBackActivity" />
+
+        <!-- Required . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <!--  极光推送  04e7d82c3ebc9dd13ade2b8d-->
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="04e7d82c3ebc9dd13ade2b8d" />
+       <!-- </>值来自开发者平台取得的AppKey -->
+
     </application>
 
+
 </manifest>
+

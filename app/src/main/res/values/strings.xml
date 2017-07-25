@@ -88,4 +88,36 @@
     <string name="regist_not_checked">未勾选《央视网网络服务使用协议》</string>
     <string name="regist_email_success">请到您的邮箱激活账号后登录，是否现在去邮箱激活</string>
 
+    <!-- 修改昵称、头像 -->
+    <string name="save">保存</string>
+    <string name="change_nickname">修改昵称</string>
+    <string name="photo_select">从手机相册选择</string>
+    <string name="photo_make">拍一张</string>
+    <string name="photo_cancle">取消</string>
+    <string name="editnickname_tips">用户昵称只能为汉字、字母、数字、下划线组成;长度为3-10个汉字(6-20个非汉字字符);不能为空;不能有禁词;敏感词;不能重复</string>
+    <string name="change_nickname_tips">您的昵称已提交审核\n\n请稍后回来确认吧</string>
+    <string name="change_photo_tips">您的头像已提交审核\n\n请稍后回来确认吧</string>
+    <string name="change_nickname_sure">我知道啦</string>
+    <string name="login_cookies">您的登录已过期，请重新登录</string>
+    <string name="whatch_photo">"熊猫频道"想访问您的相册</string>
+    <string name="whatch_camera">"熊猫频道"想访问您的相机</string>
+    <string name="watch_photo_ok">好</string>
+    <string name="watch_photo_no">不允许</string>
+    <string name="tip_null"></string>
+    <string name="login_faile">您的登录已过期，请重新登录</string>
+    <string name="request_faile_tips">服务器连接失败，请重试</string>
+
+
+
+    <string name="problem1">1.观看熊猫频道视频对手机网络有什么要求</string>
+    <string name="problem2">建议您在有WiFi的情况下观看视频，不建议您在2G网络下观看视频熊猫频道可以对您的联网类型进行自动识别，当您在3G、4G情况下观看视频时，手机会自动提示您在使用数据流量环境下观看视频，可能会产生高额费用，是否继续观看。</string>
+    <string name="problem3">2.如何清除缓存</string>
+    <string name="problem4">在“个人中心”页面里点击“设置”，在设置页面里选择“清除缓存”。</string>
+    <string name="problem5">3.如何进行版本更新</string>
+    <string name="problem6">新版本更新以后，用户首次启动客户端，会自动接收到升级提示。点击“升级”即可。IOS用户手机自动跳转至AppStore下载页面，Android用户手机自动后台下载更新。</string>
+    <string name="problem7">4.启动或使用时闪退该怎么办？</string>
+    <string name="problem8">登录或使用熊猫频道时出现闪退，可能是手机运行空间不足或软件数据包丢失导致，请您尝试重启手机或卸载软件后，下载安装最新版本使用。</string>
+    <string name="problem9">5.我有问题，如何反馈？</string>
+    <string name="problem10">在“个人中心”页面里点击 “设置”，在设置页面里选择“用户反馈及帮助”。根据页面提示提交反馈，我们收到后将及时处理。</string>
+
 </resources>

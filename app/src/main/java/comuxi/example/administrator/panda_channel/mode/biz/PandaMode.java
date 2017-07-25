@@ -5,10 +5,12 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.LoginBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.UpDateLoading;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.VideoplayerBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.XiquaimationBean;
@@ -54,6 +56,10 @@ public interface PandaMode extends BaseMode {
 
     //播放视频路径
     void getVideoplayer(String url,MyHttpCallBack<VideoplayerBean> myHttpCallBack);
+
+    //登录
+    void getLogin(String username, String password, MyHttpCallBack<LoginBean> myHttpCallBack);
+    void getVersion(MyHttpCallBack<UpDateLoading> myHttpCallBack);
 
 
 }

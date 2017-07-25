@@ -8,14 +8,17 @@ import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.CehuaBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.China_Live_Path_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.GG_TV_TextBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.LoginBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.MoreLiveBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.PandaBroadCastListBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.UpDateLoading;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.VideoplayerBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.WonderfulOneBean;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.XiquaimationBean;
 import comuxi.example.administrator.panda_channel.mode.Url_Path.Url;
+
 
 /**
  * Created by Administrator on 2017/7/12.
@@ -117,6 +120,23 @@ public class PandaItemMode implements PandaMode {
         Map<String,String> map = new HashMap<>();
 
         I_HTTP.get(Url.TV_Url+pid,map,myHttpCallBack);
+
+    }
+
+    @Override
+    public void getLogin(String username, String password, MyHttpCallBack<LoginBean> myHttpCallBack) {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("from","https://reg.cntv.cn/login/login.action");
+        map.put("service","client_transaction");
+        map.put("username",username);
+        map.put("password",password);
+        I_HTTP.post(Url.LOGIN,map,myHttpCallBack);
+    }
+
+    @Override
+    public void getVersion(MyHttpCallBack<UpDateLoading> myHttpCallBack) {
+        I_HTTP.get(Url.UPDATE,null,myHttpCallBack);
 
     }
 

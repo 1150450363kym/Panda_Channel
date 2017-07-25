@@ -228,7 +228,6 @@ public class Historical_recordActivity extends BaseActivity {
                             his_dp.delete(his_array.get(i));
                             his_array.remove(i);
 
-
                         }
                     }
                     number = 0;

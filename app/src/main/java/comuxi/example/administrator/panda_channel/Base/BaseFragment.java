@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.umeng.analytics.MobclickAgent;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -54,6 +56,15 @@ public abstract class BaseFragment extends Fragment {
 
     //    加载网络数据请求的
     protected abstract void loadData();
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(getContext());       //统计时长
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(getContext());
+    }
 
 
 }

@@ -20,7 +20,7 @@ import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.Regi
 
 public class RegistActivity extends BaseActivity {
 
-    @BindView(R.id.historical_image)
+    @BindView(R.id.regist_image)
     ImageView historicalImage;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -66,7 +66,7 @@ public class RegistActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.historical_image, R.id.toolbar, R.id.framelayout_register_content, R.id.activity_regist})
+    @OnClick({R.id.regist_image, R.id.toolbar, R.id.framelayout_register_content, R.id.activity_regist})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 

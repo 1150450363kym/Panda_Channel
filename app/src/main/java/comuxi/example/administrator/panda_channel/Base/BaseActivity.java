@@ -1,10 +1,11 @@
 package comuxi.example.administrator.panda_channel.Base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import comuxi.example.administrator.panda_channel.app.App;
@@ -17,7 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private BaseFragment lastFragment;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(getLayoutId());
@@ -88,7 +89,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         return lastFragment;
 
-
     }
+
+    public void onResume() {
+        super.onResume();
+
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+
+        MobclickAgent.onPause(this);
+    }
+
 
 }
