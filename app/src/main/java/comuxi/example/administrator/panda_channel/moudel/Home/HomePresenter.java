@@ -2,6 +2,7 @@ package comuxi.example.administrator.panda_channel.moudel.Home;
 
 import comuxi.example.administrator.panda_channel.mode.CallBack.MyHttpCallBack;
 import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.Home_Data_TextBean;
+import comuxi.example.administrator.panda_channel.mode.Panda_TextBean.UpDateLoading;
 import comuxi.example.administrator.panda_channel.mode.biz.PandaItemMode;
 import comuxi.example.administrator.panda_channel.mode.biz.PandaMode;
 
@@ -33,6 +34,7 @@ public class HomePresenter implements HomeContract.presenter {
 
             homeview.setResult(home_data_textBean);
 
+
             }
 
             @Override
@@ -43,5 +45,16 @@ public class HomePresenter implements HomeContract.presenter {
             }
         });
 
+        pandaMode.getVersion(new MyHttpCallBack<UpDateLoading>() {
+            @Override
+            public void onSuccess(UpDateLoading upDateLoading) {
+                homeview.getVersion(upDateLoading);
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+
+            }
+        });
     }
 }
