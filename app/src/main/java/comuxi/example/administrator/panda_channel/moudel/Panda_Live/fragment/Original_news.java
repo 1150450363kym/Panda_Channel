@@ -32,6 +32,16 @@ public class Original_news extends BaseFragment implements PullToRefreshListener
     PullToRefreshRecyclerView originalNewsPulltorefresh;
     Unbinder unbinder;
     private int i = 1;
+    private   String  VSID;
+    private static final String N="7";
+    private static final String SERVICEID="panda";
+    private static final String O="desc";
+    private static final String OF="time";
+
+    private boolean flag=false;
+    public Original_news(String VSID) {
+        this.VSID = VSID;
+    }
     private OriginalnewsContract.presenter presenter ;
     private List<WonderfulOneBean.VideoBean> list;
     private WinderfulonePulltoAdapter adapter;
@@ -57,7 +67,7 @@ public class Original_news extends BaseFragment implements PullToRefreshListener
     @Override
     protected void loadData() {
 
-        presenter.showData("VSET100219009515","7","panda","desc","time",i);
+        presenter.showData(VSID,N,SERVICEID,O,OF,i);
         presenter.start();
     }
 

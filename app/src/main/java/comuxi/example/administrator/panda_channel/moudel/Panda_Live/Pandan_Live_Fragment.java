@@ -15,24 +15,10 @@ import butterknife.ButterKnife;
 import comuxi.example.administrator.panda_channel.Base.BaseFragment;
 import comuxi.example.administrator.panda_channel.R;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.adapter.PageAdapter;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Especially_program;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.LetPanda;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Live;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.LovelyLive;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Original_news;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.PandaTOP;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.PandaThing;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Panda_archives;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.fragment.Wonderful_moment;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.EspeciallyprogramPresenter;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LetPandaPresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LivePresenter;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.LovelyLivePresenter;
 import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.OriginalnewsPresenter;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.PandaTOPPresenter;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.PandaThingPresenter;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.Panda_archivesPresenter;
-import comuxi.example.administrator.panda_channel.moudel.Panda_Live.presenter.WonderfulOnePresenter;
 
 
 /**
@@ -49,14 +35,15 @@ public class Pandan_Live_Fragment extends BaseFragment {
     ViewPager liveFragmentViewpager;
 
     private Live live = new Live();
-    private Wonderful_moment wonderful_moment = new Wonderful_moment();
-    private LetPanda letPanda = new LetPanda();
-    private LovelyLive lovelyLive = new LovelyLive();
-    private Panda_archives panda_archives = new Panda_archives();
-    private PandaTOP pandaTOP = new PandaTOP();
-    private PandaThing pandaThing = new PandaThing();
-    private Especially_program especially_program = new Especially_program();
-    private Original_news original_news = new Original_news();
+
+    private Original_news originalNewsnoe;
+    private Original_news originalNewstwo;
+    private Original_news originalNewstherr;
+    private Original_news originalNewsfour;
+    private Original_news originalNewsfive;
+    private Original_news originalNewssix;
+    private Original_news originalNewsseven;
+    private Original_news originalNewseight;
     private List<Fragment> list;
     private PageAdapter adapter;
 
@@ -73,14 +60,26 @@ public class Pandan_Live_Fragment extends BaseFragment {
         ButterKnife.bind(view);
         list = new ArrayList<>();
         list.add(live);
-        list.add(wonderful_moment);
-        list.add(letPanda);
-        list.add(lovelyLive);
-        list.add(panda_archives);
-        list.add(pandaTOP);
-        list.add(pandaThing);
-        list.add(especially_program);
-        list.add(original_news);
+
+        originalNewsnoe = new Original_news("VSET100167216881");
+        originalNewstwo = new Original_news("VSET100332640004");
+        originalNewstherr = new Original_news("VSET100272959126");
+        originalNewsfour = new Original_news("VSET100340574858");
+        originalNewsfive = new Original_news("VSET100284428835");
+        originalNewssix = new Original_news("VSET100237714751");
+        originalNewsseven = new Original_news("VSET100167308855");
+        originalNewseight = new Original_news("VSET100219009515");
+
+        list.add(originalNewsnoe);
+        list.add(originalNewstwo);
+        list.add(originalNewstherr);
+        list.add(originalNewsfour);
+        list.add(originalNewsfive);
+        list.add(originalNewssix);
+        list.add(originalNewsseven);
+        list.add(originalNewseight);
+
+
         adapter = new PageAdapter(getFragmentManager(),list);
         liveFragmentViewpager.setAdapter(adapter);
         liveFragmentViewpager.setCurrentItem(0);
@@ -96,14 +95,14 @@ public class Pandan_Live_Fragment extends BaseFragment {
         liveFragmentTablayout.setupWithViewPager(liveFragmentViewpager);
 
 
-        new WonderfulOnePresenter(wonderful_moment);
-        new LetPandaPresenter(letPanda);
-        new LovelyLivePresenter(lovelyLive);
-        new Panda_archivesPresenter(panda_archives);
-        new PandaTOPPresenter(pandaTOP);
-        new PandaThingPresenter(pandaThing);
-        new EspeciallyprogramPresenter(especially_program);
-        new OriginalnewsPresenter(original_news);
+        new OriginalnewsPresenter(originalNewsnoe);
+        new OriginalnewsPresenter(originalNewstwo);
+        new OriginalnewsPresenter(originalNewstherr);
+        new OriginalnewsPresenter(originalNewsfour);
+        new OriginalnewsPresenter(originalNewsfive);
+        new OriginalnewsPresenter(originalNewssix);
+        new OriginalnewsPresenter(originalNewsseven);
+        new OriginalnewsPresenter(originalNewseight);
         new LivePresenter(live);
     }
 

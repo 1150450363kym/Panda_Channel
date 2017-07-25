@@ -8,7 +8,6 @@ import com.umeng.socialize.UMShareAPI;
 
 import cn.jpush.android.api.JPushInterface;
 import comuxi.example.administrator.panda_channel.Base.BaseActivity;
-import comuxi.example.administrator.panda_channel.Utils.CrashHandler;
 
 /**
  * Created by Administrator on 2017/7/11.
@@ -34,7 +33,7 @@ public class App extends Application {
         JPushInterface.init(this);     		// 初始化 JPush
         Config.DEBUG = true;
         UMShareAPI.get(this);
-        CrashHandler.getInstance().init(this);//初始化全局异常管理
+//        CrashHandler.getInstance().init(this);//初始化全局异常管理
     }
     public static BaseActivity content = null;
 }

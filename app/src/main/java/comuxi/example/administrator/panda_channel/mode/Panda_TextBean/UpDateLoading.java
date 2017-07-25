@@ -1,10 +1,12 @@
 package comuxi.example.administrator.panda_channel.mode.Panda_TextBean;
 
+import java.io.Serializable;
+
 /**
  * Created by lenovo on 2017/7/24.
  */
 
-public class UpDateLoading {
+public class UpDateLoading implements Serializable{
 
     /**
      * status : success
@@ -30,7 +32,7 @@ public class UpDateLoading {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * versionsName : 1.5.0
          * versionsNum : 150

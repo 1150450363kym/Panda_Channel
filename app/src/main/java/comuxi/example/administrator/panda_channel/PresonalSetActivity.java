@@ -72,7 +72,7 @@ public class PresonalSetActivity extends BaseActivity {
     }
 
 
-    @OnClick(R.id.historical_image)
+    @OnClick(R.id.person_set_image)
     public void onViewClicked() {
 
         this.finish();
